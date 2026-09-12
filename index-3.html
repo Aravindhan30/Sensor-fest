@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECE Sensor Fest — Registration</title>
+<style>
+  :root{
+    --navy:#0b1e3d;
+    --navy-2:#0f2a52;
+    --gold:#e0a92e;
+    --gold-light:#f4d489;
+    --cream:#f6f3ea;
+    --ink:#12203a;
+    --line:#d8cfa8;
+    --good:#1f7a4d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+  }
+  header.hero{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,var(--navy) 100%);
+    color:#fff;
+    padding:34px 20px 26px;
+    text-align:center;
+    border-bottom:4px solid var(--gold);
+  }
+  header.hero .eyebrow{
+    color:var(--gold-light);
+    font-size:13px;
+    letter-spacing:2px;
+    margin-bottom:6px;
+  }
+  header.hero h1{
+    margin:0;
+    font-size:clamp(28px,5vw,44px);
+    letter-spacing:1px;
+  }
+  header.hero p{
+    margin:10px auto 0;
+    max-width:560px;
+    color:#cfd8ec;
+    font-size:15px;
+  }
+  nav.tabs{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    background:var(--navy-2);
+    padding:8px;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:20;
+  }
+  nav.tabs button{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.25);
+    color:#e8ecf7;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+  }
+  nav.tabs button.active{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--navy);
+    font-weight:700;
+  }
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:24px 16px 60px;
+  }
+  .panel{display:none;}
+  .panel.active{display:block;}
+  h2.section-title{
+    color:var(--navy);
+    border-left:5px solid var(--gold);
+    padding-left:12px;
+    margin:4px 0 18px;
+  }
+  .toolbar{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+  .toolbar input, .toolbar select{
+    padding:9px 12px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:14px;
+    background:#fff;
+  }
+  .toolbar input{flex:1;min-width:180px;}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:12px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px;
+  }
+  .card .cat{
+    display:inline-block;
+    font-size:11px;
+    color:var(--navy);
+    background:var(--gold-light);
+    padding:2px 8px;
+    border-radius:10px;
+    margin-bottom:6px;
+  }
+  .card h3{margin:2px 0 6px;font-size:16px;color:var(--navy);}
+  .card .price{font-weight:700;color:var(--good);font-size:14px;}
+  .card p{font-size:13px;color:#3a3a3a;margin:6px 0 0;line-height:1.4;}
+  .mp-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:6px solid var(--gold);
+    border-radius:10px;
+    padding:18px;
+    margin-bottom:16px;
+  }
+  .mp-card h3{margin:0 0 6px;color:var(--navy);}
+  .mp-card .code-tag{
+    display:inline-block;
+    background:var(--navy);
+    color:var(--gold-light);
+    font-family:monospace;
+    padding:3px 10px;
+    border-radius:6px;
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .mp-sensors{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+  .mp-sensors .sc{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:13px;
+    min-width:200px;
+  }
+  form.reg{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:22px;
+    max-width:640px;
+  }
+  form.reg label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--navy);
+    margin:14px 0 5px;
+  }
+  form.reg input, form.reg select{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    font-size:14px;
+  }
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hint{font-size:12px;color:#666;margin-top:4px;}
+  .selected-box{
+    background:var(--cream);
+    border:1px dashed var(--gold);
+    border-radius:8px;
+    padding:12px;
+    margin-top:8px;
+    font-size:13px;
+  }
+  button.submit{
+    margin-top:20px;
+    background:var(--navy);
+    color:#fff;
+    border:none;
+    padding:13px 22px;
+    border-radius:8px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  button.submit:hover{background:var(--navy-2);}
+  .result{
+    margin-top:20px;
+    background:#eaf6ee;
+    border:1px solid var(--good);
+    border-radius:10px;
+    padding:18px;
+    display:none;
+  }
+  .result.show{display:block;}
+  .result .code{
+    font-family:monospace;
+    font-size:20px;
+    font-weight:700;
+    color:var(--good);
+    background:#fff;
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:8px;
+    border:1px solid var(--good);
+    margin:8px 0;
+  }
+  .copybtn{
+    background:var(--gold);
+    border:none;
+    color:var(--navy);
+    padding:7px 14px;
+    border-radius:6px;
+    font-weight:700;
+    cursor:pointer;
+    margin-left:8px;
+    font-size:13px;
+  }
+  .note{
+    font-size:12px;
+    color:#7a6a2a;
+    background:#fdf6df;
+    border:1px solid var(--gold);
+    border-radius:8px;
+    padding:10px 12px;
+    margin-bottom:16px;
+  }
+  footer{
+    text-align:center;
+    padding:18px;
+    color:#7d7d7d;
+    font-size:12px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">ECE ACTIVITY CLUB</div>
+  <h1>SENSOR FEST</h1>
+  <p>Pick a mini project, pair up two sensors, register your team of 3 — and get your entry code instantly.</p>
+</header>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="sensors">Sensor Catalog</button>
+  <button class="tab-btn" data-tab="projects">Mini Projects</button>
+  <button class="tab-btn" data-tab="register">Register Team</button>
+</nav>
+
+<main>
+
+  <!-- SENSOR CATALOG -->
+  <section id="sensors" class="panel active">
+    <h2 class="section-title">Sensor Catalog</h2>
+    <div class="note">Prices shown are typical local-market estimates (₹ under 200) for common modules — please confirm current price and stock with your Vellore supplier before finalizing kits.</div>
+    <div class="toolbar">
+      <input id="searchBox" placeholder="Search sensor name...">
+      <select id="catFilter"><option value="">All categories</option></select>
+    </div>
+    <div class="grid" id="sensorGrid"></div>
+  </section>
+
+  <!-- MINI PROJECTS -->
+  <section id="projects" class="panel">
+    <h2 class="section-title">Mini Projects</h2>
+    <div id="mpList"></div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="register" class="panel">
+    <h2 class="section-title">Register Your Team</h2>
+    <form class="reg" id="regForm">
+      <label>Team Name</label>
+      <input type="text" id="teamName" required>
+
+      <label>Member 1 Name (Team Leader)</label>
+      <input type="text" id="m1" required>
+
+      <div class="row2">
+        <div>
+          <label>Member 2 Name</label>
+          <input type="text" id="m2" required>
+        </div>
+        <div>
+          <label>Member 3 Name</label>
+          <input type="text" id="m3" required>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div>
+          <label>Team Leader Contact Number</label>
+          <input type="tel" id="leaderPhone" pattern="[0-9]{10}" required>
+        </div>
+        <div>
+          <label>Team Leader Email</label>
+          <input type="email" id="leaderEmail" required>
+        </div>
+      </div>
+
+      <label>Choose Mini Project</label>
+      <select id="mpSelect" required></select>
+      <div class="selected-box" id="mpPreview">Select a mini project to see its sensor pair.</div>
+
+      <button type="submit" class="submit">Submit Registration</button>
+    </form>
+
+    <div class="result" id="resultBox">
+      <div>Registration successful. Your entry code:</div>
+      <span class="code" id="codeOut"></span>
+      <button class="copybtn" id="copyBtn">Copy</button>
+      <div class="hint" id="resultDetail"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>P.T. Lee Chengalvaraya Naicker College of Engineering &amp; Technology — ECE Activity Club — Sensor Fest</footer>
+
+<script>
+// ---------- CONFIG ----------
+// Paste your Google Apps Script Web App URL here once deployed (see google-apps-script.gs).
+// Leave blank to run in local-only demo mode (entries kept in this browser's storage).
+const GOOGLE_SCRIPT_URL = "";
+
+// ---------- DATA ----------
+const SENSORS = [
+{"id":1,"name":"IR Obstacle Sensor","cat":"Proximity","price":60,"desc":"Detects objects using reflected IR light; digital output; adjustable range via potentiometer."},
+{"id":2,"name":"IR Flame Sensor","cat":"Fire/Safety","price":70,"desc":"Detects flame/IR light 760-1100nm from fire; range up to ~1m; digital + analog output."},
+{"id":3,"name":"LDR Light Sensor Module","cat":"Light","price":40,"desc":"Photoresistor-based; resistance drops in bright light; used for day/night detection."},
+{"id":4,"name":"PIR Motion Sensor (HC-SR501)","cat":"Motion","price":110,"desc":"Detects human infrared body heat movement; adjustable sensitivity & delay; range ~7m."},
+{"id":5,"name":"Ultrasonic Distance Sensor (HC-SR04)","cat":"Distance","price":120,"desc":"Measures distance 2cm-4m using ultrasonic echo; trigger/echo pins; ±3mm accuracy."},
+{"id":6,"name":"DHT11 Temp & Humidity Sensor","cat":"Environment","price":90,"desc":"Measures temp 0-50°C and humidity 20-90%RH; single digital pin output; 1Hz sampling."},
+{"id":7,"name":"Soil Moisture Sensor","cat":"Agriculture","price":45,"desc":"Two-probe resistive sensor for soil water content; analog + digital output."},
+{"id":8,"name":"Raindrop Sensor Module","cat":"Weather","price":60,"desc":"PCB grid detects rain droplets; analog output proportional to wetness."},
+{"id":9,"name":"MQ-2 Gas Sensor","cat":"Gas","price":80,"desc":"Detects LPG, smoke, propane, butane; analog output; needs pre-heat."},
+{"id":10,"name":"MQ-3 Alcohol Sensor","cat":"Gas","price":85,"desc":"Detects alcohol vapour concentration; used in breathalyzer-style projects."},
+{"id":11,"name":"MQ-5 Gas Sensor","cat":"Gas","price":85,"desc":"Detects LPG & natural gas leakage; analog output."},
+{"id":12,"name":"MQ-6 Gas Sensor","cat":"Gas","price":85,"desc":"Detects LPG & butane concentration; good for kitchen leak detectors."},
+{"id":13,"name":"MQ-7 CO Sensor","cat":"Gas","price":95,"desc":"Detects carbon monoxide concentration; needs heater cycling for accuracy."},
+{"id":14,"name":"MQ-135 Air Quality Sensor","cat":"Gas","price":95,"desc":"Detects CO2, ammonia, benzene, smoke; used for air quality index projects."},
+{"id":15,"name":"Sound Detection Sensor Module","cat":"Sound","price":55,"desc":"Electret mic + comparator; digital output on sound threshold cross."},
+{"id":16,"name":"Microphone Sound Sensor (Analog)","cat":"Sound","price":50,"desc":"Analog amplitude output of ambient sound level; used for clap/noise detectors."},
+{"id":17,"name":"Water Level Sensor","cat":"Liquid","price":45,"desc":"Conductive traces measure water level via resistance change; analog output."},
+{"id":18,"name":"Tilt Switch Sensor Module","cat":"Motion","price":35,"desc":"Ball-in-tube switch; digital ON/OFF on tilt beyond angle threshold."},
+{"id":19,"name":"Vibration Sensor (SW-420)","cat":"Motion","price":50,"desc":"Spring-based vibration switch with comparator; adjustable sensitivity."},
+{"id":20,"name":"Hall Effect Sensor Module","cat":"Magnetic","price":40,"desc":"Detects presence of magnetic field; digital output; used in speed/RPM sensing."},
+{"id":21,"name":"Capacitive Touch Sensor (TTP223)","cat":"Touch","price":35,"desc":"Touch-to-toggle digital output pad; no moving parts."},
+{"id":22,"name":"IR Proximity Sensor (Analog)","cat":"Proximity","price":150,"desc":"Sharp-style analog distance-to-voltage IR sensor; ~10-80cm range."},
+{"id":23,"name":"Line Follower IR Sensor Module","cat":"Robotics","price":45,"desc":"Reflective IR pair for black/white line contrast detection."},
+{"id":24,"name":"Photodiode Light Sensor","cat":"Light","price":30,"desc":"Fast-response light-to-current sensor; used in optical switching."},
+{"id":25,"name":"Thermistor Module (NTC)","cat":"Temperature","price":40,"desc":"Resistance changes with temperature; needs calibration curve; low cost."},
+{"id":26,"name":"LM35 Temperature Sensor","cat":"Temperature","price":55,"desc":"Analog output, 10mV/°C, range -55 to 150°C, no external calibration."},
+{"id":27,"name":"DS18B20 Waterproof Temp Sensor","cat":"Temperature","price":120,"desc":"Digital 1-Wire sensor, ±0.5°C accuracy, waterproof probe casing."},
+{"id":28,"name":"Piezo Vibration/Knock Sensor","cat":"Motion","price":45,"desc":"Piezoelectric disc generates voltage on knock/vibration; used in security alarms."},
+{"id":29,"name":"Reed Switch Module","cat":"Magnetic","price":35,"desc":"Magnetically-actuated switch; used for door/window open detection."},
+{"id":30,"name":"Smoke Sensor Module (basic)","cat":"Fire/Safety","price":150,"desc":"Optical smoke detection module; digital alarm output."},
+{"id":31,"name":"Current Sensor (ACS712-5A)","cat":"Electrical","price":150,"desc":"Hall-effect based AC/DC current sensing; analog voltage proportional to current."},
+{"id":32,"name":"Voltage Sensor Module","cat":"Electrical","price":45,"desc":"Resistor divider scales 0-25V down to safe ADC range."},
+{"id":33,"name":"Analog pH Sensor (basic probe)","cat":"Water Quality","price":180,"desc":"Measures pH 0-14 of liquid; needs calibration buffers for accuracy."},
+{"id":34,"name":"Turbidity Sensor (basic analog)","cat":"Water Quality","price":140,"desc":"Measures water clarity via IR light scattering; analog voltage output."},
+{"id":35,"name":"Heartbeat Pulse Sensor","cat":"Biomedical","price":150,"desc":"Optical fingertip/earlobe pulse detector; analog waveform output."},
+{"id":36,"name":"Soil Moisture Sensor (Capacitive)","cat":"Agriculture","price":110,"desc":"Corrosion-resistant capacitive sensing, more durable than resistive type."},
+{"id":37,"name":"MPU6050 Accelerometer+Gyroscope","cat":"Motion","price":150,"desc":"6-axis motion tracking (3-axis accel + 3-axis gyro); I2C interface."},
+{"id":38,"name":"IR Receiver Module (TSOP1738)","cat":"Communication","price":30,"desc":"Receives 38kHz modulated IR remote signals; digital output."},
+{"id":39,"name":"IR Transmitter LED Module","cat":"Communication","price":20,"desc":"Emits IR signal for remote control / obstacle sensor pairs."},
+{"id":40,"name":"Metal Detector Coil Sensor","cat":"Proximity","price":90,"desc":"Inductive coil detects nearby metal objects; used in security/detector projects."},
+{"id":41,"name":"Shock Sensor Module","cat":"Motion","price":60,"desc":"Detects sudden mechanical shock/impact; digital pulse output."},
+{"id":42,"name":"Limit Switch Sensor","cat":"Mechanical","price":25,"desc":"Mechanical lever switch; triggers on physical contact/end-of-travel."},
+{"id":43,"name":"Rotary Encoder Module","cat":"Motion","price":45,"desc":"Detects rotation direction & steps via two-phase pulses; used for dials/knobs."},
+{"id":44,"name":"Optical Slotted Encoder Sensor","cat":"Motion","price":50,"desc":"IR beam-break disc sensor for RPM/speed measurement."},
+{"id":45,"name":"MQ-4 Gas Sensor (Methane/CNG)","cat":"Gas","price":85,"desc":"Detects methane and natural gas concentration; analog output."},
+{"id":46,"name":"MQ-8 Hydrogen Gas Sensor","cat":"Gas","price":95,"desc":"Detects hydrogen gas concentration; analog output."},
+{"id":47,"name":"MQ-9 CO/Flammable Gas Sensor","cat":"Gas","price":95,"desc":"Dual sensitivity to CO and flammable gases via heater cycling."},
+{"id":48,"name":"BH1750 Ambient Light Sensor","cat":"Light","price":90,"desc":"Digital I2C lux meter; direct lux reading, no calibration needed."},
+{"id":49,"name":"Sound Level Comparator Module","cat":"Sound","price":55,"desc":"Sets a sound threshold, gives digital alarm trigger output."},
+{"id":50,"name":"Bump Switch Sensor","cat":"Mechanical","price":30,"desc":"Lightweight lever switch used in small robots for collision detection."},
+{"id":51,"name":"Water Flow Sensor (basic, small)","cat":"Liquid","price":180,"desc":"Hall-effect pulse output proportional to flow rate through pipe."},
+{"id":52,"name":"Rain Gauge Tip Sensor (mini)","cat":"Weather","price":190,"desc":"Tipping-bucket mechanism gives a pulse per unit rainfall."},
+{"id":53,"name":"Break-Beam IR Sensor Pair","cat":"Proximity","price":70,"desc":"Transmitter-receiver pair for object pass-through detection."},
+{"id":54,"name":"Capacitive Proximity Sensor (basic)","cat":"Proximity","price":150,"desc":"Detects nearby conductive/non-conductive objects without contact."},
+{"id":55,"name":"UV Intensity Sensor (basic)","cat":"Light","price":150,"desc":"Responds to ultraviolet light intensity; analog output."},
+{"id":56,"name":"Force Sensitive Resistor (small FSR)","cat":"Pressure","price":180,"desc":"Resistance decreases with applied pressure; used in touch/force projects."},
+{"id":57,"name":"Flex Sensor (2.2 inch)","cat":"Motion","price":190,"desc":"Resistance changes with bend angle; used in glove/gesture projects."},
+{"id":58,"name":"Reed Relay Sensor Module","cat":"Magnetic","price":45,"desc":"Combines reed switch with relay driver for magnetic-triggered switching."},
+{"id":59,"name":"Dust/Smoke Analog Sensor (basic)","cat":"Environment","price":190,"desc":"Infrared LED-photodiode pair estimates particulate density."},
+{"id":60,"name":"Water Detection Sensor Strip","cat":"Liquid","price":50,"desc":"Exposed traces detect presence of water/leakage on a surface."},
+{"id":61,"name":"Joystick-style Position Sensor","cat":"Motion","price":80,"desc":"Dual-axis potentiometer module for position/direction sensing."},
+{"id":62,"name":"IR Color Mark Sensor (basic)","cat":"Robotics","price":60,"desc":"Detects contrast between color marks on a surface for line-following."},
+{"id":63,"name":"Magnetic Door Sensor (basic reed)","cat":"Magnetic","price":40,"desc":"Two-part reed sensor for door/window open-close status."},
+{"id":64,"name":"Temperature Switch Module (bimetallic)","cat":"Temperature","price":45,"desc":"Mechanical thermal switch triggers at a fixed temperature threshold."},
+{"id":65,"name":"Analog Soil pH Sensor (basic probe)","cat":"Agriculture","price":190,"desc":"Estimates soil acidity/alkalinity; needs calibration for precision."},
+{"id":66,"name":"Infrared Thermopile Sensor (basic)","cat":"Temperature","price":180,"desc":"Non-contact IR temperature sensing over a small range."},
+{"id":67,"name":"Light Barrier Sensor Module","cat":"Proximity","price":70,"desc":"Slotted photo-interrupter for counting/position detection."},
+{"id":68,"name":"Micro Vibration Motor Feedback Sensor","cat":"Motion","price":50,"desc":"Piezo feedback element senses vibration from an attached motor."},
+{"id":69,"name":"Analog Gas Leak Sensor (generic)","cat":"Gas","price":90,"desc":"General-purpose combustible gas leak sensing module."},
+{"id":70,"name":"Basic Barometric Trend Sensor","cat":"Weather","price":190,"desc":"Estimates relative air pressure trend for simple weather stations."},
+{"id":71,"name":"Object Colour Recognition Sensor (RGB photodiode)","cat":"Light","price":190,"desc":"Basic RGB reflectance sensing for colour-sorting projects."},
+{"id":72,"name":"Non-contact Liquid Level Sensor (strip type)","cat":"Liquid","price":170,"desc":"Detects liquid level through container wall, no direct contact."},
+{"id":73,"name":"Basic Anemometer Reed Sensor","cat":"Weather","price":190,"desc":"Reed switch pulses per cup rotation for wind speed estimation."},
+{"id":74,"name":"Compact PIR Micro-motion Sensor","cat":"Motion","price":140,"desc":"Smaller-footprint PIR variant for compact motion-triggered projects."},
+{"id":75,"name":"Analog Ambient Humidity Sensor (basic)","cat":"Environment","price":95,"desc":"Resistive humidity sensing element with analog output."}
+];
+
+const MINI_PROJECTS = [
+  {
+    code: "MP1",
+    name: "Smart Gas Leak & Fire Alert System",
+    sensorIds: [9, 2],
+    desc: "Combines a gas sensor and a flame sensor to detect an LPG/smoke leak and an open flame together, triggering an early safety alarm."
+  },
+  {
+    code: "MP2",
+    name: "Automatic Plant Watering & Weather Monitor",
+    sensorIds: [7, 6],
+    desc: "Uses a soil moisture sensor with a temperature & humidity sensor to decide when a plant needs water based on both soil and ambient conditions."
+  },
+  {
+    code: "MP3",
+    name: "Smart Entry Security Monitor",
+    sensorIds: [4, 5],
+    desc: "Pairs a motion sensor with an ultrasonic distance sensor to confirm real entry events and estimate how close a visitor is at the door."
+  }
+];
+
+function sensorById(id){ return SENSORS.find(s => s.id === id); }
+
+// ---------- SENSOR CATALOG RENDER ----------
+const grid = document.getElementById('sensorGrid');
+const searchBox = document.getElementById('searchBox');
+const catFilter = document.getElementById('catFilter');
+
+function renderSensors(){
+  const q = searchBox.value.trim().toLowerCase();
+  const cat = catFilter.value;
+  const filtered = SENSORS.filter(s =>
+    (!q || s.name.toLowerCase().includes(q)) &&
+    (!cat || s.cat === cat)
+  );
+  grid.innerHTML = filtered.map(s => `
+    <div class="card">
+      <span class="cat">${s.cat}</span>
+      <h3>${s.name}</h3>
+      <div class="price">₹${s.price}</div>
+      <p>${s.desc}</p>
+    </div>
+  `).join('') || '<p>No sensors match your search.</p>';
+}
+
+const cats = [...new Set(SENSORS.map(s => s.cat))].sort();
+catFilter.innerHTML += cats.map(c => `<option value="${c}">${c}</option>`).join('');
+searchBox.addEventListener('input', renderSensors);
+catFilter.addEventListener('change', renderSensors);
+renderSensors();
+
+// ---------- MINI PROJECTS RENDER ----------
+const mpList = document.getElementById('mpList');
+mpList.innerHTML = MINI_PROJECTS.map(mp => {
+  const s1 = sensorById(mp.sensorIds[0]);
+  const s2 = sensorById(mp.sensorIds[1]);
+  return `
+    <div class="mp-card">
+      <span class="code-tag">${mp.code}</span>
+      <h3>${mp.name}</h3>
+      <p>${mp.desc}</p>
+      <div class="mp-sensors">
+        <div class="sc"><strong>${s1.name}</strong><br>₹${s1.price} · ${s1.cat}</div>
+        <div class="sc"><strong>${s2.name}</strong><br>₹${s2.price} · ${s2.cat}</div>
+      </div>
+    </div>
+  `;
+}).join('');
+
+// ---------- REGISTRATION FORM ----------
+const mpSelect = document.getElementById('mpSelect');
+const mpPreview = document.getElementById('mpPreview');
+mpSelect.innerHTML = '<option value="">-- select --</option>' +
+  MINI_PROJECTS.map(mp => `<option value="${mp.code}">${mp.code} — ${mp.name}</option>`).join('');
+
+mpSelect.addEventListener('change', () => {
+  const mp = MINI_PROJECTS.find(m => m.code === mpSelect.value);
+  if(!mp){ mpPreview.textContent = 'Select a mini project to see its sensor pair.'; return; }
+  const s1 = sensorById(mp.sensorIds[0]);
+  const s2 = sensorById(mp.sensorIds[1]);
+  mpPreview.innerHTML = `<strong>${mp.name}</strong><br>Sensors: ${s1.name} + ${s2.name}`;
+});
+
+function genCode(mpCode){
+  const rand = Math.random().toString(36).slice(2,6).toUpperCase();
+  const stamp = Date.now().toString().slice(-4);
+  return `SF-${mpCode}-${rand}${stamp}`;
+}
+
+document.getElementById('regForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const mp = MINI_PROJECTS.find(m => m.code === mpSelect.value);
+  if(!mp){ alert('Please choose a mini project.'); return; }
+  const s1 = sensorById(mp.sensorIds[0]);
+  const s2 = sensorById(mp.sensorIds[1]);
+  const code = genCode(mp.code);
+
+  const entry = {
+    timestamp: new Date().toISOString(),
+    teamName: document.getElementById('teamName').value,
+    member1: document.getElementById('m1').value,
+    member2: document.getElementById('m2').value,
+    member3: document.getElementById('m3').value,
+    leaderPhone: document.getElementById('leaderPhone').value,
+    leaderEmail: document.getElementById('leaderEmail').value,
+    miniProject: mp.name,
+    miniProjectCode: mp.code,
+    sensor1: s1.name,
+    sensor2: s2.name,
+    entryCode: code
+  };
+
+  // Try to send to Google Sheet if configured
+  if (GOOGLE_SCRIPT_URL) {
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(entry)
+      });
+    } catch (err) {
+      console.error('Could not reach Google Sheet, saving locally instead.', err);
+    }
+  }
+
+  // Always keep a local demo copy too
+  try {
+    const existing = JSON.parse(localStorage.getItem('sensorfest_entries') || '[]');
+    existing.push(entry);
+    localStorage.setItem('sensorfest_entries', JSON.stringify(existing));
+  } catch(err){ /* ignore */ }
+
+  document.getElementById('codeOut').textContent = code;
+  document.getElementById('resultDetail').textContent =
+    `${entry.teamName} — ${mp.name} (${s1.name} + ${s2.name})`;
+  document.getElementById('resultBox').classList.add('show');
+  e.target.reset();
+  mpPreview.textContent = 'Select a mini project to see its sensor pair.';
+});
+
+document.getElementById('copyBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('codeOut').textContent);
+});
+
+// ---------- TAB SWITCHING ----------
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
