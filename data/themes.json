@@ -1,0 +1,50 @@
+[
+  {
+    "id": "T1",
+    "name": "Safety & Hazard Alert Systems",
+    "icon": "🔥",
+    "color": "#e05c2a",
+    "categories": ["Fire/Safety", "Gas"],
+    "description": "Design systems that detect and alert against fire, gas leaks, smoke, and other hazardous conditions to protect life and property."
+  },
+  {
+    "id": "T2",
+    "name": "Environmental & Agricultural Monitoring",
+    "icon": "🌿",
+    "color": "#2e8b57",
+    "categories": ["Environment", "Weather", "Agriculture", "Water Quality", "Liquid", "Temperature"],
+    "description": "Monitor environmental parameters, crop conditions, water quality, and weather for smart farming and ecological awareness."
+  },
+  {
+    "id": "T3",
+    "name": "Motion, Robotics & Proximity Sensing",
+    "icon": "🤖",
+    "color": "#1a6faf",
+    "categories": ["Motion", "Robotics", "Mechanical", "Proximity", "Distance"],
+    "description": "Build robots, gesture controllers, proximity alarms, and motion-based automation using kinematic and ultrasonic sensing."
+  },
+  {
+    "id": "T4",
+    "name": "Smart Sensing & Electrical Automation",
+    "icon": "⚡",
+    "color": "#e0a92e",
+    "categories": ["Touch", "Magnetic", "Light", "Electrical", "Communication"],
+    "description": "Automate home and industrial systems using light, magnetic, touch, and wireless communication sensors."
+  },
+  {
+    "id": "T5",
+    "name": "Health & Human Interface Sensing",
+    "icon": "❤️",
+    "color": "#c0415a",
+    "categories": ["Biomedical", "Pressure", "Sound"],
+    "description": "Create health monitoring gadgets and human-computer interfaces using bio-signal, pressure, and audio sensing technologies."
+  },
+  {
+    "id": "T6",
+    "name": "Student Innovation",
+    "icon": "💡",
+    "color": "#7b3fa0",
+    "categories": ["Any / Cross-domain"],
+    "description": "No boundaries — combine any sensors across all categories to build a creative, original invention. Wild ideas welcome!"
+  }
+]
