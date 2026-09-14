@@ -74,4 +74,5 @@
   { "id": "S073", "name": "NRF24L01 2.4 GHz Wireless Module", "category": "Communication", "price": 80, "description": "SPI; 250 kbps–2 Mbps; auto-ACK; 6-channel pipe; used in multi-node sensor networks." },
   { "id": "S074", "name": "HC-05 Bluetooth Module", "category": "Communication", "price": 150, "description": "Classic Bluetooth 2.0; UART bridge; master/slave; widely used for phone-to-MCU comms." },
   { "id": "S075", "name": "HC-SR505 Mini PIR Motion Sensor", "category": "Motion", "price": 35, "description": "Compact auto-reset PIR; 3 m range; single digital output; 5V; for motion-triggered circuits." }
+   { "id": "S076", "name": "LM393NPHOTOSENSITIVE LIGHT DEPENDENT RESISTOR LDR SSENSOR MODULE", "category": "MODULE", "price": 80, "description": "." }
 ]
