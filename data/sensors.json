@@ -63,7 +63,7 @@
   { "id": "S062", "name": "Current Sensor Module ACS712 (5A)", "category": "Electrical", "price": 100, "description": "Hall-effect current sensor; ±5A range; 185 mV/A sensitivity; analog output." },
   { "id": "S063", "name": "Current Sensor ACS712 (20A)", "category": "Electrical", "price": 110, "description": "Like ACS712-5A but ±20A; 100 mV/A; used in motor and power supply monitoring." },
   { "id": "S064", "name": "Voltage Sensor Module (0–25V)", "category": "Electrical", "price": 30, "description": "Resistor divider; maps 0–25V to 0–5V; analog read for battery voltage monitoring." },
-  { "id": "S065", "name": "ZMCT103C AC Current Transformer", "category": "Electrical", "price": 60, "description": "1000:1 ratio; non-invasive clip-on AC current sensing; used in energy meters." },
+  { "id": "S065", "name": "LM393", "category": "Electrical", "price": 80, "description": "PHOTOSENSITIVE LIGHT DEPENDENT RESISTOR LDR SENSOR MODULE." },
   { "id": "S066", "name": "PZEM-004T AC Power Meter Module", "category": "Electrical", "price": 190, "description": "Measures V, I, P, energy, frequency, PF via UART; used in smart energy monitoring." },
   { "id": "S067", "name": "Heartbeat / Pulse Sensor (MAX30102)", "category": "Biomedical", "price": 180, "description": "I²C; red+IR LED; finger SpO₂ and pulse detection; used in health monitoring." },
   { "id": "S068", "name": "Pulse Sensor (KY-039 Fingertip)", "category": "Biomedical", "price": 50, "description": "IR LED + phototransistor; analog output; clip-on finger pulse/heart-rate sensor." },
