@@ -141,7 +141,7 @@ const CONFIG = {
 
 | Rule | How It Works |
 |------|-------------|
-| One sensor per individual | Server re-checks at submit (race-condition safe) |
+| One sensor per individual | Server re-checks at submit (race-condition safe via GAS LockService) |
 | Team sensors independent | Team can pick any sensor regardless of individual claims |
 | Duplicate team sensors | Client-side validation blocks same sensor twice |
 | Entry code format | `SENSORA26-<RAND4><TS4>` — generated client-side |
