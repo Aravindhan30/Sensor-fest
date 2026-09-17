@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SENSORA 2K26 — 2nd Year Team Registration. Register your team and get your sensor kit for the expo." />
+  <meta name="theme-color" content="#0b1e3d" />
+  <title>2nd Year Team Registration · SENSORA 2K26</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sections.css" />
+  <link rel="stylesheet" href="register-2nd.css" />
+</head>
+<body>
+
+<!-- Circuit BG -->
+<div class="circuit-bg" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="150" x2="1440" y2="150" stroke="#e0a92e" stroke-width="1"/>
+    <line x1="0" y1="450" x2="1440" y2="450" stroke="#e0a92e" stroke-width="0.5"/>
+    <line x1="0" y1="750" x2="1440" y2="750" stroke="#e0a92e" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="900" stroke="#e0a92e" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="900" stroke="#e0a92e" stroke-width="0.5"/>
+    <circle cx="400" cy="150" r="5" fill="#e0a92e"/>
+    <circle cx="1000" cy="450" r="5" fill="#e0a92e"/>
+    <circle cx="400" cy="750" r="3" fill="#e0a92e"/>
+  </svg>
+</div>
+
+<!-- Nav -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="SENSORA 2K26 home">
+    <span class="logo-s">SENSORA</span>
+    <span class="logo-badge">2K26</span>
+  </a>
+  <div class="nav-links" role="menubar">
+    <a href="index.html#about" role="menuitem">About</a>
+    <a href="index.html#catalog" role="menuitem">Sensors</a>
+    <a href="index.html#registration" role="menuitem">3rd &amp; 4th Year</a>
+    <a href="register-2nd.html" class="active" role="menuitem">2nd Year</a>
+    <a href="index.html#contact" role="menuitem">Contact</a>
+  </div>
+</nav>
+
+<!-- ════════ MAIN ════════ -->
+<main id="reg2nd-main">
+  <div class="reg2nd-container">
+
+    <!-- Page Header -->
+    <div class="reg2nd-header reveal">
+      <div class="r2h-badge">🎓 2nd Year — ECE</div>
+      <h1 class="r2h-title"><span>Team</span> Registration</h1>
+      <p class="r2h-sub">
+        Register as a <strong>team of 3</strong>. You'll receive an auto-suggested basic sensor — keep it or swap to another available one.
+        No individual registration required for 2nd year.
+      </p>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="step-indicator reveal reveal-delay-1" id="step-indicator" role="list">
+      <div class="step-dot active" data-step="1" role="listitem">
+        <span class="sd-num">1</span>
+        <span class="sd-label">Team Details</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-dot" data-step="2" role="listitem">
+        <span class="sd-num">2</span>
+        <span class="sd-label">Your Sensor</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-dot" data-step="3" role="listitem">
+        <span class="sd-num">3</span>
+        <span class="sd-label">Confirm</span>
+      </div>
+    </div>
+
+    <!-- ── STEP 1: Team Details ── -->
+    <div class="wizard-step active" id="step1" data-step="1">
+      <div class="form-card reveal">
+        <div class="form-title">👥 Team Details</div>
+        <div class="form-subtitle">
+          All 3 team members are required. The team leader's contact details will be used for communication.
+        </div>
+
+        <form id="team-details-form" novalidate>
+
+          <!-- Team Name -->
+          <div class="form-group">
+            <label class="form-label" for="r2-team-name">Team Name <span class="required">*</span></label>
+            <input class="form-input" type="text" id="r2-team-name" name="teamName"
+                   placeholder="e.g. Circuit Breakers" maxlength="80" required autocomplete="off" />
+            <span class="error-text"></span>
+          </div>
+
+          <!-- Team Leader -->
+          <div class="member-block leader-block">
+            <div class="mb-title">🌟 Team Leader</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="r2-leader-name">Full Name <span class="required">*</span></label>
+                <input class="form-input" type="text" id="r2-leader-name" name="leaderName"
+                       placeholder="Leader full name" maxlength="80" required />
+                <span class="error-text"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r2-leader-regno">Register Number <span class="required">*</span></label>
+                <input class="form-input" type="text" id="r2-leader-regno" name="leaderRegno"
+                       placeholder="e.g. 25ECE001" maxlength="20" required autocomplete="off" />
+                <span class="error-text"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r2-leader-phone">Phone <span class="required">*</span></label>
+                <input class="form-input" type="tel" id="r2-leader-phone" name="leaderPhone"
+                       placeholder="10-digit mobile" maxlength="10" required autocomplete="tel" />
+                <span class="error-text"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r2-leader-email">Email <span class="required">*</span></label>
+                <input class="form-input" type="email" id="r2-leader-email" name="leaderEmail"
+                       placeholder="leader@college.edu" required autocomplete="email" />
+                <span class="error-text"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="member-block">
+            <div class="mb-title">👤 Member 2</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="r2-m2-name">Full Name <span class="required">*</span></label>
+                <input class="form-input" type="text" id="r2-m2-name" name="member2Name"
+                       placeholder="Member 2 full name" maxlength="80" required />
+                <span class="error-text"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r2-m2-regno">Register Number <span class="required">*</span></label>
+                <input class="form-input member-regno" type="text" id="r2-m2-regno" name="member2Regno"
+                       placeholder="e.g. 25ECE002" maxlength="20" required autocomplete="off"
+                       data-member="2" />
+                <span class="error-text"></span>
+                <span class="member-check-badge" id="m2-badge"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="member-block">
+            <div class="mb-title">👤 Member 3</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="r2-m3-name">Full Name <span class="required">*</span></label>
+                <input class="form-input" type="text" id="r2-m3-name" name="member3Name"
+                       placeholder="Member 3 full name" maxlength="80" required />
+                <span class="error-text"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r2-m3-regno">Register Number <span class="required">*</span></label>
+                <input class="form-input member-regno" type="text" id="r2-m3-regno" name="member3Regno"
+                       placeholder="e.g. 25ECE003" maxlength="20" required autocomplete="off"
+                       data-member="3" />
+                <span class="error-text"></span>
+                <span class="member-check-badge" id="m3-badge"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disclaimer -->
+          <div class="form-rules" style="margin-top:8px;">
+            <strong>📋 Note:</strong> All 3 team members must be 2nd-year ECE students. Each student can join only one team. Make sure register numbers are accurate — they will be verified.
+          </div>
+
+          <button type="submit" class="btn-submit" id="step1-next-btn">
+            <div class="spinner"></div>
+            <span class="btn-text">Get My Sensor →</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Sensor Assignment ── -->
+    <div class="wizard-step" id="step2" data-step="2">
+      <div class="form-card reveal">
+        <div class="form-title">🎁 Your Sensor Assignment</div>
+        <div class="form-subtitle">
+          A basic sensor has been auto-suggested for your team. You can keep it or search for another available basic sensor.
+        </div>
+
+        <!-- Suggested Sensor Card -->
+        <div class="suggested-sensor-card" id="suggested-sensor-card">
+          <div class="ssc-loading" id="ssc-loading">
+            <div class="spinner" style="width:28px;height:28px;border-width:3px;"></div>
+            <span>Loading sensor pool...</span>
+          </div>
+          <div class="ssc-content" id="ssc-content" style="display:none;">
+            <div class="ssc-label">✨ Your Auto-Suggested Sensor</div>
+            <div class="ssc-sensor-name" id="ssc-name">—</div>
+            <div class="ssc-available" id="ssc-available">✓ Available &nbsp;·&nbsp; ✓ Beginner Friendly</div>
+          </div>
+          <div class="ssc-unavail" id="ssc-unavail" style="display:none;">
+            <div class="ssc-label" style="color:#f87171;">⚠️ No Basic Sensors Available</div>
+            <p style="font-size:0.88rem;color:var(--text-muted);margin-top:8px;">
+              All basic sensors have been allocated. Please contact the event coordinator.
+            </p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="sensor-action-btns" id="sensor-action-btns" style="display:none;">
+          <button class="btn-keep-sensor" id="btn-keep-sensor">
+            ✅ Keep This Sensor
+          </button>
+          <button class="btn-choose-sensor" id="btn-choose-another">
+            🔄 Choose Another
+          </button>
+        </div>
+
+        <!-- Search Panel (shown when "Choose Another" clicked) -->
+        <div class="basic-search-panel" id="basic-search-panel" style="display:none;">
+          <div class="bsp-title">🔍 Search Available Basic Sensors</div>
+
+          <div class="sensor-search-wrap" id="basic-sensor-search-wrap">
+            <span class="sensor-search-icon">🔍</span>
+            <input class="sensor-search-input" type="text" id="basic-sensor-search-input"
+                   placeholder="Search by name, keyword..." autocomplete="off"
+                   aria-autocomplete="list" aria-controls="basic-results-list"
+                   aria-expanded="false" role="combobox" />
+            <button type="button" class="sensor-search-clear" id="basic-search-clear"
+                    aria-label="Clear" style="display:none;">✕</button>
+          </div>
+
+          <div class="sensor-results-dropdown" id="basic-results-dropdown" style="display:none;" role="listbox">
+            <ul class="sensor-results-list" id="basic-results-list"></ul>
+          </div>
+
+          <div class="bsp-chips" id="bsp-chips">
+            <!-- Available sensor chips rendered here -->
+          </div>
+        </div>
+
+        <!-- Selected sensor display -->
+        <div class="selected-sensor-display" id="selected-sensor-display" style="display:none;">
+          <div class="ssd-label">Selected Sensor:</div>
+          <div class="ssd-name" id="ssd-name">—</div>
+          <button class="ssd-change" id="ssd-change">Change →</button>
+        </div>
+
+        <!-- Navigation -->
+        <div class="wizard-nav">
+          <button class="btn-back" id="step2-back-btn" type="button">← Back</button>
+          <button class="btn-submit" id="step2-next-btn" type="button" disabled>
+            <span class="btn-text">Review &amp; Confirm →</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Confirm ── -->
+    <div class="wizard-step" id="step3" data-step="3">
+      <div class="form-card reveal">
+        <div class="form-title">✅ Review &amp; Confirm</div>
+        <div class="form-subtitle">
+          Please review your team details and selected sensor before confirming. Once submitted, your sensor will be reserved.
+        </div>
+
+        <div class="confirmation-card" id="confirmation-card">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div class="form-rules" style="margin-top:16px;">
+          ⚠️ By confirming, you agree that all register numbers are accurate. Sensor availability is verified at the moment of submission.
+        </div>
+
+        <div class="wizard-nav">
+          <button class="btn-back" id="step3-back-btn" type="button">← Back</button>
+          <button class="btn-submit" id="step3-confirm-btn" type="button">
+            <div class="spinner"></div>
+            <span class="btn-text">🚀 Confirm Team Registration</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="success-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="r2-modal-title">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title" id="r2-modal-title">Team Registered!</div>
+    <div class="modal-subtitle">Your 2nd year team registration is confirmed.</div>
+
+    <div class="entry-code-box" style="margin:20px 0;">
+      <div class="entry-code-label">Registration ID</div>
+      <div class="entry-code-value" id="r2-modal-regid">SF2-2026-XXXXX</div>
+    </div>
+    <button class="btn-copy" id="r2-copy-btn">⎘ Copy ID</button>
+
+    <div class="modal-summary" id="r2-modal-summary"></div>
+    <button class="modal-ok" id="r2-modal-ok">Done ✓</button>
+  </div>
+</div>
+
+<!-- Error Modal -->
+<div class="modal-overlay" id="error-modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal error-modal">
+    <div class="modal-icon">⚠️</div>
+    <div class="modal-title">Registration Error</div>
+    <div class="modal-subtitle" id="r2-error-msg">An error occurred.</div>
+    <button class="modal-ok">Try Again</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+<!-- Scripts -->
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+<script src="app-2nd.js" defer></script>
+</body>
+</html>

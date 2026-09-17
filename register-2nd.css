@@ -1,0 +1,473 @@
+/* ============================================================
+   SENSORA 2K26 — 2nd Year Registration Page Styles
+   register-2nd.css
+   Shares design tokens from style.css (--navy, --gold, etc.)
+   ============================================================ */
+
+/* ── Page Layout ─────────────────────────────────────────── */
+#reg2nd-main {
+  min-height: 100vh;
+  padding: 100px 0 80px;
+}
+.reg2nd-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+}
+
+/* ── Page Header ─────────────────────────────────────────── */
+.reg2nd-header {
+  text-align: center;
+  margin-bottom: 44px;
+}
+.r2h-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(224,169,46,0.1);
+  border: 1px solid rgba(224,169,46,0.35);
+  color: var(--gold);
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.r2h-title {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  color: var(--cream);
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+.r2h-title span { color: var(--gold); }
+.r2h-sub {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── Step Indicator ──────────────────────────────────────── */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 40px;
+}
+.step-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  cursor: default;
+}
+.sd-num {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 2px solid rgba(224,169,46,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-subtle);
+  transition: all 0.3s ease;
+}
+.step-dot.active .sd-num,
+.step-dot.done .sd-num {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b1e3d;
+  box-shadow: 0 0 16px rgba(224,169,46,0.4);
+}
+.step-dot.done .sd-num::after {
+  content: '✓';
+  font-size: 1.1rem;
+}
+.step-dot.done .sd-num { font-size: 0; }
+.step-dot.done .sd-num::after { font-size: 1.1rem; }
+.sd-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+.step-dot.active .sd-label { color: var(--gold); }
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: rgba(224,169,46,0.2);
+  margin: 0 12px;
+  margin-bottom: 28px;
+  transition: background 0.3s;
+  max-width: 80px;
+}
+.step-line.done { background: var(--gold); }
+
+/* ── Wizard Steps ────────────────────────────────────────── */
+.wizard-step {
+  display: none;
+  animation: fadeSlideIn 0.35s ease;
+}
+.wizard-step.active { display: block; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Member Blocks ───────────────────────────────────────── */
+.member-block {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(224,169,46,0.12);
+  border-radius: var(--radius-md);
+  padding: 20px 22px 10px;
+  margin-bottom: 18px;
+}
+.leader-block {
+  border-color: rgba(224,169,46,0.25);
+  background: rgba(224,169,46,0.03);
+}
+.mb-title {
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.member-check-badge {
+  font-size: 0.78rem;
+  margin-top: 4px;
+  display: block;
+  min-height: 18px;
+}
+.member-check-badge.ok   { color: #86efac; }
+.member-check-badge.warn { color: #f87171; }
+
+/* ── Suggested Sensor Card ───────────────────────────────── */
+.suggested-sensor-card {
+  background: rgba(224,169,46,0.06);
+  border: 1.5px solid rgba(224,169,46,0.3);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ssc-loading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.ssc-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.ssc-sensor-name {
+  font-family: var(--font-head);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 900;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.ssc-available {
+  font-size: 0.82rem;
+  color: #86efac;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── Sensor Action Buttons ───────────────────────────────── */
+.sensor-action-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.btn-keep-sensor,
+.btn-choose-sensor {
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid;
+}
+.btn-keep-sensor {
+  background: rgba(34,197,94,0.15);
+  border-color: rgba(34,197,94,0.4);
+  color: #86efac;
+}
+.btn-keep-sensor:hover {
+  background: rgba(34,197,94,0.25);
+  box-shadow: 0 4px 16px rgba(34,197,94,0.2);
+  transform: translateY(-2px);
+}
+.btn-keep-sensor.selected {
+  background: rgba(34,197,94,0.25);
+  border-color: #86efac;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+}
+.btn-choose-sensor {
+  background: rgba(224,169,46,0.1);
+  border-color: rgba(224,169,46,0.3);
+  color: var(--gold);
+}
+.btn-choose-sensor:hover {
+  background: rgba(224,169,46,0.2);
+  transform: translateY(-2px);
+}
+
+/* ── Basic Search Panel ──────────────────────────────────── */
+.basic-search-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+  animation: fadeSlideIn 0.25s ease;
+}
+.bsp-title {
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.bsp-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.sensor-chip {
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid rgba(224,169,46,0.25);
+  background: rgba(224,169,46,0.06);
+  color: var(--cream);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sensor-chip:hover:not(.taken) {
+  background: rgba(224,169,46,0.18);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+.sensor-chip.selected {
+  background: rgba(34,197,94,0.15);
+  border-color: #86efac;
+  color: #86efac;
+}
+.sensor-chip.taken {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+.chip-icon { font-size: 0.75rem; }
+
+/* ── Selected Sensor Display ─────────────────────────────── */
+.selected-sensor-display {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  animation: fadeSlideIn 0.2s ease;
+}
+.ssd-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-subtle);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.ssd-name {
+  flex: 1;
+  font-weight: 700;
+  color: #86efac;
+  font-size: 0.95rem;
+}
+.ssd-change {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  font-family: var(--font-body);
+}
+.ssd-change:hover { background: rgba(224,169,46,0.1); }
+
+/* ── Confirmation Card ───────────────────────────────────── */
+.confirmation-card {
+  background: var(--glass-bg);
+  border: 1px solid rgba(224,169,46,0.2);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.cc-section {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.cc-section:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.cc-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cc-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+}
+.cc-key   { color: var(--text-subtle); min-width: 120px; flex-shrink: 0; }
+.cc-val   { color: var(--cream); font-weight: 500; }
+.cc-sensor-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gold);
+  margin-top: 6px;
+}
+
+/* ── Wizard Nav ──────────────────────────────────────────── */
+.wizard-nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 24px;
+}
+.btn-back {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+.btn-back:hover { border-color: rgba(224,169,46,0.3); color: var(--cream); }
+#step2-next-btn,
+#step3-confirm-btn { flex: 1; }
+
+/* ── 2nd Year Banner (for index.html reg section) ─────────── */
+.reg-2nd-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(224,169,46,0.06);
+  border: 1.5px solid rgba(224,169,46,0.25);
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.r2b-left { flex: 1; min-width: 240px; }
+.r2b-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.r2b-title {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.r2b-sub { font-size: 0.88rem; color: var(--text-muted); }
+.r2b-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: #0b1e3d;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.r2b-cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(224,169,46,0.3);
+}
+
+/* ── Smooth Scroll ───────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .step-line { max-width: 40px; }
+  .sd-label  { font-size: 0.65rem; }
+  .sensor-action-btns { flex-direction: column; align-items: stretch; }
+  .btn-keep-sensor, .btn-choose-sensor { text-align: center; }
+  .reg-2nd-banner { flex-direction: column; gap: 16px; }
+  .r2b-cta { width: 100%; justify-content: center; }
+  .selected-sensor-display { flex-wrap: wrap; }
+  .wizard-nav { flex-direction: column; }
+  .btn-back, #step2-next-btn, #step3-confirm-btn { width: 100%; }
+  .cc-key { min-width: 90px; }
+}

@@ -200,7 +200,7 @@
   font-size: 1.5rem;
   flex-shrink: 0;
 }
-.date-info {}
+
 .date-label {
   font-size: 0.75rem;
   color: var(--text-subtle);
@@ -809,6 +809,42 @@
   text-transform: uppercase;
 }
 
+/* ════════════════════════════════════════════════════════════
+   STAT CARD — 2ND YEAR
+   ════════════════════════════════════════════════════════════ */
+.stat-card--2nd {
+  border-color: rgba(139, 92, 246, 0.35);
+  background:   rgba(139, 92, 246, 0.07);
+}
+.stat-card--2nd .stat-num { color: #c4b5fd; }
+
+/* ── 2nd Year nav link ──────────────────────────────────── */
+.nav-link-2nd {
+  background: rgba(224,169,46,0.12);
+  border: 1px solid rgba(224,169,46,0.3);
+  border-radius: 8px;
+  padding: 5px 14px;
+  color: var(--gold) !important;
+  font-weight: 700;
+  transition: var(--transition-fast);
+}
+.nav-link-2nd:hover {
+  background: rgba(224,169,46,0.22);
+  transform: translateY(-1px);
+}
+
+/* ── Admin 2nd Year stats mini-bar ─────────────────────── */
+.admin-2nd-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(139,92,246,0.04);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+
 /* Responsive additions */
 @media (max-width: 900px) {
   .schedule-grid { grid-template-columns: 1fr; }
@@ -824,4 +860,5 @@
   .contact-info { text-align: left; }
   .admin-stats-panel { grid-template-columns: 1fr 1fr; }
   .sensor-results-dropdown { position: fixed; left: 12px; right: 12px; }
+  .admin-2nd-stats { gap: 8px; }
 }

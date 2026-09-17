@@ -955,7 +955,7 @@ async function loadAdminData() {
     const res  = await fetch(`${CONFIG.GAS_URL}?action=getAll`, { cache: 'no-store' });
     const data = await res.json();
 
-    // Render tables
+    // Render 3rd/4th year tables
     renderAdminTable('admin-individual-table', data.individual || [], [
       'Timestamp', 'Name', 'Register No.', 'Phone', 'Email', 'Sensor Chosen',
       'Year', 'Department', 'Registration ID', 'Status',
@@ -966,13 +966,18 @@ async function loadAdminData() {
     ]);
     renderCustomRequestsTable('admin-custom-table', data.custom || []);
 
+    // Render 2nd year teams
+    render2ndYearTable('admin-secondyear-table', data.secondYearTeams || [], data.stats);
+
     // Update badges
-    const ib = $('individual-badge');
-    const tb = $('team-badge');
-    const cb = $('custom-badge');
-    if (ib) ib.textContent = (data.individual || []).length;
-    if (tb) tb.textContent = (data.team || []).length;
-    if (cb) cb.textContent = (data.custom || []).length;
+    const ib  = $('individual-badge');
+    const tb  = $('team-badge');
+    const cb  = $('custom-badge');
+    const syb = $('secondyear-badge');
+    if (ib)  ib.textContent  = (data.individual       || []).length;
+    if (tb)  tb.textContent  = (data.team             || []).length;
+    if (cb)  cb.textContent  = (data.custom           || []).length;
+    if (syb) syb.textContent = (data.secondYearTeams  || []).length;
 
     // Update sensor stats
     if (data.stats) renderAdminStats(data.stats);
@@ -986,6 +991,7 @@ async function loadAdminData() {
   }
 }
 
+
 function renderAdminStats(stats) {
   const set = (id, val) => { const el = $(id); if (el) el.textContent = val; };
   set('stat-total-num',     stats.total     || 113);
@@ -994,6 +1000,10 @@ function renderAdminStats(stats) {
   set('stat-custom-num',    stats.pending   || 0);
   set('stat-3rd-num',       (stats.byYear && stats.byYear['3rd Year']) || 0);
   set('stat-4th-num',       (stats.byYear && stats.byYear['4th Year']) || 0);
+  // 2nd Year teams stat card (main stats panel)
+  if (stats.secondYear) {
+    set('stat-2nd-num', stats.secondYear.teams || 0);
+  }
 }
 
 function renderAdminTable(tableId, rows, headers) {
@@ -1037,8 +1047,59 @@ function renderCustomRequestsTable(tableId, rows) {
   wrap.innerHTML = `<table class="data-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
 }
 
+/* ── 2nd Year Teams Table ─────────────────────────────────── */
+function render2ndYearTable(tableId, rows, stats) {
+  const wrap     = document.getElementById(tableId + '-wrap');
+  const statsBar = $('admin-2nd-stats');
+
+  // Update mini stats bar inside the panel
+  if (statsBar && stats && stats.secondYear) {
+    const sy = stats.secondYear;
+    const set = (id, v) => { const el = $(id); if (el) el.textContent = v; };
+    set('a2s-teams',       sy.teams           || 0);
+    set('a2s-students',    sy.students        || 0);
+    set('a2s-basic-avail', sy.basicAvailable  || 0);
+    set('a2s-basic-alloc', sy.basicAllocated  || 0);
+    statsBar.style.display = 'flex';
+  }
+
+  if (!wrap) return;
+  if (!rows || rows.length === 0) {
+    wrap.innerHTML = '<div class="no-results" style="padding:30px;"><p>No 2nd year team registrations yet.</p></div>';
+    return;
+  }
+
+  // Sheet columns: Timestamp(0) | RegID(1) | TeamName(2) | LeaderName(3) | LeaderRegNo(4)
+  //   | LeaderPhone(5) | LeaderEmail(6) | M2RegNo(7) | M2Name(8) | M3RegNo(9) | M3Name(10)
+  //   | SensorID(11) | SensorName(12) | Status(13)
+  const headers = [
+    'Timestamp', 'Reg ID', 'Team Name',
+    'Leader', 'Leader Reg No',
+    'M2 Reg No', 'M2 Name',
+    'M3 Reg No', 'M3 Name',
+    'Sensor ID', 'Sensor Name', 'Status'
+  ];
+  const thead = `<tr>${headers.map(h => `<th>${escHtml(h)}</th>`).join('')}</tr>`;
+
+  const tbody = rows.map(row => {
+    const r = Array.isArray(row) ? row : Object.values(row);
+    const cols = [r[0],r[1],r[2],r[3],r[4], r[7],r[8], r[9],r[10], r[11],r[12],r[13]];
+    const status = String(r[13] || '').toUpperCase();
+    const statusStyle = status === 'CONFIRMED'
+      ? 'color:#86efac;font-weight:700;'
+      : (status === 'CANCELLED' ? 'color:#f87171;' : '');
+    const cells = cols.slice(0, 11).map(cell =>
+      `<td>${escHtml(String(cell ?? ''))}</td>`
+    ).join('');
+    return `<tr>${cells}<td style="${statusStyle}">${escHtml(status)}</td></tr>`;
+  }).join('');
+
+  wrap.innerHTML = `<table class="data-table"><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+}
+
 /* ── Admin Action: Approve/Reject Custom Sensor ─────────── */
 window.adminActionCustom = async function(rowIndex, action) {
+
   if (!STATE.adminLoggedIn) return;
   const note = action === 'approve'
     ? (prompt('Optional: Add a note or canonical sensor name:') || '')

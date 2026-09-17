@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="sections.css" />
+  <link rel="stylesheet" href="register-2nd.css" />
 </head>
 <body>
 
@@ -88,9 +89,10 @@
     <a href="#highlights"   data-section="highlights"   role="menuitem">Highlights</a>
     <a href="#themes"       data-section="themes"       role="menuitem">Themes</a>
     <a href="#schedule"     data-section="schedule"     role="menuitem">Schedule</a>
-    <a href="#catalog"      data-section="catalog"      role="menuitem">Sensors</a>
-    <a href="#registration" data-section="registration" role="menuitem">Register</a>
-    <a href="#registration" class="nav-cta"             role="menuitem">Register Now →</a>
+    <a href="#catalog"       data-section="catalog"      role="menuitem">Sensors</a>
+    <a href="#registration"  data-section="registration" role="menuitem">Register</a>
+    <a href="register-2nd.html" class="nav-link-2nd"    role="menuitem">🎓 2nd Year</a>
+    <a href="#registration"  class="nav-cta"             role="menuitem">Register Now →</a>
   </div>
 
   <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -529,8 +531,18 @@
       <span>Register</span> Now
     </h2>
     <p class="section-sub reveal reveal-delay-1">
-      <strong style="color:var(--cream);">Step 1 — Individual:</strong> Claim one sensor kit. Then <strong style="color:var(--cream);">Step 2 — Team:</strong> Register your 3-member team. Complete Individual Registration first to unlock Team Submission.
+      <strong style="color:var(--cream);">3rd &amp; 4th Year:</strong> Individual sensor claim → Team submission. &nbsp;|&nbsp; <strong style="color:var(--cream);">2nd Year:</strong> Direct team registration with basic sensor.
     </p>
+
+    <!-- 2nd Year Banner -->
+    <div class="reg-2nd-banner reveal reveal-delay-1">
+      <div class="r2b-left">
+        <div class="r2b-badge">🎓 2nd Year ECE</div>
+        <div class="r2b-title">2nd Year? Register Here →</div>
+        <div class="r2b-sub">Skip the individual form. Register your team of 3 directly and receive your basic sensor automatically.</div>
+      </div>
+      <a href="register-2nd.html" class="r2b-cta">Open 2nd Year Form 🚀</a>
+    </div>
 
     <!-- Registration Type Tabs -->
     <div class="reg-tabs reveal reveal-delay-2" role="tablist">
@@ -859,6 +871,10 @@
           <div class="stat-num" id="stat-4th-num">—</div>
           <div class="stat-label">4th Year</div>
         </div>
+        <div class="stat-card stat-card--2nd" id="stat-2nd">
+          <div class="stat-num" id="stat-2nd-num">—</div>
+          <div class="stat-label">2nd Year Teams</div>
+        </div>
       </div>
 
       <div class="admin-tabs" role="tablist">
@@ -873,6 +889,10 @@
         <button class="admin-tab" data-panel="custom" role="tab">
           Custom Sensor Requests
           <span class="admin-badge" id="custom-badge">0</span>
+        </button>
+        <button class="admin-tab" data-panel="secondyear" role="tab">
+          2nd Year Teams
+          <span class="admin-badge" id="secondyear-badge">0</span>
         </button>
       </div>
 
@@ -890,6 +910,31 @@
 
       <div class="admin-panel" id="admin-custom-panel">
         <div class="table-wrap" id="admin-custom-table-wrap">
+          <div class="no-results" style="padding:30px;"><p>Loading…</p></div>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="admin-secondyear-panel">
+        <!-- 2nd Year Stats Summary -->
+        <div class="admin-2nd-stats" id="admin-2nd-stats" style="display:none;">
+          <div class="stat-card stat-card--2nd" style="flex:none;min-width:120px;">
+            <div class="stat-num" id="a2s-teams">—</div>
+            <div class="stat-label">Teams</div>
+          </div>
+          <div class="stat-card" style="flex:none;min-width:120px;">
+            <div class="stat-num" id="a2s-students">—</div>
+            <div class="stat-label">Students</div>
+          </div>
+          <div class="stat-card stat-card--available" style="flex:none;min-width:120px;">
+            <div class="stat-num" id="a2s-basic-avail">—</div>
+            <div class="stat-label">Basic Available</div>
+          </div>
+          <div class="stat-card stat-card--allocated" style="flex:none;min-width:120px;">
+            <div class="stat-num" id="a2s-basic-alloc">—</div>
+            <div class="stat-label">Basic Allocated</div>
+          </div>
+        </div>
+        <div class="table-wrap" id="admin-secondyear-table-wrap">
           <div class="no-results" style="padding:30px;"><p>Loading…</p></div>
         </div>
       </div>
