@@ -6,24 +6,61 @@
 
 'use strict';
 
-/* ── Configuration (same GAS URL as main app) ─────────────── */
+/* ── Configuration ────────────────────────────────────────── */
 const CFG = {
   GAS_URL: 'https://script.google.com/macros/s/AKfycbznsdmc0JjvnZo9W02GWF3PEv6zUBSZKVLkZmLWomW7-D42jHAHUV1DvRiiGLHGVj_J/exec',
   DEBOUNCE_MS: 150,
   MAX_RESULTS:  12,
 };
 
+/* ── Client-side Fallback Pool (used when GAS pool endpoint unavailable) ─ */
+// Mirrors BASIC_SENSOR_META in google-apps-script.gs
+const BASIC_POOL_FALLBACK = [
+  { id: 'S041', name: 'LDR (Light Dependent Resistor)'         },
+  { id: 'S005', name: 'NTC 10kΩ Thermistor'                   },
+  { id: 'S032', name: 'Hall Effect Sensor (A3144)'             },
+  { id: 'S056', name: 'Tilt Switch Ball Sensor'                },
+  { id: 'S025', name: 'TCRT5000 IR Reflective Sensor'          },
+  { id: 'S029', name: 'SW-420 Vibration Sensor Module'         },
+  { id: 'S030', name: 'KY-002 Shock Vibration Sensor'          },
+  { id: 'S036', name: 'Touch Sensor (TTP223 Capacitive)'       },
+  { id: 'S044', name: 'Photodiode Sensor Module'               },
+  { id: 'S050', name: 'Water Level Sensor'                     },
+  { id: 'S024', name: 'IR Proximity Sensor Module'             },
+  { id: 'S033', name: 'KY-024 Linear Hall Effect Sensor'       },
+  { id: 'S047', name: 'Sound Sensor Module (KY-038)'           },
+  { id: 'S057', name: 'Rotary Encoder Module (KY-040)'         },
+  { id: 'S059', name: 'Joystick Module (KY-023)'               },
+  { id: 'S034', name: 'Flame / Fire Sensor Module'             },
+  { id: 'S035', name: 'KY-026 Flame Detection Sensor'          },
+  { id: 'S009', name: 'Rain/Rainfall Detection Sensor'         },
+  { id: 'S022', name: 'PIR Motion Sensor (HC-SR501)'           },
+  { id: 'S003', name: 'LM35 Temperature Sensor'                },
+  { id: 'S001', name: 'DHT11 Temperature & Humidity Sensor'    },
+  { id: 'S010', name: 'Soil Moisture Sensor'                   },
+  { id: 'S023', name: 'Ultrasonic Distance Sensor HC-SR04'     },
+  { id: 'S051', name: 'Float Switch Sensor'                    },
+  { id: 'S094', name: 'LM393 Speed Sensor (Slotted Optical)'  },
+  { id: 'S099', name: 'KY-010 Optical Break-Beam Sensor'       },
+  { id: 'S100', name: 'KY-036 Metal Touch Sensor Module'       },
+  { id: 'S101', name: 'KY-016 RGB LED Module'                  },
+  { id: 'S102', name: 'KY-018 Photo Resistor (LDR) Module'     },
+  { id: 'S103', name: 'KY-022 IR Receiver Module (38 kHz)'     },
+  { id: 'S104', name: 'SR602 Mini PIR Motion Sensor (AM312)'   },
+  { id: 'S109', name: 'NE555 Timer Module (Astable/Monostable)' },
+];
+
 /* ── State ───────────────────────────────────────────────── */
 const S2 = {
-  currentStep:      1,
-  submitLock:       false,
-  poolLoaded:       false,
-  basicPool:        [],          // [{id, name, normalizedName, available, allocCount}]
-  suggestedId:      null,
-  suggestedName:    null,
+  currentStep:        1,
+  submitLock:         false,
+  poolLoaded:         false,
+  usingFallback:      false,   // true when GAS pool endpoint unavailable
+  basicPool:          [],
+  suggestedId:        null,
+  suggestedName:      null,
   selectedSensorId:   null,
   selectedSensorName: null,
-  // Team data collected in step 1
   teamData: {
     teamName:     '',
     leaderName:   '',
@@ -180,49 +217,77 @@ function initStep2() {
 }
 
 async function loadBasicSensorPool() {
-  // Show loading state
-  $('ssc-loading').style.display  = 'flex';
-  $('ssc-content').style.display  = 'none';
-  $('ssc-unavail').style.display  = 'none';
+  // Reset UI
+  $('ssc-loading').style.display        = 'flex';
+  $('ssc-content').style.display        = 'none';
+  $('ssc-unavail').style.display        = 'none';
   $('sensor-action-btns').style.display = 'none';
   $('basic-search-panel').style.display = 'none';
   $('selected-sensor-display').style.display = 'none';
   setStep2NextEnabled(false);
+  S2.usingFallback = false;
+
+  let pool = null, suggestedId = null, suggestedName = null;
 
   try {
     const res  = await fetch(`${CFG.GAS_URL}?action=getBasicSensorPool`, { cache: 'no-store' });
     const data = await res.json();
 
-    S2.basicPool      = data.pool     || [];
-    S2.suggestedId    = data.suggestedId   || null;
-    S2.suggestedName  = data.suggestedName || null;
-    S2.poolLoaded     = true;
-
-    $('ssc-loading').style.display = 'none';
-
-    if (S2.suggestedId && S2.suggestedName) {
-      $('ssc-name').textContent      = S2.suggestedName;
-      $('ssc-content').style.display = 'block';
-      $('sensor-action-btns').style.display = 'flex';
-
-      // Pre-populate selection with suggested
-      S2.selectedSensorId   = S2.suggestedId;
-      S2.selectedSensorName = S2.suggestedName;
+    // GAS must return a valid pool array; old GAS versions return { status: '...' }
+    if (data.pool && Array.isArray(data.pool) && data.pool.length > 0) {
+      pool          = data.pool;
+      suggestedId   = data.suggestedId   || null;
+      suggestedName = data.suggestedName || null;
     } else {
-      $('ssc-unavail').style.display = 'block';
-      // No sensors available — cannot proceed
+      // Old GAS or empty pool — fall through to client-side fallback
+      throw new Error('Pool not in response — using fallback');
+    }
+  } catch (err) {
+    // Network error OR old GAS (no pool endpoint) OR empty pool
+    // Use client-side fallback; backend will do the real availability check on submit
+    console.warn('[SENSORA 2nd] Using client-side sensor fallback:', err.message);
+    S2.usingFallback = true;
+    pool = BASIC_POOL_FALLBACK.map(s => ({
+      id:             s.id,
+      name:           s.name,
+      normalizedName: normalizeSensorName(s.name),
+      available:      true,   // optimistic — backend verifies on submit
+      allocCount:     0,
+    }));
+    // Suggest a random entry for variety when round-robin unavailable
+    const pick = pool[Math.floor(Math.random() * Math.min(8, pool.length))];
+    suggestedId   = pick.id;
+    suggestedName = pick.name;
+  }
+
+  S2.basicPool     = pool;
+  S2.suggestedId   = suggestedId;
+  S2.suggestedName = suggestedName;
+  S2.poolLoaded    = true;
+
+  $('ssc-loading').style.display = 'none';
+
+  if (S2.suggestedId && S2.suggestedName) {
+    $('ssc-name').textContent = S2.suggestedName;
+
+    // Fallback notice
+    const availEl = $('ssc-available');
+    if (availEl) {
+      availEl.textContent = S2.usingFallback
+        ? '✓ Beginner Friendly  ·  Availability verified at submission'
+        : '✓ Available  ·  ✓ Beginner Friendly';
+      availEl.style.color = S2.usingFallback ? 'var(--gold)' : '#86efac';
     }
 
-    // Pre-render chip list (hidden until "Choose Another")
-    renderBasicChips();
-
-  } catch (err) {
-    $('ssc-loading').style.display = 'none';
+    $('ssc-content').style.display        = 'block';
+    $('sensor-action-btns').style.display = 'flex';
+    S2.selectedSensorId   = S2.suggestedId;
+    S2.selectedSensorName = S2.suggestedName;
+  } else {
     $('ssc-unavail').style.display = 'block';
-    $('ssc-unavail').querySelector('p').textContent =
-      'Failed to load sensor pool. Please check your connection and try again.';
-    console.error('[SENSORA 2nd] Pool load error:', err);
   }
+
+  renderBasicChips();
 }
 
 function keepSuggested() {
@@ -445,25 +510,28 @@ async function handleFinalSubmit() {
   S2.submitLock = true;
 
   try {
-    // ── Step A: Fresh pool check ──
-    let freshPool = [...S2.basicPool];
-    try {
-      const res  = await fetch(`${CFG.GAS_URL}?action=getBasicSensorPool`, { cache: 'no-store' });
-      const data = await res.json();
-      freshPool = data.pool || [];
-      S2.basicPool = freshPool;
-    } catch (_) { /* network error — continue; GAS backend will guard */ }
+    // ── Step A: Fresh pool check (skip when using client-side fallback) ──
+    if (!S2.usingFallback && S2.basicPool.length > 0) {
+      let freshPool = [...S2.basicPool];
+      try {
+        const res  = await fetch(`${CFG.GAS_URL}?action=getBasicSensorPool`, { cache: 'no-store' });
+        const data = await res.json();
+        if (data.pool && Array.isArray(data.pool)) {
+          freshPool = data.pool;
+          S2.basicPool = freshPool;
+        }
+      } catch (_) { /* network hiccup — GAS backend will guard on write */ }
 
-    const chosenInFresh = freshPool.find(s => s.id === S2.selectedSensorId);
-    if (chosenInFresh && !chosenInFresh.available) {
-      // Sensor was taken while they were filling the form
-      showToast(`"${S2.selectedSensorName}" was just allocated to another team. Please go back and choose another sensor.`, 'error');
-      S2.selectedSensorId = null; S2.selectedSensorName = null;
-      S2.submitLock = false;
-      setLoading(btn, false);
-      goToStep(2);
-      loadBasicSensorPool(); // refresh the pool
-      return;
+      const chosenInFresh = freshPool.find(s => s.id === S2.selectedSensorId);
+      if (chosenInFresh && !chosenInFresh.available) {
+        showToast(`"${S2.selectedSensorName}" was just taken. Please go back and choose another sensor.`, 'error');
+        S2.selectedSensorId = null; S2.selectedSensorName = null;
+        S2.submitLock = false;
+        setLoading(btn, false);
+        goToStep(2);
+        loadBasicSensorPool();
+        return;
+      }
     }
 
     // ── Step B: POST to GAS ──
@@ -604,6 +672,7 @@ function resetWizard() {
   S2.suggestedName      = null;
   S2.basicPool          = [];
   S2.poolLoaded         = false;
+  S2.usingFallback      = false;
   S2.teamData           = {};
 
   goToStep(1);
