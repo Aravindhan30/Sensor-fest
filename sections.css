@@ -569,13 +569,16 @@
   position: absolute;
   top: calc(100% + 6px);
   left: 0; right: 0;
+  width: 100%;
+  box-sizing: border-box;
   background: #0d2247;
-  border: 1px solid rgba(224,169,46,0.3);
+  border: 1.5px solid rgba(224,169,46,0.35);
   border-radius: var(--radius-md);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-  z-index: 9999;
-  max-height: 340px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  z-index: 99999;
+  max-height: 320px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .sensor-results-list {
   list-style: none;
@@ -861,8 +864,16 @@
   .dates-grid  { grid-template-columns: 1fr; }
   .highlights-grid { grid-template-columns: 1fr 1fr; }
   .contact-card { flex-direction: column; text-align: center; }
-  .contact-info { text-align: left; }
   .admin-stats-panel { grid-template-columns: 1fr 1fr; }
-  .sensor-results-dropdown { position: fixed; left: 12px; right: 12px; }
+  .sensor-results-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 260px;
+    z-index: 99999;
+    -webkit-overflow-scrolling: touch;
+  }
   .admin-2nd-stats { gap: 8px; }
 }

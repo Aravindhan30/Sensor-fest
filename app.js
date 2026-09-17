@@ -44,8 +44,8 @@ const $  = id  => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
 /* ── Boot Sequence ───────────────────────────────────────── */
-async function boot() {
-  await loadData();
+function boot() {
+  initDataSync();
   initNavbar();
   initHero();
   renderThemes();
@@ -55,6 +55,9 @@ async function boot() {
   initAdmin();
   initReveal();
   checkAdminRoute();
+
+  // Background network sync (non-blocking)
+  syncDataFromNetwork();
 }
 
 if (document.readyState === 'loading') {
@@ -63,9 +66,8 @@ if (document.readyState === 'loading') {
   boot();
 }
 
-/* ── Data Loading ────────────────────────────────────────── */
-async function loadData() {
-  // 1. Instant synchronous initialization from embedded dataset (file:/// & offline ready)
+/* ── Synchronous Data Initialization ─────────────────────── */
+function initDataSync() {
   if (window.SENSORS_DATA && Array.isArray(window.SENSORS_DATA)) {
     STATE.sensors = [...window.SENSORS_DATA];
     STATE.filteredSensors = [...STATE.sensors];
@@ -73,8 +75,10 @@ async function loadData() {
   if (window.THEMES_DATA && Array.isArray(window.THEMES_DATA)) {
     STATE.themes = [...window.THEMES_DATA];
   }
+}
 
-  // 2. Try fetching dynamic JSON when hosted on HTTP/HTTPS
+/* ── Background Network Sync (Non-blocking) ───────────────── */
+async function syncDataFromNetwork() {
   try {
     const [sensorsRes, themesRes] = await Promise.all([
       fetch('data/sensors.json').then(r => r.json()),
@@ -83,7 +87,6 @@ async function loadData() {
     if (Array.isArray(sensorsRes) && sensorsRes.length > 0) {
       STATE.sensors = sensorsRes;
       STATE.filteredSensors = [...STATE.sensors];
-      // Refresh catalog and dropdowns if updated
       renderCatalog();
       initCatalogControls();
     }
@@ -92,10 +95,9 @@ async function loadData() {
       renderThemes();
     }
   } catch (_) {
-    // Running from file:/// or offline: standalone data is already active
+    // Offline or file:/// — standalone data is already active
   }
 
-  // 3. Non-blocking: fetch already-claimed sensors from GAS
   fetchClaimedSensors();
 }
 
@@ -365,6 +367,11 @@ function initSensorSearchWidget() {
 
   if (!searchInput) return;
 
+  // Prevent taps/scrolls inside dropdown from blurring input on touch devices
+  if (dropdown) {
+    dropdown.addEventListener('mousedown', e => e.preventDefault());
+  }
+
   let debounceTimer;
   let activeIndex = -1;
 
@@ -453,6 +460,7 @@ function initSensorSearchWidget() {
           <span class="sri-cat">${escHtml(s.category)}</span>
           ${claimed ? '<span class="sri-taken">Already Registered</span>' : `<span class="sri-price">₹${s.price}</span>`}
         `;
+        li.addEventListener('mousedown', e => e.preventDefault());
         li.addEventListener('click', () => {
           if (claimed) {
             showSensorUnavailable(s.name);
@@ -495,6 +503,7 @@ function initSensorSearchWidget() {
       <span class="sri-name">Use "<strong>${escHtml(query)}</strong>" as custom sensor</span>
       <span class="sri-cat">Not in catalog</span>
     `;
+    li.addEventListener('mousedown', e => e.preventDefault());
     li.addEventListener('click', () => {
       selectCustomSensor(query);
     });
