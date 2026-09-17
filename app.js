@@ -952,8 +952,21 @@ async function loadAdminData() {
   const btn = $('admin-refresh');
   if (btn) btn.textContent = '⟳ Loading…';
   try {
-    const res  = await fetch(`${CONFIG.GAS_URL}?action=getAll`, { cache: 'no-store' });
+    const res = await fetch(`${CONFIG.GAS_URL}?action=getAll`, { cache: 'no-store' });
+
+    // Guard: GAS sometimes returns HTML on script errors or when not redeployed
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json') && !contentType.includes('text/plain')) {
+      const text = await res.text();
+      throw new Error('GAS returned non-JSON response (' + res.status + '). Make sure v3.0 is deployed. Preview: ' + text.slice(0, 120));
+    }
+
     const data = await res.json();
+
+    // Guard: old GAS (v2.0) returns { status: '...' } instead of data objects
+    if (data.status && !data.individual) {
+      throw new Error('GAS v2.0 detected — please redeploy google-apps-script.gs as a new version.');
+    }
 
     // Render 3rd/4th year tables
     renderAdminTable('admin-individual-table', data.individual || [], [
@@ -974,22 +987,29 @@ async function loadAdminData() {
     const tb  = $('team-badge');
     const cb  = $('custom-badge');
     const syb = $('secondyear-badge');
-    if (ib)  ib.textContent  = (data.individual       || []).length;
-    if (tb)  tb.textContent  = (data.team             || []).length;
-    if (cb)  cb.textContent  = (data.custom           || []).length;
-    if (syb) syb.textContent = (data.secondYearTeams  || []).length;
+    if (ib)  ib.textContent  = (data.individual      || []).length;
+    if (tb)  tb.textContent  = (data.team            || []).length;
+    if (cb)  cb.textContent  = (data.custom          || []).length;
+    if (syb) syb.textContent = (data.secondYearTeams || []).length;
 
     // Update sensor stats
     if (data.stats) renderAdminStats(data.stats);
 
     showToast('Data refreshed successfully.', 'success');
   } catch (err) {
-    showToast('Could not fetch data. Check GAS URL or sheet permissions.', 'error');
-    console.error('[SENSORA] Admin load error:', err);
+    const isDeployError = err.message && (err.message.includes('redeploy') || err.message.includes('v2.0') || err.message.includes('non-JSON'));
+    showToast(
+      isDeployError
+        ? '⚠️ GAS not updated — ' + err.message.split('.')[0] + '. Deploy v3.0 from google-apps-script.gs.'
+        : 'Could not fetch data. Check network and GAS deployment.',
+      'error'
+    );
+    console.error('[SENSORA] Admin load error:', err.message);
   } finally {
     if (btn) btn.textContent = '⟳ Refresh';
   }
 }
+
 
 
 function renderAdminStats(stats) {
