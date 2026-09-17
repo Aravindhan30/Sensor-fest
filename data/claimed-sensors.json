@@ -1,0 +1,368 @@
+[
+  {
+    "name": "Water Level Sensor",
+    "normalizedName": "waterlevel",
+    "id": "S050",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Rain/Rainfall Detection Sensor",
+    "normalizedName": "rain/rainfalldetection",
+    "id": "S009",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "LDR (Light Dependent Resistor)",
+    "normalizedName": "ldr(lightdependentresistor)",
+    "id": "S041",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "NTC 10 kΩ Thermistor",
+    "normalizedName": "ntc10kωthermistor",
+    "id": "S005",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "GSR (Galvanic Skin Response) Sensor",
+    "normalizedName": "gsr(galvanicskinresponse)",
+    "id": "S070",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MQ-5 LPG / Natural Gas Sensor",
+    "normalizedName": "mq5lpg/naturalgas",
+    "id": "S015",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Pulse Sensor (KY-039 Fingertip)",
+    "normalizedName": "pulsesensor(ky039fingertip)",
+    "id": "S068",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "DHT11 Temperature & Humidity Sensor",
+    "normalizedName": "dht11temperature&humidity",
+    "id": "S001",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "IR Temperature Sensor MLX90614",
+    "normalizedName": "irtemperaturesensormlx90614",
+    "id": "S071",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "NRF24L01 2.4 GHz Wireless Module",
+    "normalizedName": "nrf24l012.4ghzwireless",
+    "id": "S073",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Ultrasonic Distance Sensor HC-SR04",
+    "normalizedName": "ultrasonicdistancesensorhcsr04",
+    "id": "S023",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "BMP280 Pressure & Temperature Sensor",
+    "normalizedName": "bmp280pressure&temperature",
+    "id": "S007",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MQ-135 Air Quality / VOC Sensor",
+    "normalizedName": "mq135airquality/voc",
+    "id": "S020",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Soil Moisture Sensor",
+    "normalizedName": "soilmoisture",
+    "id": "S010",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "BMP180 Barometric Pressure & Temp Sensor",
+    "normalizedName": "bmp180barometricpressure&temp",
+    "id": "S006",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MQ-3 Alcohol / Ethanol Gas Sensor",
+    "normalizedName": "mq3alcohol/ethanolgas",
+    "id": "S013",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "DHT22 (AM2302) Temperature & Humidity",
+    "normalizedName": "dht22(am2302)temperature&humidity",
+    "id": "S002",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "LM393 Speed Sensor (Slotted Optical)",
+    "normalizedName": "lm393speedsensor(slottedoptical)",
+    "id": "S094",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "PIR Motion Sensor (HC-SR501)",
+    "normalizedName": "pirmotionsensor(hcsr501)",
+    "id": "S022",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "LM35 Temperature Sensor",
+    "normalizedName": "lm35temperature",
+    "id": "S003",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "TCRT5000 IR Reflective Sensor",
+    "normalizedName": "tcrt5000irreflective",
+    "id": "S025",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MPU-6050 Accelerometer + Gyroscope",
+    "normalizedName": "mpu6050accelerometer+gyroscope",
+    "id": "S027",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "RF 433 MHz Transmitter + Receiver",
+    "normalizedName": "rf433mhztransmitter+receiver",
+    "id": "S072",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MQ-4 Methane / Natural Gas Sensor",
+    "normalizedName": "mq4methane/naturalgas",
+    "id": "S014",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Sound Sensor Module (KY-038)",
+    "normalizedName": "soundsensormodule(ky038)",
+    "id": "S047",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Touch Sensor (TTP223 Capacitive)",
+    "normalizedName": "touchsensor(ttp223capacitive)",
+    "id": "S036",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Hall Effect Sensor (A3144)",
+    "normalizedName": "halleffectsensor(a3144)",
+    "id": "S032",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "DS18B20 Waterproof Temperature Sensor",
+    "normalizedName": "ds18b20waterprooftemperature",
+    "id": "S004",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MQ-2 Smoke / LPG / Butane Gas Sensor",
+    "normalizedName": "mq2smoke/lpg/butanegas",
+    "id": "S012",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "SW-420 Vibration Sensor Module",
+    "normalizedName": "sw420vibration",
+    "id": "S029",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-002 Shock Vibration Sensor",
+    "normalizedName": "ky002shockvibration",
+    "id": "S030",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Capacitive Touch Sensor Array TTP226",
+    "normalizedName": "capacitivetouchsensorarrayttp226",
+    "id": "S037",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Flame / Fire Sensor Module",
+    "normalizedName": "flame/fire",
+    "id": "S034",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Flow Rate Water Sensor YF-S201",
+    "normalizedName": "flowratewatersensoryfs201",
+    "id": "S055",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Force Sensitive Resistor (FSR 402)",
+    "normalizedName": "forcesensitiveresistor(fsr402)",
+    "id": "S038",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Heartbeat / Pulse Sensor (MAX30102)",
+    "normalizedName": "heartbeat/pulsesensor(max30102)",
+    "id": "S067",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-026 Flame Detection Sensor",
+    "normalizedName": "ky026flamedetection",
+    "id": "S035",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "IR Proximity Sensor Module",
+    "normalizedName": "irproximity",
+    "id": "S024",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Tilt Switch Ball Sensor",
+    "normalizedName": "tiltswitchball",
+    "id": "S056",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Float Switch Sensor",
+    "normalizedName": "floatswitch",
+    "id": "S051",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "ADXL335 3-Axis Accelerometer",
+    "normalizedName": "adxl3353axisaccelerometer",
+    "id": "S028",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "BME280 Humidity + Pressure + Temp",
+    "normalizedName": "bme280humidity+pressure+temp",
+    "id": "S008",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "HC-SR505 Mini PIR Motion Sensor",
+    "normalizedName": "hcsr505minipirmotion",
+    "id": "S075",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Reed Switch Magnetic Sensor",
+    "normalizedName": "reedswitchmagnetic",
+    "id": "S031",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-024 Linear Hall Effect Sensor",
+    "normalizedName": "ky024linearhalleffect",
+    "id": "S033",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Voltage Sensor Module (0–25V)",
+    "normalizedName": "voltagesensormodule(0–25v)",
+    "id": "S064",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Infrared Line-Tracking Sensor",
+    "normalizedName": "infraredlinetracking",
+    "id": "S061",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "TEMT6000 Ambient Light Sensor",
+    "normalizedName": "temt6000ambientlight",
+    "id": "S043",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "BH1750 Digital Light Sensor",
+    "normalizedName": "bh1750digitallight",
+    "id": "S042",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "AD8232 ECG / Heart Rate Module",
+    "normalizedName": "ad8232ecg/heartrate",
+    "id": "S069",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "UV Light Sensor ML8511",
+    "normalizedName": "uvlightsensorml8511",
+    "id": "S045",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Color Sensor TCS3200",
+    "normalizedName": "colorsensortcs3200",
+    "id": "S046",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "MPX5700AP Pressure Sensor",
+    "normalizedName": "mpx5700appressure",
+    "id": "S039",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Ultrasonic Sensor JSN-SR04T-2 (Industrial)",
+    "normalizedName": "ultrasonicsensorjsnsr04t2(industrial)",
+    "id": "S113",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-032 Obstacle Avoidance IR Sensor",
+    "normalizedName": "ky032obstacleavoidanceir",
+    "id": "S082",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "SR602 Mini PIR Motion Sensor (AM312)",
+    "normalizedName": "sr602minipirmotionsensor(am312)",
+    "id": "S104",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-018 Photo Resistor (LDR) Module",
+    "normalizedName": "ky018photoresistor(ldr)",
+    "id": "S102",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Photodiode Sensor Module",
+    "normalizedName": "photodiode",
+    "id": "S044",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "KY-010 Optical Break-Beam Sensor",
+    "normalizedName": "ky010opticalbreakbeam",
+    "id": "S099",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "Rotary Encoder Module (KY-040)",
+    "normalizedName": "rotaryencodermodule(ky040)",
+    "id": "S057",
+    "status": "CONFIRMED"
+  },
+  {
+    "name": "LM393 Dual Comparator Module",
+    "normalizedName": "lm393dualcomparator",
+    "id": "S112",
+    "status": "CONFIRMED"
+  }
+]

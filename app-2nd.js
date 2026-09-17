@@ -227,6 +227,12 @@ async function loadBasicSensorPool() {
   setStep2NextEnabled(false);
   S2.usingFallback = false;
 
+  const claimedSet = new Set(
+    (Array.isArray(window.CLAIMED_SENSORS_DATA) ? window.CLAIMED_SENSORS_DATA : []).map(c =>
+      normalizeSensorName(typeof c === 'object' ? (c.normalizedName || c.name) : c)
+    )
+  );
+
   let pool = null, suggestedId = null, suggestedName = null;
 
   try {
@@ -235,9 +241,24 @@ async function loadBasicSensorPool() {
 
     // GAS must return a valid pool array; old GAS versions return { status: '...' }
     if (data.pool && Array.isArray(data.pool) && data.pool.length > 0) {
-      pool          = data.pool;
-      suggestedId   = data.suggestedId   || null;
-      suggestedName = data.suggestedName || null;
+      pool = data.pool.map(s => {
+        const norm = normalizeSensorName(s.name);
+        return {
+          ...s,
+          available: claimedSet.has(norm) ? false : Boolean(s.available)
+        };
+      });
+      const availSensors = pool.filter(s => s.available);
+      if (data.suggestedId && availSensors.some(s => s.id === data.suggestedId)) {
+        suggestedId   = data.suggestedId;
+        suggestedName = data.suggestedName;
+      } else if (availSensors.length > 0) {
+        suggestedId   = availSensors[0].id;
+        suggestedName = availSensors[0].name;
+      } else {
+        suggestedId   = null;
+        suggestedName = null;
+      }
     } else {
       // Old GAS or empty pool — fall through to client-side fallback
       throw new Error('Pool not in response — using fallback');
@@ -247,17 +268,25 @@ async function loadBasicSensorPool() {
     // Use client-side fallback; backend will do the real availability check on submit
     console.warn('[SENSORA 2nd] Using client-side sensor fallback:', err.message);
     S2.usingFallback = true;
-    pool = BASIC_POOL_FALLBACK.map(s => ({
-      id:             s.id,
-      name:           s.name,
-      normalizedName: normalizeSensorName(s.name),
-      available:      true,   // optimistic — backend verifies on submit
-      allocCount:     0,
-    }));
-    // Suggest a random entry for variety when round-robin unavailable
-    const pick = pool[Math.floor(Math.random() * Math.min(8, pool.length))];
-    suggestedId   = pick.id;
-    suggestedName = pick.name;
+    pool = BASIC_POOL_FALLBACK.map(s => {
+      const norm = normalizeSensorName(s.name);
+      return {
+        id:             s.id,
+        name:           s.name,
+        normalizedName: norm,
+        available:      !claimedSet.has(norm),
+        allocCount:     0,
+      };
+    });
+    const availSensors = pool.filter(s => s.available);
+    if (availSensors.length > 0) {
+      const pick = availSensors[Math.floor(Math.random() * Math.min(8, availSensors.length))];
+      suggestedId   = pick.id;
+      suggestedName = pick.name;
+    } else {
+      suggestedId   = null;
+      suggestedName = null;
+    }
   }
 
   S2.basicPool     = pool;

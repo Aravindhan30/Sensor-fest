@@ -75,6 +75,12 @@ function initDataSync() {
   if (window.THEMES_DATA && Array.isArray(window.THEMES_DATA)) {
     STATE.themes = [...window.THEMES_DATA];
   }
+  if (window.CLAIMED_SENSORS_DATA && Array.isArray(window.CLAIMED_SENSORS_DATA)) {
+    STATE.claimedSensors = [...window.CLAIMED_SENSORS_DATA];
+    STATE.claimedNormalized = new Set(window.CLAIMED_SENSORS_DATA.map(c =>
+      (typeof c === 'object' ? c.normalizedName : normalizeSensorName(c)) || ''
+    ));
+  }
 }
 
 /* ── Background Network Sync (Non-blocking) ───────────────── */
@@ -106,13 +112,23 @@ async function fetchClaimedSensors() {
     const res  = await fetch(`${CONFIG.GAS_URL}?action=getClaimed`, { cache: 'no-store' });
     const data = await res.json();
     if (data.claimed && Array.isArray(data.claimed)) {
-      STATE.claimedSensors   = data.claimed;
-      STATE.claimedNormalized = new Set(data.claimed.map(c =>
-        (typeof c === 'object' ? c.normalizedName : normalizeSensorName(c)) || ''
-      ));
+      // Merge live backend claims with pre-registered sensor list
+      const base = Array.isArray(window.CLAIMED_SENSORS_DATA) ? window.CLAIMED_SENSORS_DATA : [];
+      const combined = [...base, ...data.claimed];
+      const seen = new Set();
+      const unique = [];
+      combined.forEach(c => {
+        const norm = (typeof c === 'object' ? c.normalizedName : normalizeSensorName(c)) || '';
+        if (norm && !seen.has(norm)) {
+          seen.add(norm);
+          unique.push(c);
+        }
+      });
+      STATE.claimedSensors = unique;
+      STATE.claimedNormalized = seen;
     }
   } catch (_) {
-    // GAS GET failed silently; server re-checks on submit
+    // GAS GET failed or offline: pre-registered claimed list remains safely active
   }
 }
 
@@ -682,23 +698,14 @@ async function handleIndividualSubmit(e) {
     const isCustom   = STATE.selectedSensor.isCustom;
 
     // ── Step 1: Fresh availability check from GAS ──
-    let freshNorm = new Set(STATE.claimedNormalized);
     try {
-      const chk  = await fetch(`${CONFIG.GAS_URL}?action=getClaimed`, { cache: 'no-store' });
-      const data = await chk.json();
-      if (data.claimed && Array.isArray(data.claimed)) {
-        STATE.claimedSensors    = data.claimed;
-        freshNorm = new Set(data.claimed.map(c =>
-          typeof c === 'object' ? c.normalizedName : normalizeSensorName(c)
-        ));
-        STATE.claimedNormalized = freshNorm;
-      }
+      await fetchClaimedSensors();
     } catch (_) {
       // Network issue on pre-check — continue; server-side GAS will guard
     }
 
     const normSensor = normalizeSensorName(sensorName);
-    if (freshNorm.has(normSensor)) {
+    if (STATE.claimedNormalized.has(normSensor)) {
       showSensorConflictMessage(sensorName);
       return;
     }
