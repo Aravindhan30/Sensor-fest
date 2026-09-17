@@ -1,7 +1,7 @@
 /**
  * SENSORA 2K26 — Google Apps Script Backend (v3.0)
  * ==========================================
- * Sheet ID : 1BCiew-kXPJAOn8ZMY3oCcMlkxWiC_gJBMLfzZr3YCpg
+ * Sheet ID : 1cx8MZjV6QWYb1FslyxDqS6U9IJbjEC2xEu4wOIseIKc
  * Web App  : https://script.google.com/macros/s/AKfycbznsdmc0JjvnZo9W02GWF3PEv6zUBSZKVLkZmLWomW7-D42jHAHUV1DvRiiGLHGVj_J/exec
  *
  * ── GET actions ──────────────────────────────────────────────
@@ -28,7 +28,7 @@
  */
 
 /* ── Constants ─────────────────────────────────────────── */
-var SPREADSHEET_ID       = '1BCiew-kXPJAOn8ZMY3oCcMlkxWiC_gJBMLfzZr3YCpg';
+var SPREADSHEET_ID       = '1cx8MZjV6QWYb1FslyxDqS6U9IJbjEC2xEu4wOIseIKc';
 var SHEET_INDIVIDUAL     = 'Individual Registrations';
 var SHEET_TEAM           = 'Team Submissions';
 var SHEET_CUSTOM         = 'Custom Sensor Requests';

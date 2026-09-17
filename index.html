@@ -615,22 +615,24 @@
               <label class="form-label" for="sensor-search-input">
                 Choose Your Sensor <span class="required">*</span>
               </label>
-              <div class="sensor-search-wrap" id="sensor-search-wrap">
-                <span class="sensor-search-icon">🔍</span>
-                <input class="sensor-search-input" type="text" id="sensor-search-input"
-                       placeholder="Search or type sensor name..." autocomplete="off"
-                       aria-autocomplete="list" aria-controls="sensor-results-list"
-                       aria-expanded="false" role="combobox"/>
-                <button type="button" class="sensor-search-clear" id="sensor-search-clear"
-                        aria-label="Clear sensor" style="display:none;">✕</button>
-              </div>
-              <!-- Hidden input that holds the actual selected sensor value -->
-              <input type="hidden" id="individual-sensor" name="sensor" />
+              <div class="sensor-search-container" id="sensor-search-container">
+                <div class="sensor-search-wrap" id="sensor-search-wrap">
+                  <span class="sensor-search-icon">🔍</span>
+                  <input class="sensor-search-input" type="text" id="sensor-search-input"
+                         placeholder="Search or type sensor name..." autocomplete="off"
+                         aria-autocomplete="list" aria-controls="sensor-results-list"
+                         aria-expanded="false" role="combobox"/>
+                  <button type="button" class="sensor-search-clear" id="sensor-search-clear"
+                          aria-label="Clear sensor" style="display:none;">✕</button>
+                </div>
+                <!-- Hidden input that holds the actual selected sensor value -->
+                <input type="hidden" id="individual-sensor" name="sensor" />
 
-              <!-- Dropdown results -->
-              <div class="sensor-results-dropdown" id="sensor-results-dropdown" role="listbox"
-                   aria-label="Sensor suggestions" style="display:none;">
-                <ul class="sensor-results-list" id="sensor-results-list"></ul>
+                <!-- Dropdown results -->
+                <div class="sensor-results-dropdown" id="sensor-results-dropdown" role="listbox"
+                     aria-label="Sensor suggestions" style="display:none;">
+                  <ul class="sensor-results-list" id="sensor-results-list"></ul>
+                </div>
               </div>
 
               <!-- Status badge shown after selection -->
@@ -1016,6 +1018,7 @@
     document.getElementById('admin').style.display = 'block';
   }
 </script>
+<script src="data/sensors-data.js"></script>
 <script src="app.js" defer></script>
 </body>
 </html>

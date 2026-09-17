@@ -44,7 +44,7 @@ const $  = id  => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
 /* ── Boot Sequence ───────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', async () => {
+async function boot() {
   await loadData();
   initNavbar();
   initHero();
@@ -55,23 +55,48 @@ document.addEventListener('DOMContentLoaded', async () => {
   initAdmin();
   initReveal();
   checkAdminRoute();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', boot);
+} else {
+  boot();
+}
 
 /* ── Data Loading ────────────────────────────────────────── */
 async function loadData() {
+  // 1. Instant synchronous initialization from embedded dataset (file:/// & offline ready)
+  if (window.SENSORS_DATA && Array.isArray(window.SENSORS_DATA)) {
+    STATE.sensors = [...window.SENSORS_DATA];
+    STATE.filteredSensors = [...STATE.sensors];
+  }
+  if (window.THEMES_DATA && Array.isArray(window.THEMES_DATA)) {
+    STATE.themes = [...window.THEMES_DATA];
+  }
+
+  // 2. Try fetching dynamic JSON when hosted on HTTP/HTTPS
   try {
     const [sensorsRes, themesRes] = await Promise.all([
       fetch('data/sensors.json').then(r => r.json()),
       fetch('data/themes.json').then(r => r.json()),
     ]);
-    STATE.sensors = sensorsRes;
-    STATE.themes  = themesRes;
-    STATE.filteredSensors = [...STATE.sensors];
-    // Non-blocking: fetch already-claimed sensors from GAS
-    fetchClaimedSensors();
-  } catch (err) {
-    console.warn('[SENSORA] Data load failed:', err);
+    if (Array.isArray(sensorsRes) && sensorsRes.length > 0) {
+      STATE.sensors = sensorsRes;
+      STATE.filteredSensors = [...STATE.sensors];
+      // Refresh catalog and dropdowns if updated
+      renderCatalog();
+      initCatalogControls();
+    }
+    if (Array.isArray(themesRes) && themesRes.length > 0) {
+      STATE.themes = themesRes;
+      renderThemes();
+    }
+  } catch (_) {
+    // Running from file:/// or offline: standalone data is already active
   }
+
+  // 3. Non-blocking: fetch already-claimed sensors from GAS
+  fetchClaimedSensors();
 }
 
 async function fetchClaimedSensors() {
@@ -346,16 +371,24 @@ function initSensorSearchWidget() {
   // Search handler
   searchInput.addEventListener('input', () => {
     clearTimeout(debounceTimer);
-    const q = searchInput.value.trim();
-
-    // If cleared
-    if (!q) {
+    const q = searchInput.value;
+    if (!q.trim()) {
       clearSensorSelection(false);
-      hideDropdown();
+      performSensorSearch('');
       return;
     }
-
     debounceTimer = setTimeout(() => performSensorSearch(q), CONFIG.SENSOR_SEARCH_DEBOUNCE);
+  });
+
+  // Focus & click handlers — show options immediately on interaction
+  searchInput.addEventListener('focus', () => {
+    performSensorSearch(searchInput.value);
+  });
+
+  searchInput.addEventListener('click', () => {
+    if (dropdown.style.display === 'none') {
+      performSensorSearch(searchInput.value);
+    }
   });
 
   // Keyboard navigation
@@ -391,14 +424,17 @@ function initSensorSearchWidget() {
   });
 
   function performSensorSearch(query) {
-    const q = query.toLowerCase();
-    const norm = normalizeSensorName(query);
+    const raw = (query || '').trim();
+    const q = raw.toLowerCase();
+    const norm = normalizeSensorName(raw);
 
-    // Search the catalog: name, keywords, id, category, description
-    const matches = STATE.sensors.filter(s => {
-      const terms = [s.name, s.keywords || '', s.id, s.category, s.description];
-      return terms.some(t => t.toLowerCase().includes(q));
-    }).slice(0, CONFIG.SENSOR_MAX_RESULTS);
+    // If query is empty, show initial catalog sensors as recommendations
+    const matches = q
+      ? STATE.sensors.filter(s => {
+          const terms = [s.name, s.keywords || '', s.id, s.category, s.description];
+          return terms.some(t => t.toLowerCase().includes(q));
+        }).slice(0, CONFIG.SENSOR_MAX_RESULTS)
+      : STATE.sensors.slice(0, CONFIG.SENSOR_MAX_RESULTS);
 
     // Build results list
     resultsList.innerHTML = '';
@@ -428,9 +464,11 @@ function initSensorSearchWidget() {
       });
 
       // "Use custom entry" option at bottom if typed text doesn't exactly match
-      const exactMatch = STATE.sensors.some(s => normalizeSensorName(s.name) === norm);
-      if (!exactMatch && query.length >= 3) {
-        addCustomSensorOption(resultsList, query);
+      if (raw.length >= 3) {
+        const exactMatch = STATE.sensors.some(s => normalizeSensorName(s.name) === norm);
+        if (!exactMatch) {
+          addCustomSensorOption(resultsList, raw);
+        }
       }
     } else {
       // No catalog matches — offer custom entry
@@ -438,11 +476,11 @@ function initSensorSearchWidget() {
       li.className = 'sensor-result-item sensor-result-item--no-match';
       li.innerHTML = `
         <span class="sri-icon">🔎</span>
-        <span class="sri-name">No catalog match for "<em>${escHtml(query)}</em>"</span>
+        <span class="sri-name">No catalog match for "<em>${escHtml(raw)}</em>"</span>
       `;
       li.setAttribute('role', 'option');
       resultsList.appendChild(li);
-      if (query.length >= 3) addCustomSensorOption(resultsList, query);
+      if (raw.length >= 2) addCustomSensorOption(resultsList, raw);
     }
 
     showDropdown();

@@ -504,9 +504,13 @@
    SENSOR SEARCH WIDGET
    ════════════════════════════════════════════════════════════ */
 
-/* Search wrap — parent needs relative for dropdown positioning */
+/* Search container — relative anchor for dropdown positioning */
 #sensor-search-group {
   position: relative;
+}
+.sensor-search-container {
+  position: relative;
+  width: 100%;
 }
 
 /* Search wrap */
