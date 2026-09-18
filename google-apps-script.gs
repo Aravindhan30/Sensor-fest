@@ -470,8 +470,8 @@ function handleAdminAction(data) {
    GET BASIC SENSOR POOL — NEW
    Returns available basic sensors + suggested one (fair distribution)
    ════════════════════════════════════════════════════════════ */
-function getBasicSensorPool() {
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+function getBasicSensorPool(optSs) {
+  var ss = optSs || SpreadsheetApp.openById(SPREADSHEET_ID);
 
   // 1. Build set of globally claimed normalized sensor names
   var globalClaimed = getClaimedNormalizedSet(ss);
@@ -600,8 +600,8 @@ var INITIAL_CLAIMED_SENSORS = [
 /* ════════════════════════════════════════════════════════════
    GET CLAIMED SENSORS (extended to include 2nd year)
    ════════════════════════════════════════════════════════════ */
-function getClaimedSensors() {
-  var ss      = SpreadsheetApp.openById(SPREADSHEET_ID);
+function getClaimedSensors(optSs) {
+  var ss      = optSs || SpreadsheetApp.openById(SPREADSHEET_ID);
   var claimed = [];
   var seen = {};
   INITIAL_CLAIMED_SENSORS.forEach(function(item) {
@@ -680,7 +680,7 @@ function getClaimedNormalizedSet(ss) {
     result = { _d: {}, has: function(k) { return this._d.hasOwnProperty(k); }, add: function(k) { this._d[k]=1; } };
   }
 
-  var claimed = getClaimedSensors().claimed;
+  var claimed = getClaimedSensors(ss).claimed;
   claimed.forEach(function(c) {
     if (c.normalizedName) result.add(c.normalizedName);
   });
@@ -699,8 +699,9 @@ function isSensorAllocatedGlobally(ss, normSensor) {
 /* ════════════════════════════════════════════════════════════
    SENSOR STATISTICS (extended for 2nd year)
    ════════════════════════════════════════════════════════════ */
-function getSensorStats() {
-  var claimedData = getClaimedSensors();
+function getSensorStats(optSs) {
+  var ss          = optSs || SpreadsheetApp.openById(SPREADSHEET_ID);
+  var claimedData = getClaimedSensors(ss);
   var claimed     = claimedData.claimed;
   var allocated   = claimed.length;
   var available   = Math.max(0, TOTAL_SENSORS - allocated);
@@ -712,7 +713,6 @@ function getSensorStats() {
   });
 
   // Custom requests
-  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   var customSheet = ss.getSheetByName(SHEET_CUSTOM);
   var customCount = 0, pendingCount = 0;
   if (customSheet && customSheet.getLastRow() >= 2) {
@@ -725,7 +725,7 @@ function getSensorStats() {
   }
 
   // 2nd Year specific stats
-  var pool = getBasicSensorPool();
+  var pool = getBasicSensorPool(ss);
   var sheet2nd = ss.getSheetByName(SHEET_TEAM_2ND);
   var teamCount2nd = 0, studentCount2nd = 0;
   if (sheet2nd && sheet2nd.getLastRow() >= 2) {
@@ -799,7 +799,7 @@ function getAllData() {
       .map(function(row) { return row.map(function(cell) { return String(cell); }); });
   }
 
-  var stats = getSensorStats();
+  var stats = getSensorStats(ss);
 
   return {
     individual:     sheetRows(SHEET_INDIVIDUAL),

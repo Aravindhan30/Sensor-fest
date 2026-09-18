@@ -949,8 +949,8 @@
     <a href="#prizes">Prizes</a>
     <a href="#registration">Register</a>
     <a href="#contact">Contact</a>
-    <a href="?admin=1" id="admin-link"
-       onclick="document.getElementById('admin').style.display='block';return true;">
+    <a href="#admin" id="admin-link"
+       onclick="if(window.openAdminSection){window.openAdminSection();return false;}document.getElementById('admin').style.display='block';return true;">
       Coordinators
     </a>
   </div>
@@ -1000,8 +1000,9 @@
      Scripts
 ═══════════════════════════════════════════════════════ -->
 <script>
-  if (window.location.search.includes('admin=1')) {
-    document.getElementById('admin').style.display = 'block';
+  if (window.location.search.includes('admin=1') || window.location.hash.toLowerCase().includes('admin')) {
+    const el = document.getElementById('admin');
+    if (el) el.style.display = 'block';
   }
 </script>
 <script src="data/sensors-data.js"></script>

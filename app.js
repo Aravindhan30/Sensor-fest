@@ -953,8 +953,8 @@ function initAdmin() {
 
   $('admin-login-form').addEventListener('submit', e => {
     e.preventDefault();
-    const pass = $('admin-pass').value;
-    if (pass === CONFIG.ADMIN_PASS) {
+    const pass = ($('admin-pass').value || '').trim();
+    if (pass.toUpperCase() === CONFIG.ADMIN_PASS.toUpperCase()) {
       STATE.adminLoggedIn = true;
       $('admin-gate').style.display      = 'none';
       $('admin-dashboard').style.display = 'block';
@@ -979,77 +979,92 @@ function initAdmin() {
   });
 
   $('admin-refresh').addEventListener('click', loadAdminData);
+  window.addEventListener('hashchange', checkAdminRoute);
 }
 
+window.openAdminSection = function() {
+  const adminSection = $('admin');
+  if (adminSection) {
+    adminSection.style.display = 'block';
+    adminSection.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => $('admin-pass')?.focus(), 300);
+  }
+};
+
 function checkAdminRoute() {
-  if (window.location.search.includes('admin=1')) {
-    const adminSection = $('admin');
-    if (adminSection) {
-      adminSection.style.display = 'block';
-      setTimeout(() => adminSection.scrollIntoView({ behavior: 'smooth' }), 300);
-    }
+  const hasAdminQuery = window.location.search.includes('admin=1');
+  const hasAdminHash  = window.location.hash.toLowerCase().includes('admin');
+  if (hasAdminQuery || hasAdminHash) {
+    window.openAdminSection();
   }
 }
 
 async function loadAdminData() {
   const btn = $('admin-refresh');
-  if (btn) btn.textContent = '⟳ Loading…';
+  if (btn) {
+    btn.textContent = '⟳ Loading…';
+    btn.disabled = true;
+  }
   try {
     const res = await fetch(`${CONFIG.GAS_URL}?action=getAll`, { cache: 'no-store' });
-
-    // Guard: GAS sometimes returns HTML on script errors or when not redeployed
-    const contentType = res.headers.get('content-type') || '';
-    if (!contentType.includes('application/json') && !contentType.includes('text/plain')) {
-      const text = await res.text();
-      throw new Error('GAS returned non-JSON response (' + res.status + '). Make sure v3.0 is deployed. Preview: ' + text.slice(0, 120));
+    const text = await res.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseErr) {
+      throw new Error('GAS returned invalid response. Make sure google-apps-script.gs is deployed.');
     }
 
-    const data = await res.json();
+    // Filter out blank/ghost rows
+    const cleanRows = (rows) => (rows || []).filter(r => {
+      const cells = Array.isArray(r) ? r : Object.values(r);
+      return cells.some(c => String(c ?? '').trim().length > 0);
+    });
 
-    // Guard: old GAS (v2.0) returns { status: '...' } instead of data objects
-    if (data.status && !data.individual) {
-      throw new Error('GAS v2.0 detected — please redeploy google-apps-script.gs as a new version.');
-    }
+    const indRows = cleanRows(data.individual);
+    const teamRows = cleanRows(data.team);
+    const customRows = cleanRows(data.custom);
+    const syRows = cleanRows(data.secondYearTeams);
 
     // Render 3rd/4th year tables
-    renderAdminTable('admin-individual-table', data.individual || [], [
+    renderAdminTable('admin-individual-table', indRows, [
       'Timestamp', 'Name', 'Register No.', 'Phone', 'Email', 'Sensor Chosen',
       'Year', 'Department', 'Registration ID', 'Status',
     ]);
-    renderAdminTable('admin-team-table', data.team || [], [
+    renderAdminTable('admin-team-table', teamRows, [
       'Timestamp', 'Team Name', 'Members', 'Sensor 1', 'Sensor 2', 'Sensor 3',
       'Theme', 'Project Title', 'Entry Code', 'Ind. Reg ID',
     ]);
-    renderCustomRequestsTable('admin-custom-table', data.custom || []);
+    renderCustomRequestsTable('admin-custom-table', customRows);
 
     // Render 2nd year teams
-    render2ndYearTable('admin-secondyear-table', data.secondYearTeams || [], data.stats);
+    render2ndYearTable('admin-secondyear-table', syRows, data.stats);
 
     // Update badges
     const ib  = $('individual-badge');
     const tb  = $('team-badge');
     const cb  = $('custom-badge');
     const syb = $('secondyear-badge');
-    if (ib)  ib.textContent  = (data.individual      || []).length;
-    if (tb)  tb.textContent  = (data.team            || []).length;
-    if (cb)  cb.textContent  = (data.custom          || []).length;
-    if (syb) syb.textContent = (data.secondYearTeams || []).length;
+    if (ib)  ib.textContent  = indRows.length;
+    if (tb)  tb.textContent  = teamRows.length;
+    if (cb)  cb.textContent  = customRows.length;
+    if (syb) syb.textContent = syRows.length;
 
     // Update sensor stats
     if (data.stats) renderAdminStats(data.stats);
 
-    showToast('Data refreshed successfully.', 'success');
+    showToast('Admin data refreshed successfully.', 'success');
   } catch (err) {
-    const isDeployError = err.message && (err.message.includes('redeploy') || err.message.includes('v2.0') || err.message.includes('non-JSON'));
     showToast(
-      isDeployError
-        ? '⚠️ GAS not updated — ' + err.message.split('.')[0] + '. Deploy v3.0 from google-apps-script.gs.'
-        : 'Could not fetch data. Check network and GAS deployment.',
+      'Could not load admin data: ' + (err.message || 'Please check network and GAS deployment.'),
       'error'
     );
-    console.error('[SENSORA] Admin load error:', err.message);
+    console.error('[SENSORA] Admin load error:', err);
   } finally {
-    if (btn) btn.textContent = '⟳ Refresh';
+    if (btn) {
+      btn.textContent = '⟳ Refresh Data';
+      btn.disabled = false;
+    }
   }
 }
 
