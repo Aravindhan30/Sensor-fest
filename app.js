@@ -11,8 +11,8 @@
 /* ── Configuration ───────────────────────────────────────── */
 const CONFIG = {
   GAS_URL: 'https://script.google.com/macros/s/AKfycbznsdmc0JjvnZo9W02GWF3PEv6zUBSZKVLkZmLWomW7-D42jHAHUV1DvRiiGLHGVj_J/exec',
-  // Set FEST_DATE once confirmed. Example: new Date('2026-10-28T09:00:00+05:30')
-  FEST_DATE: null,
+  // Event Date (Confirmed: 28th) — Default 28 September 2026 (change to 2026-10-28 if October)
+  FEST_DATE: new Date('2026-09-28T09:00:00+05:30'),
   ADMIN_PASS: 'SENSORA@2K26',
   TEAM_CODE_PREFIX: 'SENSORA26',
   TEAM_SIZE: 3,           // Fixed team size — exactly 3 members
@@ -349,11 +349,6 @@ function initCatalogControls() {
 function initRegistration() {
   $$('.reg-tab').forEach(tab => {
     tab.addEventListener('click', () => {
-      // Gate: block team tab if individual not complete
-      if (tab.dataset.tab === 'team' && !STATE.individualRegComplete) {
-        showToast('Complete your Individual Registration first to access Team Submission. 🔒', 'info');
-        return;
-      }
       $$('.reg-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
       $$('.reg-panel').forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
@@ -864,12 +859,6 @@ function initTeamForm() {
 async function handleTeamSubmit(e) {
   e.preventDefault();
   if (STATE.submitLock) return;
-
-  // Gate: must have completed individual registration
-  if (!STATE.individualRegComplete) {
-    showErrorModal('You must complete your Individual Sensor Registration before submitting a team entry.');
-    return;
-  }
 
   const form       = e.target;
   const teamName   = $('team-name').value.trim();

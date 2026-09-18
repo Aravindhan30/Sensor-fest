@@ -13,12 +13,10 @@
 | **Event Name** | SENSORA 2K26 — Sensor Expo |
 | **Tagline** | Sense · Explore · Innovate |
 | **Organised by** | ECE Activity Club, PTLCNCE |
-| **Registration Opens** | To Be Announced |
-| **Last Date to Register** | To Be Announced |
-| **Event Day(s)** | To Be Announced (3-Day event) |
+| **Registration Opens** | Open Now |
+| **Last Date to Register** | 26 September 2026 |
+| **Event Day(s)** | 28 September 2026 (3-Day event) |
 | **Contact Email** | eceactivityclub@ptlcecn.ac.in |
-
-> Once dates are confirmed, open `app.js` → set `CONFIG.FEST_DATE` to enable the countdown timer.
 
 ---
 

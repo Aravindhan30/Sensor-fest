@@ -323,7 +323,7 @@
       Important <span>Dates</span>
     </h2>
     <p class="section-sub reveal reveal-delay-1">
-      Dates will be announced soon — stay tuned! Register early to secure your sensor kit.
+      Mark your calendars — SENSORA 2K26 begins on 28th September 2026! Register early to secure your sensor kit.
     </p>
 
     <div class="dates-grid">
@@ -331,21 +331,21 @@
         <div class="date-icon-wrap">📋</div>
         <div class="date-info">
           <div class="date-label">Registration Opens</div>
-          <div class="date-value tbd">To Be Announced</div>
+          <div class="date-value">Open Now</div>
         </div>
       </div>
       <div class="date-card reveal reveal-delay-1">
         <div class="date-icon-wrap">⏰</div>
         <div class="date-info">
           <div class="date-label">Last Date for Registration</div>
-          <div class="date-value tbd">To Be Announced</div>
+          <div class="date-value">26 September 2026</div>
         </div>
       </div>
       <div class="date-card reveal reveal-delay-2">
         <div class="date-icon-wrap">🎉</div>
         <div class="date-info">
-          <div class="date-label">Event Day</div>
-          <div class="date-value tbd">To Be Announced</div>
+          <div class="date-label">Event Day (3-Day Expo)</div>
+          <div class="date-value">28 September 2026</div>
         </div>
       </div>
     </div>
@@ -549,9 +549,8 @@
       <button class="reg-tab active" data-tab="individual" role="tab" aria-selected="true" aria-controls="individual-panel" id="tab-individual">
         👤 Individual
       </button>
-      <button class="reg-tab" data-tab="team" role="tab" aria-selected="false" aria-controls="team-panel" id="tab-team" id="tab-team" aria-disabled="true">
+      <button class="reg-tab" data-tab="team" role="tab" aria-selected="false" aria-controls="team-panel" id="tab-team">
         👥 Team Submission
-        <span class="tab-lock-icon" id="team-tab-lock" title="Complete individual registration first">🔒</span>
       </button>
     </div>
 
@@ -665,28 +664,15 @@
     <!-- ── Section B: Team Submission ── -->
     <div class="reg-panel" id="team-panel" role="tabpanel" aria-labelledby="tab-team">
 
-      <!-- Gate notice — visible until individual reg is complete -->
-      <div class="team-gate-notice" id="team-gate-notice">
-        <div class="tgn-icon">🔒</div>
-        <div class="tgn-title">Individual Registration Required</div>
-        <div class="tgn-body">
-          You must complete your <strong>Individual Sensor Registration</strong> before submitting a team entry.
-          Once your individual registration is confirmed, the team form will unlock automatically.
-        </div>
-        <button class="btn-submit" style="max-width:280px;margin:20px auto 0;" onclick="document.getElementById('tab-individual').click();">
-          <span class="btn-text">👤 Go to Individual Registration →</span>
-        </button>
-      </div>
-
-      <!-- Actual team form — hidden until individual reg is done -->
-      <div class="form-card reveal" id="team-form-card" style="display:none;">
+      <!-- Actual team form — unlocked and accessible directly -->
+      <div class="form-card reveal" id="team-form-card">
         <div class="form-title">Team Project Submission</div>
         <div class="form-subtitle">
           Register your team of <strong>exactly 3 members</strong>. Choose 3 sensors, select a theme, and name your project. A unique entry code is generated on submission — save it!
         </div>
 
-        <!-- Individual reg confirmation badge -->
-        <div class="ind-reg-badge" id="ind-reg-badge"></div>
+        <!-- Individual reg confirmation badge (visible if individual reg was completed first) -->
+        <div class="ind-reg-badge" id="ind-reg-badge" style="display:none;"></div>
 
         <form id="team-form" novalidate>
 
