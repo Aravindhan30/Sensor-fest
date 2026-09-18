@@ -830,11 +830,11 @@ function initTeamForm() {
   // Create exactly 3 member rows
   [1, 2, 3].forEach(i => membersList.appendChild(createMemberRow(i)));
 
-  // Team sensor dropdowns — all 163 sensors
+  // Team sensor dropdowns — all 163 sensors (optional)
   ['team-sensor-1', 'team-sensor-2', 'team-sensor-3'].forEach((id, idx) => {
     const sel = $(id);
     if (!sel) return;
-    sel.innerHTML = `<option value="">— Select sensor ${idx + 1} —</option>`;
+    sel.innerHTML = `<option value="">— Select sensor ${idx + 1} (optional) —</option>`;
     STATE.sensors.forEach(s => {
       const opt = document.createElement('option');
       opt.value       = s.name;
@@ -874,9 +874,7 @@ async function handleTeamSubmit(e) {
   const errors = [];
   if (!teamName)                                    errors.push('Team name is required.');
   if (members.length !== CONFIG.TEAM_SIZE)          errors.push(`Exactly ${CONFIG.TEAM_SIZE} member names are required.`);
-  if (!sensor1)                                     errors.push('Please select Sensor 1.');
-  if (!sensor2)                                     errors.push('Please select Sensor 2.');
-  if (!sensor3)                                     errors.push('Please select Sensor 3.');
+  // Sensors are optional; if provided, ensure they are distinct
   if (sensor1 && sensor2 && sensor1 === sensor2)    errors.push('Sensor 1 and Sensor 2 must be different.');
   if (sensor2 && sensor3 && sensor2 === sensor3)    errors.push('Sensor 2 and Sensor 3 must be different.');
   if (sensor1 && sensor3 && sensor1 === sensor3)    errors.push('Sensor 1 and Sensor 3 must be different.');
@@ -1216,11 +1214,15 @@ function showSuccessModal(type, data) {
     codeBox.style.display  = 'block';
     if (copyBtn) copyBtn.style.display = 'flex';
     $('modal-code-value').textContent = data.entryCode;
+    const sensorsChosen = [data.sensor1, data.sensor2, data.sensor3].filter(Boolean);
+    const sensorsDisplay = sensorsChosen.length > 0
+      ? sensorsChosen.map(escHtml).join(' · ')
+      : '<span style="color:var(--text-muted);font-style:italic;">None selected</span>';
     summary.innerHTML = `
       <strong>Team Name:</strong> ${escHtml(data.teamName)}<br>
       <strong>Theme:</strong> ${escHtml(data.theme)}<br>
       <strong>Project Title:</strong> ${escHtml(data.projectTitle)}<br>
-      <strong>Sensors:</strong> ${[data.sensor1, data.sensor2, data.sensor3].map(escHtml).join(' · ')}<br>
+      <strong>Sensors:</strong> ${sensorsDisplay}<br>
       <strong>Members:</strong> ${escHtml(data.members)}
     `;
   } else {
