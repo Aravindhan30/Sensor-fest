@@ -643,7 +643,6 @@ section:nth-child(even) { background: rgba(255,255,255,0.012); }
 }
 
 /* ── Sensor Catalog ──────────────────────────────────────── */
-#catalog { }
 .catalog-controls {
   display: flex;
   gap: 14px;

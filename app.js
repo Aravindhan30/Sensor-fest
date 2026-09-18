@@ -446,13 +446,23 @@ function initSensorSearchWidget() {
     const q = raw.toLowerCase();
     const norm = normalizeSensorName(raw);
 
-    // If query is empty, show initial catalog sensors as recommendations
-    const matches = q
+    // Filter matches and sort available sensors first
+    const allMatches = q
       ? STATE.sensors.filter(s => {
           const terms = [s.name, s.keywords || '', s.id, s.category, s.description];
           return terms.some(t => t.toLowerCase().includes(q));
-        }).slice(0, CONFIG.SENSOR_MAX_RESULTS)
-      : STATE.sensors.slice(0, CONFIG.SENSOR_MAX_RESULTS);
+        })
+      : STATE.sensors.slice();
+
+    // Sort: Available sensors first (0), Claimed sensors last (1), then alphabetically
+    allMatches.sort((a, b) => {
+      const aClaimed = isSensorClaimed(a.name) ? 1 : 0;
+      const bClaimed = isSensorClaimed(b.name) ? 1 : 0;
+      if (aClaimed !== bClaimed) return aClaimed - bClaimed;
+      return a.name.localeCompare(b.name);
+    });
+
+    const matches = allMatches.slice(0, Math.max(CONFIG.SENSOR_MAX_RESULTS, 25));
 
     // Build results list
     resultsList.innerHTML = '';
@@ -462,14 +472,14 @@ function initSensorSearchWidget() {
       matches.forEach(s => {
         const claimed = isSensorClaimed(s.name);
         const li = document.createElement('li');
-        li.className = 'sensor-result-item' + (claimed ? ' sensor-result-item--claimed' : '');
+        li.className = 'sensor-result-item' + (claimed ? ' sensor-result-item--claimed' : ' sensor-result-item--available');
         li.setAttribute('role', 'option');
         li.setAttribute('aria-selected', 'false');
         li.innerHTML = `
-          <span class="sri-icon">${claimed ? '⚠️' : '○'}</span>
+          <span class="sri-icon">${claimed ? '⚠️' : '✅'}</span>
           <span class="sri-name">${escHtml(s.name)}</span>
           <span class="sri-cat">${escHtml(s.category)}</span>
-          ${claimed ? '<span class="sri-taken">Already Registered</span>' : `<span class="sri-price">₹${s.price}</span>`}
+          ${claimed ? '<span class="sri-taken">Already Registered</span>' : `<span class="sri-price">₹${s.price} · Available</span>`}
         `;
         li.addEventListener('mousedown', e => e.preventDefault());
         li.addEventListener('click', () => {
