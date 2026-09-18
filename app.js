@@ -1,7 +1,7 @@
 /* ============================================================
    SENSORA 2K26 — Main Application (v2.0)
    ECE Activity Club · PTLCNCE · Kanchipuram
-   113-sensor catalog · Searchable sensor widget
+   163-sensor catalog · Searchable sensor widget
    Individual-first team gate · Global availability check
    Race-condition-proof · Custom sensor support
    ============================================================ */
@@ -830,7 +830,7 @@ function initTeamForm() {
   // Create exactly 3 member rows
   [1, 2, 3].forEach(i => membersList.appendChild(createMemberRow(i)));
 
-  // Team sensor dropdowns — all 113 sensors
+  // Team sensor dropdowns — all 163 sensors
   ['team-sensor-1', 'team-sensor-2', 'team-sensor-3'].forEach((id, idx) => {
     const sel = $(id);
     if (!sel) return;
@@ -1072,7 +1072,7 @@ async function loadAdminData() {
 
 function renderAdminStats(stats) {
   const set = (id, val) => { const el = $(id); if (el) el.textContent = val; };
-  set('stat-total-num',     stats.total     || 113);
+  set('stat-total-num',     stats.total     || 163);
   set('stat-allocated-num', stats.allocated || 0);
   set('stat-available-num', stats.available || 0);
   set('stat-custom-num',    stats.pending   || 0);

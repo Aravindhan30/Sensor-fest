@@ -1,119 +1,1472 @@
 /* Auto-generated standalone dataset for SENSORA 2K26 */
 window.SENSORS_DATA = [
-  { "id": "S001", "name": "DHT11 Temperature & Humidity Sensor", "category": "Temperature", "price": 80, "description": "Measures 0–50°C and 20–90% RH; digital one-wire output. Popular for indoor climate sensing.", "keywords": "dht11 temperature humidity indoor climate", "source": "existing" },
-  { "id": "S002", "name": "DHT22 (AM2302) Temperature & Humidity", "category": "Temperature", "price": 180, "description": "Higher-accuracy upgrade over DHT11; range –40 to 80°C, 0–100% RH with ±0.5°C accuracy.", "keywords": "dht22 am2302 temperature humidity precision", "source": "existing" },
-  { "id": "S003", "name": "LM35 Temperature Sensor", "category": "Temperature", "price": 40, "description": "Analog output; 10 mV/°C sensitivity; 0–100°C; no calibration needed. Classic IC sensor.", "keywords": "lm35 temperature analog ic", "source": "existing" },
-  { "id": "S004", "name": "DS18B20 Waterproof Temperature Sensor", "category": "Temperature", "price": 120, "description": "1-Wire digital; –55 to 125°C; waterproof probe variant — ideal for liquid temperature.", "keywords": "ds18b20 temperature waterproof liquid 1wire", "source": "existing" },
-  { "id": "S005", "name": "NTC 10 kΩ Thermistor", "category": "Temperature", "price": 10, "description": "Passive resistance-based; highly sensitive near room temp; cheap and compact.", "keywords": "ntc thermistor 10k temperature passive resistance", "source": "existing" },
-  { "id": "S006", "name": "BMP180 Barometric Pressure & Temp Sensor", "category": "Weather", "price": 120, "description": "I²C; measures 300–1100 hPa; embedded temperature; altitude estimation capable.", "keywords": "bmp180 barometric pressure temperature altitude i2c weather", "source": "existing" },
-  { "id": "S007", "name": "BMP280 Pressure & Temperature Sensor", "category": "Weather", "price": 140, "description": "Successor to BMP180; I²C/SPI; low noise, low power; ±1 hPa accuracy.", "keywords": "bmp280 pressure temperature altitude i2c spi weather", "source": "existing" },
-  { "id": "S008", "name": "BME280 Humidity + Pressure + Temp", "category": "Weather", "price": 180, "description": "3-in-1: humidity, pressure, temperature; I²C/SPI; excellent for weather stations.", "keywords": "bme280 humidity pressure temperature weather station i2c", "source": "existing" },
-  { "id": "S009", "name": "Rain/Rainfall Detection Sensor", "category": "Weather", "price": 50, "description": "Conductive-pad module; analog + digital output; detects rain intensity level.", "keywords": "rain rainfall detection weather analog digital", "source": "existing" },
-  { "id": "S010", "name": "Soil Moisture Sensor", "category": "Agriculture", "price": 40, "description": "Resistive fork probe; analog output proportional to soil water content. Ideal for plant irrigation.", "keywords": "soil moisture agriculture irrigation plant resistive", "source": "existing" },
-  { "id": "S011", "name": "Capacitive Soil Moisture Sensor v1.2", "category": "Agriculture", "price": 100, "description": "Corrosion-resistant capacitive design; 3.3–5V; analog output; better longevity than resistive.", "keywords": "capacitive soil moisture agriculture irrigation plant corrosion", "source": "existing" },
-  { "id": "S012", "name": "MQ-2 Smoke / LPG / Butane Gas Sensor", "category": "Gas", "price": 80, "description": "Detects smoke, LPG, butane, hydrogen; analog + digital; heating element; 100–10000 ppm.", "keywords": "mq2 mq-2 smoke lpg butane hydrogen gas", "source": "existing" },
-  { "id": "S013", "name": "MQ-3 Alcohol / Ethanol Gas Sensor", "category": "Gas", "price": 80, "description": "Sensitive to ethanol vapour; used in breathalyser projects; analog output.", "keywords": "mq3 mq-3 alcohol ethanol breathalyser gas", "source": "existing" },
-  { "id": "S014", "name": "MQ-4 Methane / Natural Gas Sensor", "category": "Gas", "price": 90, "description": "Detects CH₄ concentration 200–10000 ppm; used for LPG pipeline leak detection.", "keywords": "mq4 mq-4 methane natural gas ch4 pipeline", "source": "existing" },
-  { "id": "S015", "name": "MQ-5 LPG / Natural Gas Sensor", "category": "Gas", "price": 80, "description": "Sensitive to LPG, natural gas, coal gas; analog + TTL digital output.", "keywords": "mq5 mq-5 lpg natural gas coal", "source": "existing" },
-  { "id": "S016", "name": "MQ-6 LPG / Butane Sensor", "category": "Gas", "price": 80, "description": "Focused on LPG and butane; good selectivity; often used in kitchen gas alarms.", "keywords": "mq6 mq-6 lpg butane kitchen gas alarm", "source": "existing" },
-  { "id": "S017", "name": "MQ-7 Carbon Monoxide (CO) Sensor", "category": "Gas", "price": 100, "description": "Detects CO 10–10000 ppm; cyclic heating at 1.5V/5V; critical for air quality alarms.", "keywords": "mq7 mq-7 carbon monoxide co gas air quality", "source": "existing" },
-  { "id": "S018", "name": "MQ-8 Hydrogen Gas Sensor", "category": "Gas", "price": 90, "description": "Sensitive to H₂; used in fuel cell and hydrogen leak detection applications.", "keywords": "mq8 mq-8 hydrogen h2 fuel cell gas", "source": "existing" },
-  { "id": "S019", "name": "MQ-9 CO / Combustible Gas Sensor", "category": "Gas", "price": 90, "description": "Dual function: CO + combustible gas detection; analog and digital output pins.", "keywords": "mq9 mq-9 carbon monoxide co combustible gas", "source": "existing" },
-  { "id": "S020", "name": "MQ-135 Air Quality / VOC Sensor", "category": "Environment", "price": 80, "description": "Detects NH₃, NOx, CO₂, benzene, smoke; broadly used for indoor air quality index.", "keywords": "mq135 mq-135 air quality voc co2 nh3 nox benzene indoor", "source": "existing" },
-  { "id": "S021", "name": "MQ-136 Hydrogen Sulphide Sensor", "category": "Gas", "price": 100, "description": "Detects H₂S (toxic gas); used in sewage/industrial monitoring.", "keywords": "mq136 mq-136 hydrogen sulphide h2s toxic gas sewage", "source": "existing" },
-  { "id": "S022", "name": "PIR Motion Sensor (HC-SR501)", "category": "Motion", "price": 50, "description": "Passive infrared; adjustable sensitivity and time delay; detects human presence up to 7 m.", "keywords": "pir hcsr501 hc-sr501 motion infrared human presence passive", "source": "existing" },
-  { "id": "S023", "name": "Ultrasonic Distance Sensor HC-SR04", "category": "Distance", "price": 60, "description": "2–400 cm range; 3 mm accuracy; trigger/echo pulse interface; widely used in robotics.", "keywords": "hcsr04 hc-sr04 ultrasonic distance ranging robotics sonar", "source": "existing" },
-  { "id": "S024", "name": "IR Proximity Sensor Module", "category": "Proximity", "price": 30, "description": "Analog + digital; detects objects within 2–30 cm; adjustable via trimmer pot.", "keywords": "ir infrared proximity obstacle detection analog digital", "source": "existing" },
-  { "id": "S025", "name": "TCRT5000 IR Reflective Sensor", "category": "Proximity", "price": 20, "description": "Emitter-detector pair; used for line-following robots and edge/gap detection.", "keywords": "tcrt5000 ir reflective line follower robot edge gap", "source": "existing" },
-  { "id": "S026", "name": "Sharp GP2Y0A21 IR Distance Sensor", "category": "Distance", "price": 180, "description": "Analog output; 10–80 cm; triangulation-based; reliable in varying ambient light.", "keywords": "sharp gp2y0a21 ir distance triangulation analog", "source": "existing" },
-  { "id": "S027", "name": "MPU-6050 Accelerometer + Gyroscope", "category": "Motion", "price": 120, "description": "6-DOF IMU; I²C; ±2/4/8/16g accel; ±250–2000°/s gyro. Core of most motion projects.", "keywords": "mpu6050 mpu-6050 accelerometer gyroscope imu 6dof motion i2c gy521", "source": "existing" },
-  { "id": "S028", "name": "ADXL335 3-Axis Accelerometer", "category": "Motion", "price": 150, "description": "Analog 3-axis; ±3g; low power; useful for tilt, shock detection, and vibration.", "keywords": "adxl335 accelerometer 3axis analog tilt shock vibration", "source": "existing" },
-  { "id": "S029", "name": "SW-420 Vibration Sensor Module", "category": "Mechanical", "price": 25, "description": "Spring-type vibration switch; digital out; triggers on mechanical shock or vibration.", "keywords": "sw420 sw-420 vibration shock spring switch digital", "source": "existing" },
-  { "id": "S030", "name": "KY-002 Shock Vibration Sensor", "category": "Mechanical", "price": 20, "description": "Ball-tilt switch variant; digital output; used in intrusion alarms and drop detection.", "keywords": "ky002 ky-002 shock vibration ball tilt switch drop alarm", "source": "existing" },
-  { "id": "S031", "name": "Reed Switch Magnetic Sensor", "category": "Magnetic", "price": 15, "description": "Normally open; closes in magnetic field; used for door/window alarms and position sensing.", "keywords": "reed switch magnetic door window alarm position", "source": "existing" },
-  { "id": "S032", "name": "Hall Effect Sensor (A3144)", "category": "Magnetic", "price": 10, "description": "Digital output; detects magnetic field; used for RPM counting, position sensing.", "keywords": "hall effect a3144 magnetic field rpm speed position digital", "source": "existing" },
-  { "id": "S033", "name": "KY-024 Linear Hall Effect Sensor", "category": "Magnetic", "price": 30, "description": "Analog + digital; sensitivity adjustable via pot; measures magnetic field strength.", "keywords": "ky024 ky-024 hall effect magnetic field analog digital", "source": "existing" },
-  { "id": "S034", "name": "Flame / Fire Sensor Module", "category": "Fire/Safety", "price": 40, "description": "IR-sensitive phototransistor; detects flame 760–1100 nm; range 0–100 cm.", "keywords": "flame fire sensor ir phototransistor detection safety", "source": "existing" },
-  { "id": "S035", "name": "KY-026 Flame Detection Sensor", "category": "Fire/Safety", "price": 35, "description": "5mm IR LED + phototransistor; analog + digital out; 60° detection angle.", "keywords": "ky026 ky-026 flame fire detection ir led phototransistor", "source": "existing" },
-  { "id": "S036", "name": "Touch Sensor (TTP223 Capacitive)", "category": "Touch", "price": 20, "description": "Single-point capacitive touch; CMOS logic output; 2–5.5V; low power.", "keywords": "ttp223 touch capacitive single point cmos low power", "source": "existing" },
-  { "id": "S037", "name": "Capacitive Touch Sensor Array TTP226", "category": "Touch", "price": 40, "description": "8-key capacitive keypad IC; I²C or direct key output; low power sleep mode.", "keywords": "ttp226 touch capacitive keypad 8key i2c array", "source": "existing" },
-  { "id": "S038", "name": "Force Sensitive Resistor (FSR 402)", "category": "Pressure", "price": 160, "description": "Analog thin-film sensor; resistance drops with applied force 0.1–10 N; flexible.", "keywords": "fsr402 fsr 402 force sensitive resistor pressure analog thin film", "source": "existing" },
-  { "id": "S039", "name": "MPX5700AP Pressure Sensor", "category": "Pressure", "price": 190, "description": "Analog; 15–700 kPa; temperature compensated; used in pneumatic and fluid systems.", "keywords": "mpx5700 pressure analog pneumatic fluid temperature compensated", "source": "existing" },
-  { "id": "S040", "name": "BMP085 Barometric Pressure Sensor", "category": "Weather", "price": 110, "description": "I²C; 300–1100 hPa; ±1 hPa accuracy; altitude calculation support.", "keywords": "bmp085 barometric pressure altitude i2c weather", "source": "existing" },
-  { "id": "S041", "name": "LDR (Light Dependent Resistor)", "category": "Light", "price": 5, "description": "Resistance inversely proportional to light; used in auto-dim and light-alarm circuits.", "keywords": "ldr light dependent resistor photoresistor auto dim alarm", "source": "existing" },
-  { "id": "S042", "name": "BH1750 Digital Light Sensor", "category": "Light", "price": 80, "description": "I²C; 1–65535 lux; 16-bit resolution; accurate lux measurement without calculation.", "keywords": "bh1750 light lux i2c digital 16bit ambient", "source": "existing" },
-  { "id": "S043", "name": "TEMT6000 Ambient Light Sensor", "category": "Light", "price": 50, "description": "Phototransistor; analog output; human-eye spectral response; used in display auto-brightness.", "keywords": "temt6000 ambient light phototransistor analog brightness display", "source": "existing" },
-  { "id": "S044", "name": "Photodiode Sensor Module", "category": "Light", "price": 20, "description": "Analog + digital; fast response; used in optical encoders and light barriers.", "keywords": "photodiode light optical encoder barrier analog digital fast", "source": "existing" },
-  { "id": "S045", "name": "UV Light Sensor ML8511", "category": "Light", "price": 130, "description": "Analog; measures UV-A/B; linear output 1.0–2.8V across 0–15 mW/cm².", "keywords": "ml8511 uv ultraviolet light sensor analog uba uvb", "source": "existing" },
-  { "id": "S046", "name": "Color Sensor TCS3200", "category": "Light", "price": 150, "description": "RGB + clear channels; frequency-scaled digital output; used in color-sorting projects.", "keywords": "tcs3200 color rgb light sensor frequency digital sorting", "source": "existing" },
-  { "id": "S047", "name": "Sound Sensor Module (KY-038)", "category": "Sound", "price": 30, "description": "Electret mic + comparator; analog + digital output; clap/sound detection.", "keywords": "ky038 ky-038 sound mic microphone clap detection analog digital", "source": "existing" },
-  { "id": "S048", "name": "MAX4466 Electret Mic Amplifier", "category": "Sound", "price": 120, "description": "Adjustable gain 25–125x; analog; used for voice detection and audio level sensing.", "keywords": "max4466 microphone mic amplifier voice audio electret analog", "source": "existing" },
-  { "id": "S049", "name": "INMP441 MEMS Microphone (I²S)", "category": "Sound", "price": 180, "description": "Digital I²S output; 60–15000 Hz; high SNR; used with ESP32 for voice projects.", "keywords": "inmp441 mems microphone i2s digital voice esp32 audio", "source": "existing" },
-  { "id": "S050", "name": "Water Level Sensor", "category": "Water Quality", "price": 25, "description": "Resistive strip; analog output proportional to water level; used in tank monitoring.", "keywords": "water level sensor tank monitoring analog resistive strip", "source": "existing" },
-  { "id": "S051", "name": "Float Switch Sensor", "category": "Liquid", "price": 30, "description": "Mechanical switch; NC or NO on water level; simple and robust pump control.", "keywords": "float switch water level liquid tank pump nc no mechanical", "source": "existing" },
-  { "id": "S052", "name": "Turbidity Sensor Module", "category": "Water Quality", "price": 120, "description": "Optical; analog + digital; measures water cloudiness/sediment; used in water quality.", "keywords": "turbidity water quality cloudiness sediment optical analog", "source": "existing" },
-  { "id": "S053", "name": "TDS (Total Dissolved Solids) Sensor", "category": "Water Quality", "price": 150, "description": "Measures dissolved solids in water 0–1000 ppm; used for drinking water quality.", "keywords": "tds total dissolved solids water quality drinking ppm", "source": "existing" },
-  { "id": "S054", "name": "pH Sensor Module", "category": "Water Quality", "price": 180, "description": "Analog; 0–14 pH range; requires calibration with buffer solutions; for water quality.", "keywords": "ph sensor water quality acid alkaline buffer calibration analog", "source": "existing" },
-  { "id": "S055", "name": "Flow Rate Water Sensor YF-S201", "category": "Liquid", "price": 120, "description": "Hall-effect flow meter; 1–30 L/min; 5V; pulse output proportional to flow rate.", "keywords": "yfs201 yf-s201 water flow rate hall effect meter liquid pulse", "source": "existing" },
-  { "id": "S056", "name": "Tilt Switch Ball Sensor", "category": "Mechanical", "price": 10, "description": "Simple ball-tilt switch; digital output; detects angle/orientation change.", "keywords": "tilt switch ball angle orientation change digital mechanical", "source": "existing" },
-  { "id": "S057", "name": "Rotary Encoder Module (KY-040)", "category": "Mechanical", "price": 30, "description": "360° incremental encoder with push-button; CLK/DT/SW output; used for menu control.", "keywords": "ky040 ky-040 rotary encoder incremental pushbutton clk menu", "source": "existing" },
-  { "id": "S058", "name": "Flex / Bend Sensor 2.2 inch", "category": "Mechanical", "price": 180, "description": "Resistance increases with bending; analog; used in gloves, robotics finger sensing.", "keywords": "flex bend sensor bending finger glove robotics analog", "source": "existing" },
-  { "id": "S059", "name": "Joystick Module (KY-023)", "category": "Robotics", "price": 40, "description": "Dual-axis potentiometer + click button; analog X/Y output; used in robot control.", "keywords": "ky023 ky-023 joystick dual axis potentiometer button robot control", "source": "existing" },
-  { "id": "S060", "name": "Optical Encoder Disc (for motor)", "category": "Robotics", "price": 30, "description": "Slot-type IR encoder for motor shaft; used for speed/position feedback with TCRT5000.", "keywords": "optical encoder disc motor speed position slot ir tcrt5000", "source": "existing" },
-  { "id": "S061", "name": "Infrared Line-Tracking Sensor", "category": "Robotics", "price": 25, "description": "TCRT5000 array; digital output; detects black/white line for line-follower robots.", "keywords": "ir infrared line tracking follower robot tcrt5000 array black white", "source": "existing" },
-  { "id": "S062", "name": "Current Sensor Module ACS712 (5A)", "category": "Electrical", "price": 100, "description": "Hall-effect current sensor; ±5A range; 185 mV/A sensitivity; analog output.", "keywords": "acs712 current sensor hall effect 5a analog electrical", "source": "existing" },
-  { "id": "S063", "name": "Current Sensor ACS712 (20A)", "category": "Electrical", "price": 110, "description": "Like ACS712-5A but ±20A; 100 mV/A; used in motor and power supply monitoring.", "keywords": "acs712 current sensor hall effect 20a motor power supply electrical", "source": "existing" },
-  { "id": "S064", "name": "Voltage Sensor Module (0–25V)", "category": "Electrical", "price": 30, "description": "Resistor divider; maps 0–25V to 0–5V; analog read for battery voltage monitoring.", "keywords": "voltage sensor 25v resistor divider battery monitoring analog electrical", "source": "existing" },
-  { "id": "S065", "name": "ZMCT103C AC Current Transformer", "category": "Electrical", "price": 60, "description": "1000:1 ratio; non-invasive clip-on AC current sensing; used in energy meters.", "keywords": "zmct103c ac current transformer non-invasive clip energy meter electrical", "source": "existing" },
-  { "id": "S066", "name": "PZEM-004T AC Power Meter Module", "category": "Electrical", "price": 190, "description": "Measures V, I, P, energy, frequency, PF via UART; used in smart energy monitoring.", "keywords": "pzem004t ac power meter voltage current energy frequency uart electrical", "source": "existing" },
-  { "id": "S067", "name": "Heartbeat / Pulse Sensor (MAX30102)", "category": "Biomedical", "price": 180, "description": "I²C; red+IR LED; finger SpO₂ and pulse detection; used in health monitoring.", "keywords": "max30102 max 30102 heartbeat pulse spo2 oximeter biomedical i2c red ir led health heart rate", "source": "existing" },
-  { "id": "S068", "name": "Pulse Sensor (KY-039 Fingertip)", "category": "Biomedical", "price": 50, "description": "IR LED + phototransistor; analog output; clip-on finger pulse/heart-rate sensor.", "keywords": "ky039 ky-039 pulse heart rate fingertip ir phototransistor analog biomedical", "source": "existing" },
-  { "id": "S069", "name": "AD8232 ECG / Heart Rate Module", "category": "Biomedical", "price": 160, "description": "Single-lead ECG signal conditioning; analog output; 3-electrode chest pads.", "keywords": "ad8232 ecg electrocardiogram heart rate biomedical electrode analog", "source": "existing" },
-  { "id": "S070", "name": "GSR (Galvanic Skin Response) Sensor", "category": "Biomedical", "price": 80, "description": "Measures skin conductance/stress; analog output via finger electrodes.", "keywords": "gsr galvanic skin response stress conductance biomedical analog finger electrode", "source": "existing" },
-  { "id": "S071", "name": "IR Temperature Sensor MLX90614", "category": "Biomedical", "price": 190, "description": "Non-contact; I²C; –70 to 380°C; SMBus; used in forehead thermometers.", "keywords": "mlx90614 mlx 90614 ir infrared temperature non-contact thermometer forehead biomedical i2c smbus", "source": "existing" },
-  { "id": "S072", "name": "RF 433 MHz Transmitter + Receiver", "category": "Communication", "price": 60, "description": "ASK modulation; 3–12V; up to 20m range; used in wireless sensor data links.", "keywords": "rf 433 433mhz transmitter receiver wireless ask modulation communication", "source": "existing" },
-  { "id": "S073", "name": "NRF24L01 2.4 GHz Wireless Module", "category": "Communication", "price": 80, "description": "SPI; 250 kbps–2 Mbps; auto-ACK; 6-channel pipe; used in multi-node sensor networks.", "keywords": "nrf24l01 nrf 24l01 2.4ghz wireless spi multi-node network communication", "source": "existing" },
-  { "id": "S074", "name": "HC-05 Bluetooth Module", "category": "Communication", "price": 150, "description": "Classic Bluetooth 2.0; UART bridge; master/slave; widely used for phone-to-MCU comms.", "keywords": "hc05 hc-05 bluetooth 2.0 uart bridge master slave phone mcu communication", "source": "existing" },
-  { "id": "S075", "name": "HC-SR505 Mini PIR Motion Sensor", "category": "Motion", "price": 35, "description": "Compact auto-reset PIR; 3 m range; single digital output; 5V; for motion-triggered circuits.", "keywords": "hcsr505 hc-sr505 mini pir motion infrared compact auto reset digital", "source": "existing" },
-
-  { "id": "S076", "name": "HC-06 Bluetooth UART Module", "category": "Communication", "price": 150, "description": "Slave-only Bluetooth 2.0 UART module; simple AT command config; pairs with Android/PC easily.", "keywords": "hc06 hc-06 bluetooth uart slave android communication wireless", "source": "new" },
-  { "id": "S077", "name": "ESP8266 Wi-Fi Module (ESP-01)", "category": "Communication", "price": 120, "description": "Serial UART Wi-Fi; AT command or SDK mode; used for IoT cloud data push from Arduino.", "keywords": "esp8266 esp01 esp-01 wifi wireless iot internet arduino uart communication", "source": "new" },
-  { "id": "S078", "name": "EM18 RFID Reader Module (125 kHz)", "category": "Communication", "price": 150, "description": "125 kHz RFID card/tag reader; UART output; used for attendance and access control.", "keywords": "em18 rfid reader 125khz card tag access control attendance uart communication", "source": "new" },
-  { "id": "S079", "name": "IR Remote Control + VS1838B Receiver", "category": "Communication", "price": 60, "description": "38 kHz IR receiver module + remote; decodes NEC protocol; used for wireless control projects.", "keywords": "ir infrared remote receiver vs1838b 38khz nec protocol wireless control communication", "source": "new" },
-  { "id": "S080", "name": "DS3231 RTC (Real-Time Clock) Module", "category": "Time", "price": 80, "description": "I²C; high accuracy ±2 ppm; battery backup CR2032; used in data-logging and scheduled events.", "keywords": "ds3231 rtc real time clock i2c battery backup logging time scheduled", "source": "new" },
-  { "id": "S081", "name": "APDS-9960 Gesture + Proximity Sensor", "category": "Motion", "price": 180, "description": "Detects UP/DOWN/LEFT/RIGHT gestures, proximity, and RGB color; I²C; 3.3V; used in smart devices.", "keywords": "apds9960 apds-9960 gesture proximity rgb color i2c motion smart touchless", "source": "new" },
-  { "id": "S082", "name": "KY-032 Obstacle Avoidance IR Sensor", "category": "Proximity", "price": 40, "description": "Adjustable IR obstacle detection; 2–40 cm; digital output; ideal for robot wall avoidance.", "keywords": "ky032 ky-032 obstacle avoidance ir infrared digital robot proximity", "source": "new" },
-  { "id": "S083", "name": "VL53L0X ToF Laser Distance Sensor", "category": "Distance", "price": 180, "description": "Time-of-flight; I²C; up to 200 cm; works in dark; accurate short-range ranging.", "keywords": "vl53l0x tof laser distance ranging i2c time of flight accurate dark", "source": "new" },
-  { "id": "S084", "name": "INA219 Current + Voltage Sensor (I²C)", "category": "Electrical", "price": 100, "description": "Measures bus voltage 0–32V and current ±3.2A; I²C; high-side sensing; used in power monitoring.", "keywords": "ina219 current voltage power i2c electrical monitoring high side bus", "source": "new" },
-  { "id": "S085", "name": "HX711 Load Cell Amplifier + 1 kg Load Cell", "category": "Mechanical", "price": 130, "description": "24-bit ADC amplifier for strain-gauge load cells; used to build digital weighing scales.", "keywords": "hx711 load cell amplifier weight scale strain gauge 24bit adc mechanical", "source": "new" },
-  { "id": "S086", "name": "ADXL345 Digital 3-Axis Accelerometer", "category": "Motion", "price": 130, "description": "I²C/SPI; ±2/4/8/16g; 10-bit resolution; tap, double-tap, freefall interrupt detection.", "keywords": "adxl345 accelerometer 3axis digital i2c spi tap freefall motion tilt", "source": "new" },
-  { "id": "S087", "name": "SHT31 Precision Humidity & Temperature", "category": "Temperature", "price": 180, "description": "I²C; ±2% RH, ±0.3°C accuracy; faster and more precise than DHT22; for weather stations.", "keywords": "sht31 humidity temperature precision i2c weather station accurate", "source": "new" },
-  { "id": "S088", "name": "MH-Z19B CO₂ NDIR Gas Sensor", "category": "Environment", "price": 190, "description": "NDIR infrared CO₂ sensor; 400–5000 ppm range; UART + PWM output; for indoor air quality.", "keywords": "mhz19b mh-z19b co2 carbon dioxide ndir infrared indoor air quality uart pwm environment", "source": "new" },
-  { "id": "S089", "name": "CCS811 VOC + eCO₂ Sensor (I²C)", "category": "Environment", "price": 180, "description": "Measures total VOC and equivalent CO₂; I²C; 3.3V; used for air quality index monitoring.", "keywords": "ccs811 voc eco2 co2 air quality i2c indoor environment tvoc", "source": "new" },
-  { "id": "S090", "name": "OLED 0.96\" I²C Display Module", "category": "Display", "price": 120, "description": "128×64 OLED; I²C; 3.3–5V; used to display sensor readings, menus, and status messages.", "keywords": "oled 0.96 i2c display 128x64 ssd1306 screen sensor readings menu", "source": "new" },
-  { "id": "S091", "name": "16×2 LCD with I²C Adapter (PCF8574)", "category": "Display", "price": 100, "description": "Standard 16-column 2-row LCD paired with I²C backpack; reduces wiring to 2 wires.", "keywords": "lcd 16x2 i2c pcf8574 display character backpack 2wire reduced wiring", "source": "new" },
-  { "id": "S092", "name": "TM1637 4-Digit 7-Segment Display", "category": "Display", "price": 80, "description": "4-digit 7-segment; 2-wire TM1637 interface; displays time, numbers, and sensor values.", "keywords": "tm1637 7segment 4digit display time number clock sensor value", "source": "new" },
-  { "id": "S093", "name": "MAX7219 8×8 LED Matrix Module", "category": "Display", "price": 100, "description": "Cascadable 8×8 LED matrix; SPI; used to display scrolling text, animations, and sensor data.", "keywords": "max7219 led matrix 8x8 spi cascadable scrolling text animation display", "source": "new" },
-  { "id": "S094", "name": "LM393 Speed Sensor (Slotted Optical)", "category": "Motion", "price": 30, "description": "IR slot + LM393 comparator; digital speed pulse output; used for motor RPM measurement.", "keywords": "lm393 speed sensor slotted optical ir comparator rpm motor digital motion", "source": "new" },
-  { "id": "S095", "name": "Relay Module (5V Single Channel)", "category": "Electrical", "price": 40, "description": "Electromechanical relay; controls 220V AC loads from Arduino 5V logic; active-low trigger.", "keywords": "relay 5v single channel 220v ac control arduino switching electrical power", "source": "new" },
-  { "id": "S096", "name": "28BYJ-48 Stepper Motor + ULN2003 Driver", "category": "Robotics", "price": 120, "description": "5V 4-phase stepper motor with ULN2003 driver board; used for precise angular positioning.", "keywords": "28byj-48 stepper motor uln2003 driver 4phase 5v robotics angular positioning", "source": "new" },
-  { "id": "S097", "name": "L298N Motor Driver Module", "category": "Robotics", "price": 100, "description": "Dual H-bridge; drives two DC motors or one stepper; 7–35V; used in robot chassis.", "keywords": "l298n motor driver dual h-bridge dc stepper robot chassis robotics", "source": "new" },
-  { "id": "S098", "name": "Piezoelectric Vibration Disk Sensor", "category": "Mechanical", "price": 20, "description": "Piezo disk generates voltage on mechanical impact/vibration; analog output; for knock detection.", "keywords": "piezo piezoelectric vibration disk knock impact analog mechanical sensor", "source": "new" },
-  { "id": "S099", "name": "KY-010 Optical Break-Beam Sensor", "category": "Proximity", "price": 20, "description": "Emitter-detector pair in slot; digital low when beam is broken; used for object counting.", "keywords": "ky010 ky-010 optical break beam slot detector counter object proximity digital", "source": "new" },
-  { "id": "S100", "name": "KY-036 Metal Touch Sensor Module", "category": "Touch", "price": 25, "description": "Capacitive metal touch; digital output; triggers when finger or metal touches sensor pad.", "keywords": "ky036 ky-036 metal touch capacitive digital finger sensor", "source": "new" },
-  { "id": "S101", "name": "KY-016 RGB LED Module", "category": "Display", "price": 15, "description": "Common-cathode RGB LED; 3 PWM-controlled pins; used for status indication and light effects.", "keywords": "ky016 ky-016 rgb led module pwm common cathode color light display", "source": "new" },
-  { "id": "S102", "name": "KY-018 Photo Resistor (LDR) Module", "category": "Light", "price": 15, "description": "LDR on a breakout board with built-in fixed resistor; analog output; plug-and-play light sensing.", "keywords": "ky018 ky-018 photo resistor ldr light module analog breakout plug play", "source": "new" },
-  { "id": "S103", "name": "KY-022 IR Receiver Module (38 kHz)", "category": "Communication", "price": 15, "description": "Stand-alone 38 kHz IR demodulator; digital output; decodes TV remote NEC signals.", "keywords": "ky022 ky-022 ir receiver 38khz infrared demodulator nec tv remote digital communication", "source": "new" },
-  { "id": "S104", "name": "SR602 Mini PIR Motion Sensor (AM312)", "category": "Motion", "price": 40, "description": "Ultra-compact PIR; 3 m range; 3.3–5V; auto-reset; ideal for battery-powered motion triggers.", "keywords": "sr602 am312 mini pir motion infrared compact auto reset battery", "source": "new" },
-  { "id": "S105", "name": "Soil NPK Sensor Module (RS485)", "category": "Agriculture", "price": 190, "description": "Measures Nitrogen, Phosphorus, Potassium in soil via RS485 Modbus; professional smart farming.", "keywords": "soil npk nitrogen phosphorus potassium rs485 modbus agriculture farming smart", "source": "new" },
-  { "id": "S106", "name": "Capacitive Liquid Level Sensor XKC-Y25", "category": "Liquid", "price": 100, "description": "Non-contact capacitive; sticks to outside of any container; digital output; no wetting.", "keywords": "xkc-y25 capacitive liquid level non-contact container digital tank liquid", "source": "new" },
-  { "id": "S107", "name": "JSN-SR04T Waterproof Ultrasonic Sensor", "category": "Distance", "price": 150, "description": "Waterproof ultrasonic; 20–600 cm range; trigger/echo like HC-SR04; for outdoor/liquid distance.", "keywords": "jsn-sr04t waterproof ultrasonic distance ranging outdoor liquid trigger echo", "source": "new" },
-  { "id": "S108", "name": "AS608 Optical Fingerprint Sensor", "category": "Biometric", "price": 190, "description": "UART optical fingerprint sensor; stores up to 162 fingerprints; used for access control projects.", "keywords": "as608 fingerprint optical uart biometric access control sensor identity", "source": "new" },
-  { "id": "S109", "name": "NE555 Timer Module (Astable/Monostable)", "category": "Electronics", "price": 15, "description": "Classic 555 timer IC on breakout; generates PWM/square wave; classic teaching module.", "keywords": "ne555 555 timer astable monostable pwm square wave electronics classic", "source": "new" },
-  { "id": "S110", "name": "74HC595 Shift Register Module", "category": "Electronics", "price": 20, "description": "Serial-in, parallel-out 8-bit shift register; extends GPIO pins; used to drive LEDs and displays.", "keywords": "74hc595 shift register sipo 8bit gpio extend led display electronics serial", "source": "new" },
-  { "id": "S111", "name": "WCS1700 AC/DC Current Sensor (35A)", "category": "Electrical", "price": 80, "description": "Hall-effect non-invasive current sensor; 35A max; analog output; for power monitoring.", "keywords": "wcs1700 current sensor hall effect 35a ac dc non-invasive power monitoring electrical", "source": "new" },
-  { "id": "S112", "name": "LM393 Dual Comparator Module", "category": "Electronics", "price": 20, "description": "Dual voltage comparator IC; compares two analog signals; digital output; widely used in sensor modules.", "keywords": "lm393 comparator dual analog voltage digital output electronics module", "source": "new" },
-  { "id": "S113", "name": "Ultrasonic Sensor JSN-SR04T-2 (Industrial)", "category": "Distance", "price": 190, "description": "Robust waterproof ultrasonic module; 25–450 cm; RS485 or analog option; for outdoor ranging.", "keywords": "jsn-sr04t-2 ultrasonic waterproof industrial outdoor distance ranging robust", "source": "new" }
+  {
+    "id": "S001",
+    "name": "DHT11 Temperature & Humidity Sensor",
+    "category": "Temperature",
+    "price": 80,
+    "description": "Measures 0–50°C and 20–90% RH; digital one-wire output. Popular for indoor climate sensing.",
+    "keywords": "dht11 temperature humidity indoor climate",
+    "source": "existing"
+  },
+  {
+    "id": "S002",
+    "name": "DHT22 (AM2302) Temperature & Humidity",
+    "category": "Temperature",
+    "price": 180,
+    "description": "Higher-accuracy upgrade over DHT11; range –40 to 80°C, 0–100% RH with ±0.5°C accuracy.",
+    "keywords": "dht22 am2302 temperature humidity precision",
+    "source": "existing"
+  },
+  {
+    "id": "S003",
+    "name": "LM35 Temperature Sensor",
+    "category": "Temperature",
+    "price": 40,
+    "description": "Analog output; 10 mV/°C sensitivity; 0–100°C; no calibration needed. Classic IC sensor.",
+    "keywords": "lm35 temperature analog ic",
+    "source": "existing"
+  },
+  {
+    "id": "S004",
+    "name": "DS18B20 Waterproof Temperature Sensor",
+    "category": "Temperature",
+    "price": 120,
+    "description": "1-Wire digital; –55 to 125°C; waterproof probe variant — ideal for liquid temperature.",
+    "keywords": "ds18b20 temperature waterproof liquid 1wire",
+    "source": "existing"
+  },
+  {
+    "id": "S005",
+    "name": "NTC 10 kΩ Thermistor",
+    "category": "Temperature",
+    "price": 10,
+    "description": "Passive resistance-based; highly sensitive near room temp; cheap and compact.",
+    "keywords": "ntc thermistor 10k temperature passive resistance",
+    "source": "existing"
+  },
+  {
+    "id": "S006",
+    "name": "BMP180 Barometric Pressure & Temp Sensor",
+    "category": "Weather",
+    "price": 120,
+    "description": "I²C; measures 300–1100 hPa; embedded temperature; altitude estimation capable.",
+    "keywords": "bmp180 barometric pressure temperature altitude i2c weather",
+    "source": "existing"
+  },
+  {
+    "id": "S007",
+    "name": "BMP280 Pressure & Temperature Sensor",
+    "category": "Weather",
+    "price": 140,
+    "description": "Successor to BMP180; I²C/SPI; low noise, low power; ±1 hPa accuracy.",
+    "keywords": "bmp280 pressure temperature altitude i2c spi weather",
+    "source": "existing"
+  },
+  {
+    "id": "S008",
+    "name": "BME280 Humidity + Pressure + Temp",
+    "category": "Weather",
+    "price": 180,
+    "description": "3-in-1: humidity, pressure, temperature; I²C/SPI; excellent for weather stations.",
+    "keywords": "bme280 humidity pressure temperature weather station i2c",
+    "source": "existing"
+  },
+  {
+    "id": "S009",
+    "name": "Rain/Rainfall Detection Sensor",
+    "category": "Weather",
+    "price": 50,
+    "description": "Conductive-pad module; analog + digital output; detects rain intensity level.",
+    "keywords": "rain rainfall detection weather analog digital",
+    "source": "existing"
+  },
+  {
+    "id": "S010",
+    "name": "Soil Moisture Sensor",
+    "category": "Agriculture",
+    "price": 40,
+    "description": "Resistive fork probe; analog output proportional to soil water content. Ideal for plant irrigation.",
+    "keywords": "soil moisture agriculture irrigation plant resistive",
+    "source": "existing"
+  },
+  {
+    "id": "S011",
+    "name": "Capacitive Soil Moisture Sensor v1.2",
+    "category": "Agriculture",
+    "price": 100,
+    "description": "Corrosion-resistant capacitive design; 3.3–5V; analog output; better longevity than resistive.",
+    "keywords": "capacitive soil moisture agriculture irrigation plant corrosion",
+    "source": "existing"
+  },
+  {
+    "id": "S012",
+    "name": "MQ-2 Smoke / LPG / Butane Gas Sensor",
+    "category": "Gas",
+    "price": 80,
+    "description": "Detects smoke, LPG, butane, hydrogen; analog + digital; heating element; 100–10000 ppm.",
+    "keywords": "mq2 mq-2 smoke lpg butane hydrogen gas",
+    "source": "existing"
+  },
+  {
+    "id": "S013",
+    "name": "MQ-3 Alcohol / Ethanol Gas Sensor",
+    "category": "Gas",
+    "price": 80,
+    "description": "Sensitive to ethanol vapour; used in breathalyser projects; analog output.",
+    "keywords": "mq3 mq-3 alcohol ethanol breathalyser gas",
+    "source": "existing"
+  },
+  {
+    "id": "S014",
+    "name": "MQ-4 Methane / Natural Gas Sensor",
+    "category": "Gas",
+    "price": 90,
+    "description": "Detects CH₄ concentration 200–10000 ppm; used for LPG pipeline leak detection.",
+    "keywords": "mq4 mq-4 methane natural gas ch4 pipeline",
+    "source": "existing"
+  },
+  {
+    "id": "S015",
+    "name": "MQ-5 LPG / Natural Gas Sensor",
+    "category": "Gas",
+    "price": 80,
+    "description": "Sensitive to LPG, natural gas, coal gas; analog + TTL digital output.",
+    "keywords": "mq5 mq-5 lpg natural gas coal",
+    "source": "existing"
+  },
+  {
+    "id": "S016",
+    "name": "MQ-6 LPG / Butane Sensor",
+    "category": "Gas",
+    "price": 80,
+    "description": "Focused on LPG and butane; good selectivity; often used in kitchen gas alarms.",
+    "keywords": "mq6 mq-6 lpg butane kitchen gas alarm",
+    "source": "existing"
+  },
+  {
+    "id": "S017",
+    "name": "MQ-7 Carbon Monoxide (CO) Sensor",
+    "category": "Gas",
+    "price": 100,
+    "description": "Detects CO 10–10000 ppm; cyclic heating at 1.5V/5V; critical for air quality alarms.",
+    "keywords": "mq7 mq-7 carbon monoxide co gas air quality",
+    "source": "existing"
+  },
+  {
+    "id": "S018",
+    "name": "MQ-8 Hydrogen Gas Sensor",
+    "category": "Gas",
+    "price": 90,
+    "description": "Sensitive to H₂; used in fuel cell and hydrogen leak detection applications.",
+    "keywords": "mq8 mq-8 hydrogen h2 fuel cell gas",
+    "source": "existing"
+  },
+  {
+    "id": "S019",
+    "name": "MQ-9 CO / Combustible Gas Sensor",
+    "category": "Gas",
+    "price": 90,
+    "description": "Dual function: CO + combustible gas detection; analog and digital output pins.",
+    "keywords": "mq9 mq-9 carbon monoxide co combustible gas",
+    "source": "existing"
+  },
+  {
+    "id": "S020",
+    "name": "MQ-135 Air Quality / VOC Sensor",
+    "category": "Environment",
+    "price": 80,
+    "description": "Detects NH₃, NOx, CO₂, benzene, smoke; broadly used for indoor air quality index.",
+    "keywords": "mq135 mq-135 air quality voc co2 nh3 nox benzene indoor",
+    "source": "existing"
+  },
+  {
+    "id": "S021",
+    "name": "MQ-136 Hydrogen Sulphide Sensor",
+    "category": "Gas",
+    "price": 100,
+    "description": "Detects H₂S (toxic gas); used in sewage/industrial monitoring.",
+    "keywords": "mq136 mq-136 hydrogen sulphide h2s toxic gas sewage",
+    "source": "existing"
+  },
+  {
+    "id": "S022",
+    "name": "PIR Motion Sensor (HC-SR501)",
+    "category": "Motion",
+    "price": 50,
+    "description": "Passive infrared; adjustable sensitivity and time delay; detects human presence up to 7 m.",
+    "keywords": "pir hcsr501 hc-sr501 motion infrared human presence passive",
+    "source": "existing"
+  },
+  {
+    "id": "S023",
+    "name": "Ultrasonic Distance Sensor HC-SR04",
+    "category": "Distance",
+    "price": 60,
+    "description": "2–400 cm range; 3 mm accuracy; trigger/echo pulse interface; widely used in robotics.",
+    "keywords": "hcsr04 hc-sr04 ultrasonic distance ranging robotics sonar",
+    "source": "existing"
+  },
+  {
+    "id": "S024",
+    "name": "IR Proximity Sensor Module",
+    "category": "Proximity",
+    "price": 30,
+    "description": "Analog + digital; detects objects within 2–30 cm; adjustable via trimmer pot.",
+    "keywords": "ir infrared proximity obstacle detection analog digital",
+    "source": "existing"
+  },
+  {
+    "id": "S025",
+    "name": "TCRT5000 IR Reflective Sensor",
+    "category": "Proximity",
+    "price": 20,
+    "description": "Emitter-detector pair; used for line-following robots and edge/gap detection.",
+    "keywords": "tcrt5000 ir reflective line follower robot edge gap",
+    "source": "existing"
+  },
+  {
+    "id": "S026",
+    "name": "Sharp GP2Y0A21 IR Distance Sensor",
+    "category": "Distance",
+    "price": 180,
+    "description": "Analog output; 10–80 cm; triangulation-based; reliable in varying ambient light.",
+    "keywords": "sharp gp2y0a21 ir distance triangulation analog",
+    "source": "existing"
+  },
+  {
+    "id": "S027",
+    "name": "MPU-6050 Accelerometer + Gyroscope",
+    "category": "Motion",
+    "price": 120,
+    "description": "6-DOF IMU; I²C; ±2/4/8/16g accel; ±250–2000°/s gyro. Core of most motion projects.",
+    "keywords": "mpu6050 mpu-6050 accelerometer gyroscope imu 6dof motion i2c gy521",
+    "source": "existing"
+  },
+  {
+    "id": "S028",
+    "name": "ADXL335 3-Axis Accelerometer",
+    "category": "Motion",
+    "price": 150,
+    "description": "Analog 3-axis; ±3g; low power; useful for tilt, shock detection, and vibration.",
+    "keywords": "adxl335 accelerometer 3axis analog tilt shock vibration",
+    "source": "existing"
+  },
+  {
+    "id": "S029",
+    "name": "SW-420 Vibration Sensor Module",
+    "category": "Mechanical",
+    "price": 25,
+    "description": "Spring-type vibration switch; digital out; triggers on mechanical shock or vibration.",
+    "keywords": "sw420 sw-420 vibration shock spring switch digital",
+    "source": "existing"
+  },
+  {
+    "id": "S030",
+    "name": "KY-002 Shock Vibration Sensor",
+    "category": "Mechanical",
+    "price": 20,
+    "description": "Ball-tilt switch variant; digital output; used in intrusion alarms and drop detection.",
+    "keywords": "ky002 ky-002 shock vibration ball tilt switch drop alarm",
+    "source": "existing"
+  },
+  {
+    "id": "S031",
+    "name": "Reed Switch Magnetic Sensor",
+    "category": "Magnetic",
+    "price": 15,
+    "description": "Normally open; closes in magnetic field; used for door/window alarms and position sensing.",
+    "keywords": "reed switch magnetic door window alarm position",
+    "source": "existing"
+  },
+  {
+    "id": "S032",
+    "name": "Hall Effect Sensor (A3144)",
+    "category": "Magnetic",
+    "price": 10,
+    "description": "Digital output; detects magnetic field; used for RPM counting, position sensing.",
+    "keywords": "hall effect a3144 magnetic field rpm speed position digital",
+    "source": "existing"
+  },
+  {
+    "id": "S033",
+    "name": "KY-024 Linear Hall Effect Sensor",
+    "category": "Magnetic",
+    "price": 30,
+    "description": "Analog + digital; sensitivity adjustable via pot; measures magnetic field strength.",
+    "keywords": "ky024 ky-024 hall effect magnetic field analog digital",
+    "source": "existing"
+  },
+  {
+    "id": "S034",
+    "name": "Flame / Fire Sensor Module",
+    "category": "Fire/Safety",
+    "price": 40,
+    "description": "IR-sensitive phototransistor; detects flame 760–1100 nm; range 0–100 cm.",
+    "keywords": "flame fire sensor ir phototransistor detection safety",
+    "source": "existing"
+  },
+  {
+    "id": "S035",
+    "name": "KY-026 Flame Detection Sensor",
+    "category": "Fire/Safety",
+    "price": 35,
+    "description": "5mm IR LED + phototransistor; analog + digital out; 60° detection angle.",
+    "keywords": "ky026 ky-026 flame fire detection ir led phototransistor",
+    "source": "existing"
+  },
+  {
+    "id": "S036",
+    "name": "Touch Sensor (TTP223 Capacitive)",
+    "category": "Touch",
+    "price": 20,
+    "description": "Single-point capacitive touch; CMOS logic output; 2–5.5V; low power.",
+    "keywords": "ttp223 touch capacitive single point cmos low power",
+    "source": "existing"
+  },
+  {
+    "id": "S037",
+    "name": "Capacitive Touch Sensor Array TTP226",
+    "category": "Touch",
+    "price": 40,
+    "description": "8-key capacitive keypad IC; I²C or direct key output; low power sleep mode.",
+    "keywords": "ttp226 touch capacitive keypad 8key i2c array",
+    "source": "existing"
+  },
+  {
+    "id": "S038",
+    "name": "Force Sensitive Resistor (FSR 402)",
+    "category": "Pressure",
+    "price": 160,
+    "description": "Analog thin-film sensor; resistance drops with applied force 0.1–10 N; flexible.",
+    "keywords": "fsr402 fsr 402 force sensitive resistor pressure analog thin film",
+    "source": "existing"
+  },
+  {
+    "id": "S039",
+    "name": "MPX5700AP Pressure Sensor",
+    "category": "Pressure",
+    "price": 190,
+    "description": "Analog; 15–700 kPa; temperature compensated; used in pneumatic and fluid systems.",
+    "keywords": "mpx5700 pressure analog pneumatic fluid temperature compensated",
+    "source": "existing"
+  },
+  {
+    "id": "S040",
+    "name": "BMP085 Barometric Pressure Sensor",
+    "category": "Weather",
+    "price": 110,
+    "description": "I²C; 300–1100 hPa; ±1 hPa accuracy; altitude calculation support.",
+    "keywords": "bmp085 barometric pressure altitude i2c weather",
+    "source": "existing"
+  },
+  {
+    "id": "S041",
+    "name": "LDR (Light Dependent Resistor)",
+    "category": "Light",
+    "price": 5,
+    "description": "Resistance inversely proportional to light; used in auto-dim and light-alarm circuits.",
+    "keywords": "ldr light dependent resistor photoresistor auto dim alarm",
+    "source": "existing"
+  },
+  {
+    "id": "S042",
+    "name": "BH1750 Digital Light Sensor",
+    "category": "Light",
+    "price": 80,
+    "description": "I²C; 1–65535 lux; 16-bit resolution; accurate lux measurement without calculation.",
+    "keywords": "bh1750 light lux i2c digital 16bit ambient",
+    "source": "existing"
+  },
+  {
+    "id": "S043",
+    "name": "TEMT6000 Ambient Light Sensor",
+    "category": "Light",
+    "price": 50,
+    "description": "Phototransistor; analog output; human-eye spectral response; used in display auto-brightness.",
+    "keywords": "temt6000 ambient light phototransistor analog brightness display",
+    "source": "existing"
+  },
+  {
+    "id": "S044",
+    "name": "Photodiode Sensor Module",
+    "category": "Light",
+    "price": 20,
+    "description": "Analog + digital; fast response; used in optical encoders and light barriers.",
+    "keywords": "photodiode light optical encoder barrier analog digital fast",
+    "source": "existing"
+  },
+  {
+    "id": "S045",
+    "name": "UV Light Sensor ML8511",
+    "category": "Light",
+    "price": 130,
+    "description": "Analog; measures UV-A/B; linear output 1.0–2.8V across 0–15 mW/cm².",
+    "keywords": "ml8511 uv ultraviolet light sensor analog uba uvb",
+    "source": "existing"
+  },
+  {
+    "id": "S046",
+    "name": "Color Sensor TCS3200",
+    "category": "Light",
+    "price": 150,
+    "description": "RGB + clear channels; frequency-scaled digital output; used in color-sorting projects.",
+    "keywords": "tcs3200 color rgb light sensor frequency digital sorting",
+    "source": "existing"
+  },
+  {
+    "id": "S047",
+    "name": "Sound Sensor Module (KY-038)",
+    "category": "Sound",
+    "price": 30,
+    "description": "Electret mic + comparator; analog + digital output; clap/sound detection.",
+    "keywords": "ky038 ky-038 sound mic microphone clap detection analog digital",
+    "source": "existing"
+  },
+  {
+    "id": "S048",
+    "name": "MAX4466 Electret Mic Amplifier",
+    "category": "Sound",
+    "price": 120,
+    "description": "Adjustable gain 25–125x; analog; used for voice detection and audio level sensing.",
+    "keywords": "max4466 microphone mic amplifier voice audio electret analog",
+    "source": "existing"
+  },
+  {
+    "id": "S049",
+    "name": "INMP441 MEMS Microphone (I²S)",
+    "category": "Sound",
+    "price": 180,
+    "description": "Digital I²S output; 60–15000 Hz; high SNR; used with ESP32 for voice projects.",
+    "keywords": "inmp441 mems microphone i2s digital voice esp32 audio",
+    "source": "existing"
+  },
+  {
+    "id": "S050",
+    "name": "Water Level Sensor",
+    "category": "Water Quality",
+    "price": 25,
+    "description": "Resistive strip; analog output proportional to water level; used in tank monitoring.",
+    "keywords": "water level sensor tank monitoring analog resistive strip",
+    "source": "existing"
+  },
+  {
+    "id": "S051",
+    "name": "Float Switch Sensor",
+    "category": "Liquid",
+    "price": 30,
+    "description": "Mechanical switch; NC or NO on water level; simple and robust pump control.",
+    "keywords": "float switch water level liquid tank pump nc no mechanical",
+    "source": "existing"
+  },
+  {
+    "id": "S052",
+    "name": "Turbidity Sensor Module",
+    "category": "Water Quality",
+    "price": 120,
+    "description": "Optical; analog + digital; measures water cloudiness/sediment; used in water quality.",
+    "keywords": "turbidity water quality cloudiness sediment optical analog",
+    "source": "existing"
+  },
+  {
+    "id": "S053",
+    "name": "TDS (Total Dissolved Solids) Sensor",
+    "category": "Water Quality",
+    "price": 150,
+    "description": "Measures dissolved solids in water 0–1000 ppm; used for drinking water quality.",
+    "keywords": "tds total dissolved solids water quality drinking ppm",
+    "source": "existing"
+  },
+  {
+    "id": "S054",
+    "name": "pH Sensor Module",
+    "category": "Water Quality",
+    "price": 180,
+    "description": "Analog; 0–14 pH range; requires calibration with buffer solutions; for water quality.",
+    "keywords": "ph sensor water quality acid alkaline buffer calibration analog",
+    "source": "existing"
+  },
+  {
+    "id": "S055",
+    "name": "Flow Rate Water Sensor YF-S201",
+    "category": "Liquid",
+    "price": 120,
+    "description": "Hall-effect flow meter; 1–30 L/min; 5V; pulse output proportional to flow rate.",
+    "keywords": "yfs201 yf-s201 water flow rate hall effect meter liquid pulse",
+    "source": "existing"
+  },
+  {
+    "id": "S056",
+    "name": "Tilt Switch Ball Sensor",
+    "category": "Mechanical",
+    "price": 10,
+    "description": "Simple ball-tilt switch; digital output; detects angle/orientation change.",
+    "keywords": "tilt switch ball angle orientation change digital mechanical",
+    "source": "existing"
+  },
+  {
+    "id": "S057",
+    "name": "Rotary Encoder Module (KY-040)",
+    "category": "Mechanical",
+    "price": 30,
+    "description": "360° incremental encoder with push-button; CLK/DT/SW output; used for menu control.",
+    "keywords": "ky040 ky-040 rotary encoder incremental pushbutton clk menu",
+    "source": "existing"
+  },
+  {
+    "id": "S058",
+    "name": "Flex / Bend Sensor 2.2 inch",
+    "category": "Mechanical",
+    "price": 180,
+    "description": "Resistance increases with bending; analog; used in gloves, robotics finger sensing.",
+    "keywords": "flex bend sensor bending finger glove robotics analog",
+    "source": "existing"
+  },
+  {
+    "id": "S059",
+    "name": "Joystick Module (KY-023)",
+    "category": "Robotics",
+    "price": 40,
+    "description": "Dual-axis potentiometer + click button; analog X/Y output; used in robot control.",
+    "keywords": "ky023 ky-023 joystick dual axis potentiometer button robot control",
+    "source": "existing"
+  },
+  {
+    "id": "S060",
+    "name": "Optical Encoder Disc (for motor)",
+    "category": "Robotics",
+    "price": 30,
+    "description": "Slot-type IR encoder for motor shaft; used for speed/position feedback with TCRT5000.",
+    "keywords": "optical encoder disc motor speed position slot ir tcrt5000",
+    "source": "existing"
+  },
+  {
+    "id": "S061",
+    "name": "Infrared Line-Tracking Sensor",
+    "category": "Robotics",
+    "price": 25,
+    "description": "TCRT5000 array; digital output; detects black/white line for line-follower robots.",
+    "keywords": "ir infrared line tracking follower robot tcrt5000 array black white",
+    "source": "existing"
+  },
+  {
+    "id": "S062",
+    "name": "Current Sensor Module ACS712 (5A)",
+    "category": "Electrical",
+    "price": 100,
+    "description": "Hall-effect current sensor; ±5A range; 185 mV/A sensitivity; analog output.",
+    "keywords": "acs712 current sensor hall effect 5a analog electrical",
+    "source": "existing"
+  },
+  {
+    "id": "S063",
+    "name": "Current Sensor ACS712 (20A)",
+    "category": "Electrical",
+    "price": 110,
+    "description": "Like ACS712-5A but ±20A; 100 mV/A; used in motor and power supply monitoring.",
+    "keywords": "acs712 current sensor hall effect 20a motor power supply electrical",
+    "source": "existing"
+  },
+  {
+    "id": "S064",
+    "name": "Voltage Sensor Module (0–25V)",
+    "category": "Electrical",
+    "price": 30,
+    "description": "Resistor divider; maps 0–25V to 0–5V; analog read for battery voltage monitoring.",
+    "keywords": "voltage sensor 25v resistor divider battery monitoring analog electrical",
+    "source": "existing"
+  },
+  {
+    "id": "S065",
+    "name": "ZMCT103C AC Current Transformer",
+    "category": "Electrical",
+    "price": 60,
+    "description": "1000:1 ratio; non-invasive clip-on AC current sensing; used in energy meters.",
+    "keywords": "zmct103c ac current transformer non-invasive clip energy meter electrical",
+    "source": "existing"
+  },
+  {
+    "id": "S066",
+    "name": "PZEM-004T AC Power Meter Module",
+    "category": "Electrical",
+    "price": 190,
+    "description": "Measures V, I, P, energy, frequency, PF via UART; used in smart energy monitoring.",
+    "keywords": "pzem004t ac power meter voltage current energy frequency uart electrical",
+    "source": "existing"
+  },
+  {
+    "id": "S067",
+    "name": "Heartbeat / Pulse Sensor (MAX30102)",
+    "category": "Biomedical",
+    "price": 180,
+    "description": "I²C; red+IR LED; finger SpO₂ and pulse detection; used in health monitoring.",
+    "keywords": "max30102 max 30102 heartbeat pulse spo2 oximeter biomedical i2c red ir led health heart rate",
+    "source": "existing"
+  },
+  {
+    "id": "S068",
+    "name": "Pulse Sensor (KY-039 Fingertip)",
+    "category": "Biomedical",
+    "price": 50,
+    "description": "IR LED + phototransistor; analog output; clip-on finger pulse/heart-rate sensor.",
+    "keywords": "ky039 ky-039 pulse heart rate fingertip ir phototransistor analog biomedical",
+    "source": "existing"
+  },
+  {
+    "id": "S069",
+    "name": "AD8232 ECG / Heart Rate Module",
+    "category": "Biomedical",
+    "price": 160,
+    "description": "Single-lead ECG signal conditioning; analog output; 3-electrode chest pads.",
+    "keywords": "ad8232 ecg electrocardiogram heart rate biomedical electrode analog",
+    "source": "existing"
+  },
+  {
+    "id": "S070",
+    "name": "GSR (Galvanic Skin Response) Sensor",
+    "category": "Biomedical",
+    "price": 80,
+    "description": "Measures skin conductance/stress; analog output via finger electrodes.",
+    "keywords": "gsr galvanic skin response stress conductance biomedical analog finger electrode",
+    "source": "existing"
+  },
+  {
+    "id": "S071",
+    "name": "IR Temperature Sensor MLX90614",
+    "category": "Biomedical",
+    "price": 190,
+    "description": "Non-contact; I²C; –70 to 380°C; SMBus; used in forehead thermometers.",
+    "keywords": "mlx90614 mlx 90614 ir infrared temperature non-contact thermometer forehead biomedical i2c smbus",
+    "source": "existing"
+  },
+  {
+    "id": "S072",
+    "name": "RF 433 MHz Transmitter + Receiver",
+    "category": "Communication",
+    "price": 60,
+    "description": "ASK modulation; 3–12V; up to 20m range; used in wireless sensor data links.",
+    "keywords": "rf 433 433mhz transmitter receiver wireless ask modulation communication",
+    "source": "existing"
+  },
+  {
+    "id": "S073",
+    "name": "NRF24L01 2.4 GHz Wireless Module",
+    "category": "Communication",
+    "price": 80,
+    "description": "SPI; 250 kbps–2 Mbps; auto-ACK; 6-channel pipe; used in multi-node sensor networks.",
+    "keywords": "nrf24l01 nrf 24l01 2.4ghz wireless spi multi-node network communication",
+    "source": "existing"
+  },
+  {
+    "id": "S074",
+    "name": "HC-05 Bluetooth Module",
+    "category": "Communication",
+    "price": 150,
+    "description": "Classic Bluetooth 2.0; UART bridge; master/slave; widely used for phone-to-MCU comms.",
+    "keywords": "hc05 hc-05 bluetooth 2.0 uart bridge master slave phone mcu communication",
+    "source": "existing"
+  },
+  {
+    "id": "S075",
+    "name": "HC-SR505 Mini PIR Motion Sensor",
+    "category": "Motion",
+    "price": 35,
+    "description": "Compact auto-reset PIR; 3 m range; single digital output; 5V; for motion-triggered circuits.",
+    "keywords": "hcsr505 hc-sr505 mini pir motion infrared compact auto reset digital",
+    "source": "existing"
+  },
+  {
+    "id": "S076",
+    "name": "HC-06 Bluetooth UART Module",
+    "category": "Communication",
+    "price": 150,
+    "description": "Slave-only Bluetooth 2.0 UART module; simple AT command config; pairs with Android/PC easily.",
+    "keywords": "hc06 hc-06 bluetooth uart slave android communication wireless",
+    "source": "new"
+  },
+  {
+    "id": "S077",
+    "name": "ESP8266 Wi-Fi Module (ESP-01)",
+    "category": "Communication",
+    "price": 120,
+    "description": "Serial UART Wi-Fi; AT command or SDK mode; used for IoT cloud data push from Arduino.",
+    "keywords": "esp8266 esp01 esp-01 wifi wireless iot internet arduino uart communication",
+    "source": "new"
+  },
+  {
+    "id": "S078",
+    "name": "EM18 RFID Reader Module (125 kHz)",
+    "category": "Communication",
+    "price": 150,
+    "description": "125 kHz RFID card/tag reader; UART output; used for attendance and access control.",
+    "keywords": "em18 rfid reader 125khz card tag access control attendance uart communication",
+    "source": "new"
+  },
+  {
+    "id": "S079",
+    "name": "IR Remote Control + VS1838B Receiver",
+    "category": "Communication",
+    "price": 60,
+    "description": "38 kHz IR receiver module + remote; decodes NEC protocol; used for wireless control projects.",
+    "keywords": "ir infrared remote receiver vs1838b 38khz nec protocol wireless control communication",
+    "source": "new"
+  },
+  {
+    "id": "S080",
+    "name": "DS3231 RTC (Real-Time Clock) Module",
+    "category": "Time",
+    "price": 80,
+    "description": "I²C; high accuracy ±2 ppm; battery backup CR2032; used in data-logging and scheduled events.",
+    "keywords": "ds3231 rtc real time clock i2c battery backup logging time scheduled",
+    "source": "new"
+  },
+  {
+    "id": "S081",
+    "name": "APDS-9960 Gesture + Proximity Sensor",
+    "category": "Motion",
+    "price": 180,
+    "description": "Detects UP/DOWN/LEFT/RIGHT gestures, proximity, and RGB color; I²C; 3.3V; used in smart devices.",
+    "keywords": "apds9960 apds-9960 gesture proximity rgb color i2c motion smart touchless",
+    "source": "new"
+  },
+  {
+    "id": "S082",
+    "name": "KY-032 Obstacle Avoidance IR Sensor",
+    "category": "Proximity",
+    "price": 40,
+    "description": "Adjustable IR obstacle detection; 2–40 cm; digital output; ideal for robot wall avoidance.",
+    "keywords": "ky032 ky-032 obstacle avoidance ir infrared digital robot proximity",
+    "source": "new"
+  },
+  {
+    "id": "S083",
+    "name": "VL53L0X ToF Laser Distance Sensor",
+    "category": "Distance",
+    "price": 180,
+    "description": "Time-of-flight; I²C; up to 200 cm; works in dark; accurate short-range ranging.",
+    "keywords": "vl53l0x tof laser distance ranging i2c time of flight accurate dark",
+    "source": "new"
+  },
+  {
+    "id": "S084",
+    "name": "INA219 Current + Voltage Sensor (I²C)",
+    "category": "Electrical",
+    "price": 100,
+    "description": "Measures bus voltage 0–32V and current ±3.2A; I²C; high-side sensing; used in power monitoring.",
+    "keywords": "ina219 current voltage power i2c electrical monitoring high side bus",
+    "source": "new"
+  },
+  {
+    "id": "S085",
+    "name": "HX711 Load Cell Amplifier + 1 kg Load Cell",
+    "category": "Mechanical",
+    "price": 130,
+    "description": "24-bit ADC amplifier for strain-gauge load cells; used to build digital weighing scales.",
+    "keywords": "hx711 load cell amplifier weight scale strain gauge 24bit adc mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S086",
+    "name": "ADXL345 Digital 3-Axis Accelerometer",
+    "category": "Motion",
+    "price": 130,
+    "description": "I²C/SPI; ±2/4/8/16g; 10-bit resolution; tap, double-tap, freefall interrupt detection.",
+    "keywords": "adxl345 accelerometer 3axis digital i2c spi tap freefall motion tilt",
+    "source": "new"
+  },
+  {
+    "id": "S087",
+    "name": "SHT31 Precision Humidity & Temperature",
+    "category": "Temperature",
+    "price": 180,
+    "description": "I²C; ±2% RH, ±0.3°C accuracy; faster and more precise than DHT22; for weather stations.",
+    "keywords": "sht31 humidity temperature precision i2c weather station accurate",
+    "source": "new"
+  },
+  {
+    "id": "S088",
+    "name": "MH-Z19B CO₂ NDIR Gas Sensor",
+    "category": "Environment",
+    "price": 190,
+    "description": "NDIR infrared CO₂ sensor; 400–5000 ppm range; UART + PWM output; for indoor air quality.",
+    "keywords": "mhz19b mh-z19b co2 carbon dioxide ndir infrared indoor air quality uart pwm environment",
+    "source": "new"
+  },
+  {
+    "id": "S089",
+    "name": "CCS811 VOC + eCO₂ Sensor (I²C)",
+    "category": "Environment",
+    "price": 180,
+    "description": "Measures total VOC and equivalent CO₂; I²C; 3.3V; used for air quality index monitoring.",
+    "keywords": "ccs811 voc eco2 co2 air quality i2c indoor environment tvoc",
+    "source": "new"
+  },
+  {
+    "id": "S090",
+    "name": "OLED 0.96\" I²C Display Module",
+    "category": "Display",
+    "price": 120,
+    "description": "128×64 OLED; I²C; 3.3–5V; used to display sensor readings, menus, and status messages.",
+    "keywords": "oled 0.96 i2c display 128x64 ssd1306 screen sensor readings menu",
+    "source": "new"
+  },
+  {
+    "id": "S091",
+    "name": "16×2 LCD with I²C Adapter (PCF8574)",
+    "category": "Display",
+    "price": 100,
+    "description": "Standard 16-column 2-row LCD paired with I²C backpack; reduces wiring to 2 wires.",
+    "keywords": "lcd 16x2 i2c pcf8574 display character backpack 2wire reduced wiring",
+    "source": "new"
+  },
+  {
+    "id": "S092",
+    "name": "TM1637 4-Digit 7-Segment Display",
+    "category": "Display",
+    "price": 80,
+    "description": "4-digit 7-segment; 2-wire TM1637 interface; displays time, numbers, and sensor values.",
+    "keywords": "tm1637 7segment 4digit display time number clock sensor value",
+    "source": "new"
+  },
+  {
+    "id": "S093",
+    "name": "MAX7219 8×8 LED Matrix Module",
+    "category": "Display",
+    "price": 100,
+    "description": "Cascadable 8×8 LED matrix; SPI; used to display scrolling text, animations, and sensor data.",
+    "keywords": "max7219 led matrix 8x8 spi cascadable scrolling text animation display",
+    "source": "new"
+  },
+  {
+    "id": "S094",
+    "name": "LM393 Speed Sensor (Slotted Optical)",
+    "category": "Motion",
+    "price": 30,
+    "description": "IR slot + LM393 comparator; digital speed pulse output; used for motor RPM measurement.",
+    "keywords": "lm393 speed sensor slotted optical ir comparator rpm motor digital motion",
+    "source": "new"
+  },
+  {
+    "id": "S095",
+    "name": "Relay Module (5V Single Channel)",
+    "category": "Electrical",
+    "price": 40,
+    "description": "Electromechanical relay; controls 220V AC loads from Arduino 5V logic; active-low trigger.",
+    "keywords": "relay 5v single channel 220v ac control arduino switching electrical power",
+    "source": "new"
+  },
+  {
+    "id": "S096",
+    "name": "28BYJ-48 Stepper Motor + ULN2003 Driver",
+    "category": "Robotics",
+    "price": 120,
+    "description": "5V 4-phase stepper motor with ULN2003 driver board; used for precise angular positioning.",
+    "keywords": "28byj-48 stepper motor uln2003 driver 4phase 5v robotics angular positioning",
+    "source": "new"
+  },
+  {
+    "id": "S097",
+    "name": "L298N Motor Driver Module",
+    "category": "Robotics",
+    "price": 100,
+    "description": "Dual H-bridge; drives two DC motors or one stepper; 7–35V; used in robot chassis.",
+    "keywords": "l298n motor driver dual h-bridge dc stepper robot chassis robotics",
+    "source": "new"
+  },
+  {
+    "id": "S098",
+    "name": "Piezoelectric Vibration Disk Sensor",
+    "category": "Mechanical",
+    "price": 20,
+    "description": "Piezo disk generates voltage on mechanical impact/vibration; analog output; for knock detection.",
+    "keywords": "piezo piezoelectric vibration disk knock impact analog mechanical sensor",
+    "source": "new"
+  },
+  {
+    "id": "S099",
+    "name": "KY-010 Optical Break-Beam Sensor",
+    "category": "Proximity",
+    "price": 20,
+    "description": "Emitter-detector pair in slot; digital low when beam is broken; used for object counting.",
+    "keywords": "ky010 ky-010 optical break beam slot detector counter object proximity digital",
+    "source": "new"
+  },
+  {
+    "id": "S100",
+    "name": "KY-036 Metal Touch Sensor Module",
+    "category": "Touch",
+    "price": 25,
+    "description": "Capacitive metal touch; digital output; triggers when finger or metal touches sensor pad.",
+    "keywords": "ky036 ky-036 metal touch capacitive digital finger sensor",
+    "source": "new"
+  },
+  {
+    "id": "S101",
+    "name": "KY-016 RGB LED Module",
+    "category": "Display",
+    "price": 15,
+    "description": "Common-cathode RGB LED; 3 PWM-controlled pins; used for status indication and light effects.",
+    "keywords": "ky016 ky-016 rgb led module pwm common cathode color light display",
+    "source": "new"
+  },
+  {
+    "id": "S102",
+    "name": "KY-018 Photo Resistor (LDR) Module",
+    "category": "Light",
+    "price": 15,
+    "description": "LDR on a breakout board with built-in fixed resistor; analog output; plug-and-play light sensing.",
+    "keywords": "ky018 ky-018 photo resistor ldr light module analog breakout plug play",
+    "source": "new"
+  },
+  {
+    "id": "S103",
+    "name": "KY-022 IR Receiver Module (38 kHz)",
+    "category": "Communication",
+    "price": 15,
+    "description": "Stand-alone 38 kHz IR demodulator; digital output; decodes TV remote NEC signals.",
+    "keywords": "ky022 ky-022 ir receiver 38khz infrared demodulator nec tv remote digital communication",
+    "source": "new"
+  },
+  {
+    "id": "S104",
+    "name": "SR602 Mini PIR Motion Sensor (AM312)",
+    "category": "Motion",
+    "price": 40,
+    "description": "Ultra-compact PIR; 3 m range; 3.3–5V; auto-reset; ideal for battery-powered motion triggers.",
+    "keywords": "sr602 am312 mini pir motion infrared compact auto reset battery",
+    "source": "new"
+  },
+  {
+    "id": "S105",
+    "name": "Soil NPK Sensor Module (RS485)",
+    "category": "Agriculture",
+    "price": 190,
+    "description": "Measures Nitrogen, Phosphorus, Potassium in soil via RS485 Modbus; professional smart farming.",
+    "keywords": "soil npk nitrogen phosphorus potassium rs485 modbus agriculture farming smart",
+    "source": "new"
+  },
+  {
+    "id": "S106",
+    "name": "Capacitive Liquid Level Sensor XKC-Y25",
+    "category": "Liquid",
+    "price": 100,
+    "description": "Non-contact capacitive; sticks to outside of any container; digital output; no wetting.",
+    "keywords": "xkc-y25 capacitive liquid level non-contact container digital tank liquid",
+    "source": "new"
+  },
+  {
+    "id": "S107",
+    "name": "JSN-SR04T Waterproof Ultrasonic Sensor",
+    "category": "Distance",
+    "price": 150,
+    "description": "Waterproof ultrasonic; 20–600 cm range; trigger/echo like HC-SR04; for outdoor/liquid distance.",
+    "keywords": "jsn-sr04t waterproof ultrasonic distance ranging outdoor liquid trigger echo",
+    "source": "new"
+  },
+  {
+    "id": "S108",
+    "name": "AS608 Optical Fingerprint Sensor",
+    "category": "Biometric",
+    "price": 190,
+    "description": "UART optical fingerprint sensor; stores up to 162 fingerprints; used for access control projects.",
+    "keywords": "as608 fingerprint optical uart biometric access control sensor identity",
+    "source": "new"
+  },
+  {
+    "id": "S109",
+    "name": "NE555 Timer Module (Astable/Monostable)",
+    "category": "Electronics",
+    "price": 15,
+    "description": "Classic 555 timer IC on breakout; generates PWM/square wave; classic teaching module.",
+    "keywords": "ne555 555 timer astable monostable pwm square wave electronics classic",
+    "source": "new"
+  },
+  {
+    "id": "S110",
+    "name": "74HC595 Shift Register Module",
+    "category": "Electronics",
+    "price": 20,
+    "description": "Serial-in, parallel-out 8-bit shift register; extends GPIO pins; used to drive LEDs and displays.",
+    "keywords": "74hc595 shift register sipo 8bit gpio extend led display electronics serial",
+    "source": "new"
+  },
+  {
+    "id": "S111",
+    "name": "WCS1700 AC/DC Current Sensor (35A)",
+    "category": "Electrical",
+    "price": 80,
+    "description": "Hall-effect non-invasive current sensor; 35A max; analog output; for power monitoring.",
+    "keywords": "wcs1700 current sensor hall effect 35a ac dc non-invasive power monitoring electrical",
+    "source": "new"
+  },
+  {
+    "id": "S112",
+    "name": "LM393 Dual Comparator Module",
+    "category": "Electronics",
+    "price": 20,
+    "description": "Dual voltage comparator IC; compares two analog signals; digital output; widely used in sensor modules.",
+    "keywords": "lm393 comparator dual analog voltage digital output electronics module",
+    "source": "new"
+  },
+  {
+    "id": "S113",
+    "name": "Ultrasonic Sensor JSN-SR04T-2 (Industrial)",
+    "category": "Distance",
+    "price": 190,
+    "description": "Robust waterproof ultrasonic module; 25–450 cm; RS485 or analog option; for outdoor ranging.",
+    "keywords": "jsn-sr04t-2 ultrasonic waterproof industrial outdoor distance ranging robust",
+    "source": "new"
+  },
+  {
+    "id": "S114",
+    "name": "KY-001 Temperature Sensor Module (DS18B20 Breakout)",
+    "category": "Temperature",
+    "price": 45,
+    "description": "Digital 1-wire temperature sensor on compact PCB; -55°C to +125°C; plug-and-play with 4.7k resistor onboard.",
+    "keywords": "ky001 ky-001 ds18b20 temperature 1wire digital probe vellore low cost",
+    "source": "new"
+  },
+  {
+    "id": "S115",
+    "name": "KY-028 Digital Temperature Sensor Module",
+    "category": "Temperature",
+    "price": 35,
+    "description": "NTC thermistor + LM393 comparator; adjustable trigger threshold; digital switch and analog output.",
+    "keywords": "ky028 ky-028 digital temperature ntc lm393 comparator thermal switch vellore",
+    "source": "new"
+  },
+  {
+    "id": "S116",
+    "name": "KY-013 Analog Temperature Sensor Module",
+    "category": "Temperature",
+    "price": 25,
+    "description": "Analog NTC thermistor module with voltage divider; measures ambient temperature smoothly for microcontrollers.",
+    "keywords": "ky013 ky-013 analog temperature ntc thermistor divider vellore cheap",
+    "source": "new"
+  },
+  {
+    "id": "S117",
+    "name": "K-Type Thermocouple with MAX6675 Amplifier",
+    "category": "Temperature",
+    "price": 130,
+    "description": "Industrial thermocouple with SPI interface; measures high temperatures 0°C to 1024°C; cold-junction compensated.",
+    "keywords": "max6675 k-type thermocouple temperature high industrial furnace spi vellore",
+    "source": "new"
+  },
+  {
+    "id": "S118",
+    "name": "KY-017 Mercury Tilt Switch Module",
+    "category": "Mechanical",
+    "price": 20,
+    "description": "Glass mercury tilt bulb on breakout; closes circuit upon inclination; classic angle trigger switch.",
+    "keywords": "ky017 ky-017 mercury tilt switch angle inclination orientation mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S119",
+    "name": "SW-520D Dual Ball Tilt Angle Sensor",
+    "category": "Mechanical",
+    "price": 20,
+    "description": "Sealed dual gold ball tilt sensor; digital trigger on posture change; mercury-free and vibration tolerant.",
+    "keywords": "sw520d sw-520d tilt angle posture ball switch mechanical safety",
+    "source": "new"
+  },
+  {
+    "id": "S120",
+    "name": "KY-020 Tilt Switch Vibration Sensor Module",
+    "category": "Mechanical",
+    "price": 25,
+    "description": "Mini ball tilt sensor board; detects sudden tilt or shake; active digital low output.",
+    "keywords": "ky020 ky-020 tilt vibration shake ball switch posture mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S121",
+    "name": "SW-18010P High-Sensitivity Vibration Sensor Switch",
+    "category": "Mechanical",
+    "price": 25,
+    "description": "Spring vibration switch in protective tube; highly responsive to slight knocks and physical shocks.",
+    "keywords": "sw18010p sw-18010p vibration spring shock knock tamper alarm mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S122",
+    "name": "KY-031 Knock Sensor Tap Detection Module",
+    "category": "Mechanical",
+    "price": 25,
+    "description": "Spring impact sensor with pull-up resistor; detects tapping or knocking on doors, desks, or machine panels.",
+    "keywords": "ky031 ky-031 knock tap impact percussion shock door alarm mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S123",
+    "name": "Mechanical Limit Micro-Switch with Lever Arm",
+    "category": "Mechanical",
+    "price": 20,
+    "description": "Snap-action SPDT micro switch with roller lever; standard mechanical limit detection for 3D printers and robots.",
+    "keywords": "microswitch endstop limit switch roller lever mechanical contact robotics",
+    "source": "new"
+  },
+  {
+    "id": "S124",
+    "name": "KY-003 Hall Magnetic Field Sensor (A3144)",
+    "category": "Magnetic",
+    "price": 20,
+    "description": "Unipolar Hall-effect switch IC with onboard pull-up; digital low when South magnetic pole approaches.",
+    "keywords": "ky003 ky-003 hall magnetic a3144 unipolar speed rpm switch digital",
+    "source": "new"
+  },
+  {
+    "id": "S125",
+    "name": "KY-021 Mini Magnetic Reed Switch Module",
+    "category": "Magnetic",
+    "price": 25,
+    "description": "Dry reed glass contact with pull-up resistor; activates upon magnetic proximity; popular for door alarms.",
+    "keywords": "ky021 ky-021 reed switch magnetic glass contact door security alarm",
+    "source": "new"
+  },
+  {
+    "id": "S126",
+    "name": "KY-025 Reed Switch Magnetic Sensor (Analog + Digital)",
+    "category": "Magnetic",
+    "price": 30,
+    "description": "Reed switch paired with LM393 comparator; provides both digital trigger and analog sensitivity outputs.",
+    "keywords": "ky025 ky-025 reed magnetic sensor lm393 comparator analog digital door alarm",
+    "source": "new"
+  },
+  {
+    "id": "S127",
+    "name": "KY-035 Bi-Polar Hall Effect Sensor (49E Analog)",
+    "category": "Magnetic",
+    "price": 30,
+    "description": "Linear Hall sensor 49E; outputs analog voltage proportional to magnetic field strength and polarity.",
+    "keywords": "ky035 ky-035 hall effect linear 49e magnetic field analog gauss meter",
+    "source": "new"
+  },
+  {
+    "id": "S128",
+    "name": "KY-004 Push Button Tactile Switch Module",
+    "category": "Touch",
+    "price": 15,
+    "description": "Tactile momentary push button with onboard 10k pull-down resistor; clean bounce-free digital input.",
+    "keywords": "ky004 ky-004 push button tactile switch momentary input digital touch",
+    "source": "new"
+  },
+  {
+    "id": "S129",
+    "name": "KY-040 Rotary Encoder Knob with Push Switch",
+    "category": "Motion",
+    "price": 40,
+    "description": "Incremental 20-pulse rotary encoder with integrated push button; infinite 360° rotational control.",
+    "keywords": "ky040 ky-040 rotary encoder knob quadrature incremental pulse dial switch",
+    "source": "new"
+  },
+  {
+    "id": "S130",
+    "name": "TTP229 16-Channel Capacitive Touch Keypad",
+    "category": "Touch",
+    "price": 85,
+    "description": "16-key capacitive keypad module; 2-wire serial or 8-key direct mode; replacement for mechanical keypads.",
+    "keywords": "ttp229 capacitive touch keypad 16key matrix password security access",
+    "source": "new"
+  },
+  {
+    "id": "S131",
+    "name": "KY-037 High Sensitivity Sound Detection Module",
+    "category": "Sound",
+    "price": 35,
+    "description": "High-gain electret microphone with LM393 comparator; dual analog sound wave and digital threshold outputs.",
+    "keywords": "ky037 ky-037 sound detection microphone acoustic noise clap voice high gain",
+    "source": "new"
+  },
+  {
+    "id": "S132",
+    "name": "Big Sound Microphone Sensor Module",
+    "category": "Sound",
+    "price": 40,
+    "description": "Large 9.7mm electret capsule with trimmer potentiometer; high sensitivity for environmental audio triggers.",
+    "keywords": "big sound microphone sensor acoustic decibel noise detection threshold",
+    "source": "new"
+  },
+  {
+    "id": "S133",
+    "name": "Passive Piezo Buzzer / Knock Sensor Module",
+    "category": "Sound",
+    "price": 20,
+    "description": "Passive piezo transducer; can be driven with PWM frequencies for melodies or read as impact vibration sensor.",
+    "keywords": "passive buzzer piezo sound tone melody knock vibration transducer",
+    "source": "new"
+  },
+  {
+    "id": "S134",
+    "name": "Active Buzzer Alarm Audio Module (5V)",
+    "category": "Sound",
+    "price": 25,
+    "description": "Self-oscillating active buzzer on PCB; sounds continuous loud 2.5 kHz alarm tone when triggered HIGH.",
+    "keywords": "active buzzer alarm 5v audio beeper alert siren warning sound",
+    "source": "new"
+  },
+  {
+    "id": "S135",
+    "name": "KY-008 Laser Transmitter Diode Module (650nm)",
+    "category": "Light",
+    "price": 30,
+    "description": "Red laser diode module 650nm 5mW; emits tight collimated red beam; ideal for perimeter tripwire security.",
+    "keywords": "ky008 ky-008 laser diode red 650nm 5mw beam pointer tripwire security",
+    "source": "new"
+  },
+  {
+    "id": "S136",
+    "name": "Laser Detector Light Sensor Receiver Module",
+    "category": "Light",
+    "price": 35,
+    "description": "Non-modulated phototransistor sensor tuned for laser beam reception; outputs digital HIGH when beam hits.",
+    "keywords": "laser detector receiver sensor phototransistor tripwire security perimeter light",
+    "source": "new"
+  },
+  {
+    "id": "S137",
+    "name": "KY-005 Infrared IR Transmitter Diode (38 kHz)",
+    "category": "Communication",
+    "price": 20,
+    "description": "940nm high-power infrared LED module; used to transmit remote control commands and wireless IR signals.",
+    "keywords": "ky005 ky-005 ir infrared transmitter led 940nm 38khz remote tv control",
+    "source": "new"
+  },
+  {
+    "id": "S138",
+    "name": "Line Tracking 3-Channel TCRT5000 Sensor Bar",
+    "category": "Proximity",
+    "price": 70,
+    "description": "Triple TCRT5000 infrared reflective sensor strip; 3 independent digital outputs for smart line tracking cars.",
+    "keywords": "3channel line tracking tcrt5000 robot car follower white black line bar",
+    "source": "new"
+  },
+  {
+    "id": "S139",
+    "name": "TCRT5000 5-Way Multi-Channel Line Hunting Tracker",
+    "category": "Proximity",
+    "price": 95,
+    "description": "5-channel high-precision infrared tracking sensor array with bump switch and LED indicators for robot navigation.",
+    "keywords": "5channel tracking line hunter tcrt5000 path follower robot maze navigation",
+    "source": "new"
+  },
+  {
+    "id": "S140",
+    "name": "E18-D80NK Adjustable IR Obstacle Proximity Switch",
+    "category": "Proximity",
+    "price": 140,
+    "description": "Industrial tubular photoelectric sensor; 3–80 cm detection range; daylight immune; digital NPN output.",
+    "keywords": "e18-d80nk e18d80nk photoelectric obstacle proximity infrared industrial robot distance",
+    "source": "new"
+  },
+  {
+    "id": "S141",
+    "name": "HC-SR505 Mini PIR Human Body Detector Module",
+    "category": "Motion",
+    "price": 45,
+    "description": "Miniature passive infrared sensor; ultra-low power; 3m sensing distance; repeatability trigger for smart lighting.",
+    "keywords": "hcsr505 hc-sr505 mini pir motion human body detector sensor low power",
+    "source": "new"
+  },
+  {
+    "id": "S142",
+    "name": "RCWL-0516 Microwave Doppler Radar Motion Sensor",
+    "category": "Motion",
+    "price": 40,
+    "description": "Micro-wave Doppler radar sensor; detects human movement through glass and walls; 5–7m 360° detection zone.",
+    "keywords": "rcwl0516 rcwl-0516 microwave radar doppler motion wall through penetration",
+    "source": "new"
+  },
+  {
+    "id": "S143",
+    "name": "SW-420 Adjustable Alarm Vibration Trigger Module",
+    "category": "Mechanical",
+    "price": 30,
+    "description": "Normally closed vibration switch with potentiometer threshold; triggers on vehicle tamper or earthquake shakes.",
+    "keywords": "sw420 vibration trigger shock tamper car alarm earthquake mechanical",
+    "source": "new"
+  },
+  {
+    "id": "S144",
+    "name": "ACS712-30A Hall Current Sensor Module",
+    "category": "Electrical",
+    "price": 95,
+    "description": "Hall-effect linear current sensor; measures bidirectional AC and DC current up to 30A with 66 mV/A sensitivity.",
+    "keywords": "acs712 30a current sensor hall effect ac dc ammeter power measurement",
+    "source": "new"
+  },
+  {
+    "id": "S145",
+    "name": "Voltage Divider Sensor Detection Module (0–25V DC)",
+    "category": "Electrical",
+    "price": 25,
+    "description": "Resistor divider board (5:1 reduction); enables 5V Arduino analog pins to measure DC voltages up to 25V.",
+    "keywords": "voltage divider sensor 25v dc voltmeter battery monitor analog measurement",
+    "source": "new"
+  },
+  {
+    "id": "S146",
+    "name": "2-Channel 5V Optocoupler Relay Module",
+    "category": "Electrical",
+    "price": 75,
+    "description": "Dual channel relay breakout with optocoupler isolation; controls two high-voltage AC loads safely.",
+    "keywords": "relay 2channel dual optocoupler 5v 220v ac switching electrical control",
+    "source": "new"
+  },
+  {
+    "id": "S147",
+    "name": "4-Channel 5V Relay Expansion Board",
+    "category": "Electrical",
+    "price": 130,
+    "description": "Quad relay module with optical isolation; drives home automation appliances up to 10A 250V AC.",
+    "keywords": "relay 4channel quad home automation appliance control optocoupler electrical",
+    "source": "new"
+  },
+  {
+    "id": "S148",
+    "name": "Solid State Relay SSR-25DA Module",
+    "category": "Electrical",
+    "price": 140,
+    "description": "Optically coupled semiconductor relay; no mechanical contacts; switches up to 25A 24–380V AC silently.",
+    "keywords": "ssr ssr25da solid state relay ac silent zero crossing electrical power",
+    "source": "new"
+  },
+  {
+    "id": "S149",
+    "name": "ACS724 High-Precision Isolated Current Sensor",
+    "category": "Electrical",
+    "price": 110,
+    "description": "Enhanced galvanic isolated current sensor IC; reduced noise and fast 5us response time for motor drives.",
+    "keywords": "acs724 current sensor isolated high precision motor inverter ammeter",
+    "source": "new"
+  },
+  {
+    "id": "S150",
+    "name": "Analog Voltage Detection Sensor (0–50V DC)",
+    "category": "Electrical",
+    "price": 30,
+    "description": "Precision resistor array with screw terminals; allows microcontrollers to safely monitor high DC voltage levels.",
+    "keywords": "voltage detection 50v solar battery pack monitor analog divider electrical",
+    "source": "new"
+  },
+  {
+    "id": "S151",
+    "name": "Flame Detection IR Receiver Board (4-Pin AO/DO)",
+    "category": "Fire/Safety",
+    "price": 35,
+    "description": "High-sensitivity infrared phototransistor board with LM393; dual analog intensity and digital trip outputs.",
+    "keywords": "flame fire sensor ir phototransistor burner safety alarm kitchen detection",
+    "source": "new"
+  },
+  {
+    "id": "S152",
+    "name": "MQ-137 Ammonia (NH₃) Gas Sensor Module",
+    "category": "Gas",
+    "price": 120,
+    "description": "High sensitivity to ammonia, amine gases; analog and digital outputs; used for animal farm and toilet smell monitoring.",
+    "keywords": "mq137 mq-137 ammonia nh3 gas sensor farm poultry waste air quality",
+    "source": "new"
+  },
+  {
+    "id": "S153",
+    "name": "MQ-138 Formaldehyde & VOC Detection Sensor",
+    "category": "Gas",
+    "price": 130,
+    "description": "Detects formaldehyde, benzene, toluene, and alcohol vapors; critical for interior decoration and air cleaners.",
+    "keywords": "mq138 mq-138 formaldehyde voc benzene toluene paint gas sensor indoor air",
+    "source": "new"
+  },
+  {
+    "id": "S154",
+    "name": "MQ-2 Gas Leak Detection Module with Potentiometer",
+    "category": "Gas",
+    "price": 75,
+    "description": "Reliable semiconductor gas detector for LPG, propane, hydrogen, and combustible smoke; adjustable threshold.",
+    "keywords": "mq2 mq-2 lpg smoke gas leak alarm kitchen combustible sensor",
+    "source": "new"
+  },
+  {
+    "id": "S155",
+    "name": "YL-69 Soil Hygrometer Moisture Probe + Comparator",
+    "category": "Agriculture",
+    "price": 40,
+    "description": "Fork electrode soil sensor with separate LM393 driver board; easy calibration for smart greenhouse plants.",
+    "keywords": "yl69 yl-69 soil moisture hygrometer probe agriculture irrigation garden",
+    "source": "new"
+  },
+  {
+    "id": "S156",
+    "name": "Raindrop Weather Sensor Plate with Controller",
+    "category": "Weather",
+    "price": 45,
+    "description": "Nickel-plated rain detection grid with LM393 comparator module; triggers automatically when water falls on board.",
+    "keywords": "raindrop rain weather sensor plate rain sensor water drops outdoor",
+    "source": "new"
+  },
+  {
+    "id": "S157",
+    "name": "TDS Water Quality Purity Sensor Meter (0–1000 ppm)",
+    "category": "Water Quality",
+    "price": 130,
+    "description": "Measures Total Dissolved Solids in water; 3.3/5V analog output; ideal for RO filter and aquarium quality testing.",
+    "keywords": "tds total dissolved solids water quality purity ro filter aquarium drinking",
+    "source": "new"
+  },
+  {
+    "id": "S158",
+    "name": "Dual-Level Floating Reed Ball Water Tank Switch",
+    "category": "Liquid",
+    "price": 65,
+    "description": "Stainless-accented vertical float switch; magnetically opens/closes contacts at preset high and low liquid levels.",
+    "keywords": "float switch water tank liquid level pump auto cut off reed switch",
+    "source": "new"
+  },
+  {
+    "id": "S159",
+    "name": "Non-Contact Infrared Thermometer MLX90614 (GY-906)",
+    "category": "Temperature",
+    "price": 140,
+    "description": "Medical-grade I²C non-contact infrared thermal sensor; -70°C to +380°C; 0.5°C accuracy; forehead scanner capable.",
+    "keywords": "mlx90614 gy-906 infrared non-contact thermometer forehead body fever medical",
+    "source": "new"
+  },
+  {
+    "id": "S160",
+    "name": "MAX30100 Pulse Oximeter & Heart-Rate Sensor",
+    "category": "Biomedical",
+    "price": 110,
+    "description": "Integrated pulse oximetry and biometric heart-rate sensor; I²C interface with red and IR LEDs; wearable health monitoring.",
+    "keywords": "max30100 pulse oximeter spo2 heart rate pulse biomedical health wearable",
+    "source": "new"
+  },
+  {
+    "id": "S161",
+    "name": "MAX30102 High-Sensitivity Blood Oxygen Sensor",
+    "category": "Biomedical",
+    "price": 130,
+    "description": "Upgraded optical SpO2 and pulse sensor with internal ambient light cancellation and ultra-low standby current.",
+    "keywords": "max30102 spo2 blood oxygen heart rate biomedical pulse fitness health",
+    "source": "new"
+  },
+  {
+    "id": "S162",
+    "name": "I²C Logic Level Converter Bi-Directional (4-Channel)",
+    "category": "Electronics",
+    "price": 25,
+    "description": "MOSFET-based bidirectional level shifter; safely interfaces 5V Arduino signals with 3.3V sensors and ESP8266.",
+    "keywords": "logic level converter shifter 5v 3.3v i2c spi bidirectional electronics interface",
+    "source": "new"
+  },
+  {
+    "id": "S163",
+    "name": "MicroSD Card SPI Adapter Storage Module",
+    "category": "Electronics",
+    "price": 35,
+    "description": "SPI interface board with onboard 3.3V regulator and level conversion; logs sensor data directly to FAT32 microSD cards.",
+    "keywords": "microsd sd card reader writer spi data logger storage recording electronics",
+    "source": "new"
+  }
 ];
 
 window.THEMES_DATA = [

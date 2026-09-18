@@ -33,7 +33,7 @@ var SHEET_INDIVIDUAL     = 'Individual Registrations';
 var SHEET_TEAM           = 'Team Submissions';
 var SHEET_CUSTOM         = 'Custom Sensor Requests';
 var SHEET_TEAM_2ND       = '2nd Year Team Registrations';
-var TOTAL_SENSORS        = 113;
+var TOTAL_SENSORS        = 163;
 var ADMIN_PASS           = 'SENSORA@2K26';
 
 /* ── Column Indices (1-based) for Individual sheet ─────── */
@@ -79,49 +79,73 @@ var COL_T2_SENSOR_NAME   = 13;
 var COL_T2_STATUS        = 14;
 
 /* ── Basic Sensor Pool (IDs from sensors.json) ──────────── */
-// 32 beginner-friendly sensors, price ≤ ₹100.
+// 52 beginner-friendly sensors (32 initial + 20 added).
 // Availability is checked live against all active allocations.
 var BASIC_SENSOR_IDS = [
   'S041','S005','S032','S056','S025','S029','S030','S036','S044',
   'S050','S024','S033','S047','S057','S059','S034','S035','S009',
   'S022','S003','S001','S010','S023','S051','S094','S099','S100',
-  'S101','S102','S103','S104','S109'
+  'S101','S102','S103','S104','S109',
+  // 20 Added Sensors for 2nd Year Pool
+  'S080','S092','S111','S017','S019','S021','S060','S062','S063',
+  'S084','S091','S093','S097','S110','S040','S048','S077','S090',
+  'S096','S085'
 ];
 
 /* ── Basic Sensor Metadata (name + for normalization) ────── */
 var BASIC_SENSOR_META = {
-  'S041': { name: 'LDR (Light Dependent Resistor)'       },
-  'S005': { name: 'NTC 10kΩ Thermistor'                  },
-  'S032': { name: 'Hall Effect Sensor (A3144)'            },
-  'S056': { name: 'Tilt Switch Ball Sensor'               },
-  'S025': { name: 'TCRT5000 IR Reflective Sensor'         },
-  'S029': { name: 'SW-420 Vibration Sensor Module'        },
-  'S030': { name: 'KY-002 Shock Vibration Sensor'         },
-  'S036': { name: 'Touch Sensor (TTP223 Capacitive)'      },
-  'S044': { name: 'Photodiode Sensor Module'              },
-  'S050': { name: 'Water Level Sensor'                    },
-  'S024': { name: 'IR Proximity Sensor Module'            },
-  'S033': { name: 'KY-024 Linear Hall Effect Sensor'      },
-  'S047': { name: 'Sound Sensor Module (KY-038)'          },
-  'S057': { name: 'Rotary Encoder Module (KY-040)'        },
-  'S059': { name: 'Joystick Module (KY-023)'              },
-  'S034': { name: 'Flame / Fire Sensor Module'            },
-  'S035': { name: 'KY-026 Flame Detection Sensor'         },
-  'S009': { name: 'Rain/Rainfall Detection Sensor'        },
-  'S022': { name: 'PIR Motion Sensor (HC-SR501)'          },
-  'S003': { name: 'LM35 Temperature Sensor'               },
-  'S001': { name: 'DHT11 Temperature & Humidity Sensor'   },
-  'S010': { name: 'Soil Moisture Sensor'                  },
-  'S023': { name: 'Ultrasonic Distance Sensor HC-SR04'    },
-  'S051': { name: 'Float Switch Sensor'                   },
-  'S094': { name: 'LM393 Speed Sensor (Slotted Optical)'  },
-  'S099': { name: 'KY-010 Optical Break-Beam Sensor'      },
-  'S100': { name: 'KY-036 Metal Touch Sensor Module'      },
-  'S101': { name: 'KY-016 RGB LED Module'                 },
-  'S102': { name: 'KY-018 Photo Resistor (LDR) Module'    },
-  'S103': { name: 'KY-022 IR Receiver Module (38 kHz)'    },
-  'S104': { name: 'SR602 Mini PIR Motion Sensor (AM312)'  },
-  'S109': { name: 'NE555 Timer Module (Astable/Monostable)' }
+  'S041': { name: 'LDR (Light Dependent Resistor)'          },
+  'S005': { name: 'NTC 10kΩ Thermistor'                     },
+  'S032': { name: 'Hall Effect Sensor (A3144)'               },
+  'S056': { name: 'Tilt Switch Ball Sensor'                  },
+  'S025': { name: 'TCRT5000 IR Reflective Sensor'            },
+  'S029': { name: 'SW-420 Vibration Sensor Module'           },
+  'S030': { name: 'KY-002 Shock Vibration Sensor'            },
+  'S036': { name: 'Touch Sensor (TTP223 Capacitive)'         },
+  'S044': { name: 'Photodiode Sensor Module'                 },
+  'S050': { name: 'Water Level Sensor'                       },
+  'S024': { name: 'IR Proximity Sensor Module'               },
+  'S033': { name: 'KY-024 Linear Hall Effect Sensor'         },
+  'S047': { name: 'Sound Sensor Module (KY-038)'             },
+  'S057': { name: 'Rotary Encoder Module (KY-040)'           },
+  'S059': { name: 'Joystick Module (KY-023)'                 },
+  'S034': { name: 'Flame / Fire Sensor Module'               },
+  'S035': { name: 'KY-026 Flame Detection Sensor'            },
+  'S009': { name: 'Rain/Rainfall Detection Sensor'           },
+  'S022': { name: 'PIR Motion Sensor (HC-SR501)'             },
+  'S003': { name: 'LM35 Temperature Sensor'                  },
+  'S001': { name: 'DHT11 Temperature & Humidity Sensor'      },
+  'S010': { name: 'Soil Moisture Sensor'                     },
+  'S023': { name: 'Ultrasonic Distance Sensor HC-SR04'       },
+  'S051': { name: 'Float Switch Sensor'                      },
+  'S094': { name: 'LM393 Speed Sensor (Slotted Optical)'     },
+  'S099': { name: 'KY-010 Optical Break-Beam Sensor'         },
+  'S100': { name: 'KY-036 Metal Touch Sensor Module'         },
+  'S101': { name: 'KY-016 RGB LED Module'                    },
+  'S102': { name: 'KY-018 Photo Resistor (LDR) Module'       },
+  'S103': { name: 'KY-022 IR Receiver Module (38 kHz)'       },
+  'S104': { name: 'SR602 Mini PIR Motion Sensor (AM312)'     },
+  'S109': { name: 'NE555 Timer Module (Astable/Monostable)'  },
+  'S080': { name: 'DS3231 RTC (Real-Time Clock) Module'      },
+  'S092': { name: 'TM1637 4-Digit 7-Segment Display'         },
+  'S111': { name: 'WCS1700 AC/DC Current Sensor (35A)'       },
+  'S017': { name: 'MQ-7 Carbon Monoxide (CO) Sensor'         },
+  'S019': { name: 'MQ-9 CO / Combustible Gas Sensor'         },
+  'S021': { name: 'MQ-136 Hydrogen Sulphide Sensor'          },
+  'S060': { name: 'Optical Encoder Disc (for motor)'         },
+  'S062': { name: 'Current Sensor Module ACS712 (5A)'        },
+  'S063': { name: 'Current Sensor ACS712 (20A)'              },
+  'S084': { name: 'INA219 Current + Voltage Sensor (I²C)'    },
+  'S091': { name: '16×2 LCD with I²C Adapter (PCF8574)'      },
+  'S093': { name: 'MAX7219 8×8 LED Matrix Module'            },
+  'S097': { name: 'L298N Motor Driver Module'                },
+  'S110': { name: '74HC595 Shift Register Module'            },
+  'S040': { name: 'BMP085 Barometric Pressure Sensor'        },
+  'S048': { name: 'MAX4466 Electret Mic Amplifier'           },
+  'S077': { name: 'ESP8266 Wi-Fi Module (ESP-01)'            },
+  'S090': { name: 'OLED 0.96" I²C Display Module'            },
+  'S096': { name: '28BYJ-48 Stepper Motor + ULN2003 Driver'  },
+  'S085': { name: 'HX711 Load Cell Amplifier + 1 kg Load Cell' }
 };
 
 /* ════════════════════════════════════════════════════════════
